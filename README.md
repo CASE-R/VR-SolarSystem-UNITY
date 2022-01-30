@@ -1,2 +1,2 @@
-# VR SolarSystem UNITY
- A repo for the 3rd Yr Physics Project @KCL
+# VR Solar System (Unity)
+ This repo holds my and [MNowak's]("My partner's GitHub Profile") 3rd Year Physics Project.
