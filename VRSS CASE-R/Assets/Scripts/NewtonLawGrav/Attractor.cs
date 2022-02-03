@@ -9,7 +9,8 @@ public class Attractor : MonoBehaviour
     {    }
     // Using https://www.youtube.com/watch?v=Ouu3D_VHx9o , Optimisations @7:08
 
-    public float G; //Grav Constant
+    [SerializeField]
+    private float G = 6.67e-11f; //Grav Constant
     public float orbitVelocity;
 
     public Rigidbody rb;
@@ -56,7 +57,7 @@ public class Attractor : MonoBehaviour
         rbToAttract.AddForce(force);
 
         if (rb.GetComponent<Rigidbody>())
-            //Gives tangential velocity to direction of attraction referenced to y axis (flat orbits)
+            //Gives tangential velocity to direction of attraction referenced to y axis (flat orbits) Soruce: https://answers.unity.com/questions/1333667/perpendicular-to-a-3d-direction-vector.html
             rb.GetComponent<Rigidbody>().velocity = Vector3.Cross(direction, Vector3.up).normalized * orbitVelocity;
     }
 
