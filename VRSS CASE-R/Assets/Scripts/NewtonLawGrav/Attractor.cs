@@ -6,20 +6,11 @@ public class Attractor : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
-    {
-        
-    }
-
-    /* Update is called once per frame
-    void Update()
-    {
-        
-    }
-    */
-
+    {    }
     // Using https://www.youtube.com/watch?v=Ouu3D_VHx9o , Optimisations @7:08
 
-    const float G = 66.74f; //Grav Constant
+    public float G; //Grav Constant
+    public float orbitVelocity;
 
     public Rigidbody rb;
 
@@ -47,6 +38,7 @@ public class Attractor : MonoBehaviour
             if (attractor != this)
                 Attract(attractor);
         }
+
     }
     void Attract (Attractor objToAttract)
     {
@@ -62,5 +54,10 @@ public class Attractor : MonoBehaviour
         Vector3 force = direction.normalized * forceMagnitude; //apply newton force in direction of object
 
         rbToAttract.AddForce(force);
+
+        if (rb.GetComponent<Rigidbody>())
+            //Gives tangential velocity to direction of attraction referenced to y axis (flat orbits)
+            rb.GetComponent<Rigidbody>().velocity = Vector3.Cross(direction, Vector3.up).normalized * orbitVelocity;
     }
+
 }
