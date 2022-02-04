@@ -11,7 +11,13 @@ public class Attractor : MonoBehaviour
 
     [SerializeField]
     private float G = 6.67e-11f; //Grav Constant
-    public float orbitVelocity;
+    [SerializeField]
+    private float orbitVelocity;
+    //Set Semi-major axis components to massive objects
+    private float semiMajor;
+    private float semiMajorOne;
+    private float semiMajorTwo;
+    private float CoMass;
 
     public Rigidbody rb;
 
@@ -58,6 +64,9 @@ public class Attractor : MonoBehaviour
 
         if (rb.GetComponent<Rigidbody>())
             //Gives tangential velocity to direction of attraction referenced to y axis (flat orbits) Soruce: https://answers.unity.com/questions/1333667/perpendicular-to-a-3d-direction-vector.html
+            CoMass = rb.mass + rbToAttract.mass;
+            orbitVelocity = Mathf.Sqrt(G * CoMass / distance);
+
             rb.GetComponent<Rigidbody>().velocity = Vector3.Cross(direction, Vector3.up).normalized * orbitVelocity;
     }
 
