@@ -3,12 +3,11 @@
 
  The main branch is likely to fulfil a presentation/demonstration purpose, whilst the individual branches serve as seperate workspaces where contribution and collaboration can be tracked and seen easily during the review and report-writing process.
 
- Summaries of each project will be below, built upon the core task of simulating our solar system.
+ Rather than working seperately, the decision is to now work on the same simulation working together on the underlying theory and decisions. Each branch will continue to function as seperate cloud storage for our workspaces
  ***
- ## VRSS: Collision and Orbital Dynamics (*TBC*) by @CASE-R
-As of January 2022, this branch of the project is to explore the dynamics of collisions and orbits within our Solar System from sudden influences. 
+ ## Project Timeline
+ ### Week 1
+ Tested different methods of creating Newtonian gravity between game objects by using RigidBody components and some custom code to apply Newton's 2nd Law. This was taken further by beginning to initiate orbital motion.
 
-The intention is to provide the ability to alter properties of stellar bodies, and apply external forces allowing the user to create unique scenarios to fulfill curiousity.
-
- ***
-```This change is to test the creation of branches```
+ ### Week 2
+ Students were sent off to investigate the dimensions and units used in Unity and how this compares to reality and the value/dimensions of the gravitational constant ***G***.
