@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class SolarSystem : MonoBehaviour
 {
+    [SerializeField] public int frameRate = 60;
+    [SerializeField] public float initialTimeScale = 1;
 
-    public float G = 10f;
-    GameObject[] celestials;
+    public float G = 2.959233859351670E04f;
+    public GameObject[] celestials;
 
+    //Originall calculated on initial startup, changing G mid
     void InitialVelocity()
     {
         foreach (GameObject celestial1 in celestials)
@@ -32,12 +35,15 @@ public class SolarSystem : MonoBehaviour
     {
         celestials = GameObject.FindGameObjectsWithTag("Celestial");
         InitialVelocity();
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = frameRate;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Time.timeScale = initialTimeScale;
     }
 
     void Gravity()

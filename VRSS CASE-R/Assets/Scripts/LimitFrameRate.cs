@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LimitFrameRate : MonoBehaviour
 {
-    [SerializeField] private int frameRate = 60;
+    [SerializeField] public int frameRate = 60;
     // Start is called before the first frame update
     void Start()
     {
