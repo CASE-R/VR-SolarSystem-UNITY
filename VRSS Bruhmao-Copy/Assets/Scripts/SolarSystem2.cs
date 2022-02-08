@@ -2,12 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SolarSystem : MonoBehaviour
+public class SolarSystem2 : MonoBehaviour
 {
+    // Creates initial parameters
     [SerializeField] public int frameRate = 60;
+    [Range(0.1f, 100f)]
     [SerializeField] public float initialTimeScale = 1;
+    [Range(0.015f, 1f)]
+    [SerializeField] public float initialFixedTimeStep = 0.02f;
 
-    public float G = 2.959233859351670E04f;
+    //Gives visual timers (NOT TO BE CHANGED IN EDITOR)
+    [SerializeField] private float timeStart;
+    [SerializeField] private float physTimeStart;
+    /*[SerializeField] private float fixedDeltaUnscaledTime;
+    [SerializeField] private float fixedScaledDeltaTime;
+    [SerializeField] private float fixedScaledTime;
+    */
+
+    public float G = 7.398084648379180E+13f;
     public GameObject[] celestials;
 
     //Originall calculated on initial startup, changing G mid
@@ -44,6 +56,15 @@ public class SolarSystem : MonoBehaviour
     void Update()
     {
         Time.timeScale = initialTimeScale;
+        Time.fixedDeltaTime = initialFixedTimeStep;
+
+        timeStart += Time.deltaTime;
+        physTimeStart += Time.fixedDeltaTime;
+        /*
+        Time.fixedUnscaledTime = fixedUnscaledDeltaTime;
+        Time.fixedUnscaledTime = fixedScaledDeltaTime;
+        [SerializeField] private float fixedScaledTime;
+        */
     }
 
     void Gravity()
