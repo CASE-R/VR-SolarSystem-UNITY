@@ -59,7 +59,7 @@ public class SolarSystem3 : MonoBehaviour
         Time.fixedDeltaTime = initialFixedTimeStep;
 
         timeStart += Time.deltaTime;
-        physTimeStart += Time.fixedDeltaTime;
+        //physTimeStart += Time.fixedDeltaTime;
         /*
         Time.fixedUnscaledTime = fixedUnscaledDeltaTime;
         Time.fixedUnscaledTime = fixedScaledDeltaTime;
@@ -90,6 +90,7 @@ public class SolarSystem3 : MonoBehaviour
     void FixedUpdate()
     {
         Gravity();
+        physTimeStart += Time.fixedDeltaTime;
     }
 
 }
