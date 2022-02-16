@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1793060395}
     m_Modifications:
+    - target: {fileID: 3020390040809415668, guid: 64423fd098cc6e34688675da889fd831, type: 3}
+      propertyPath: m_Time
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 4373320173883256545, guid: 64423fd098cc6e34688675da889fd831, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -996,7 +1000,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3020390040809415668, guid: 64423fd098cc6e34688675da889fd831, type: 3}
       propertyPath: m_Time
-      value: 20
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 3020390040809415668, guid: 64423fd098cc6e34688675da889fd831, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
@@ -1258,7 +1262,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3020390040809415668, guid: 64423fd098cc6e34688675da889fd831, type: 3}
       propertyPath: m_Time
-      value: 20
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 3020390040809415668, guid: 64423fd098cc6e34688675da889fd831, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
@@ -2012,6 +2016,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1793060395}
     m_Modifications:
+    - target: {fileID: 3020390040809415668, guid: 64423fd098cc6e34688675da889fd831, type: 3}
+      propertyPath: m_Time
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 4373320173883256545, guid: 64423fd098cc6e34688675da889fd831, type: 3}
       propertyPath: m_RootOrder
       value: 8
