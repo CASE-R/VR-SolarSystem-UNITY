@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00047023033, g: 0.0010305047, b: 0.0018796803, a: 1}
+  m_IndirectSpecularColor: {r: 0.00050519477, g: 0.0010324796, b: 0.002006172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1489,7 +1489,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 30
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -1970,17 +1970,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b387d34d071f754aa25b8208dfc225f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam1: {fileID: 47334741}
-  cam2: {fileID: 1694050814}
-  cam3: {fileID: 1896618937}
-  cam4: {fileID: 329915786}
-  cam5: {fileID: 641824050}
-  camFree: {fileID: 1562364747}
+  camSun: {fileID: 47334741}
+  camMercury: {fileID: 1694050814}
+  camVenus: {fileID: 1896618937}
+  camEarth: {fileID: 329915786}
+  camMoon: {fileID: 641824050}
   camMars: {fileID: 2077106577}
   camJupiter: {fileID: 131269730}
   camSaturn: {fileID: 518979181}
   camUranus: {fileID: 937095397}
   camNeptune: {fileID: 1144427253}
+  camFree: {fileID: 1562364747}
 --- !u!114 &1793060397
 MonoBehaviour:
   m_ObjectHideFlags: 0

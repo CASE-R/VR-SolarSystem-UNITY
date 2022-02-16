@@ -4,254 +4,233 @@ using UnityEngine;
 
 public class CamSwitch : MonoBehaviour //Using https://www.youtube.com/watch?v=wWTOuggRvgc
 {
-    public GameObject cam1;
-    public GameObject cam2;
-    public GameObject cam3;
-    public GameObject cam4;
-    public GameObject cam5;
-    public GameObject camFree;
+    public GameObject camSun;
+    public GameObject camMercury;
+    public GameObject camVenus;
+    public GameObject camEarth;
+    public GameObject camMoon;
     public GameObject camMars;
     public GameObject camJupiter;
     public GameObject camSaturn;
     public GameObject camUranus;
     public GameObject camNeptune;
+    public GameObject camFree;
+    public GameObject currentCamera;
 
-    GameObject currentCamera;
+    private void Start()
+    {
+        currentCamera = camSun;
+    }
+
 
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetButtonDown("0Key"))
+        // Enables FreeCam on WASD Input
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
         {
-            camFree.transform.position = currentCamera.transform.position;
-            camFree.transform.rotation = currentCamera.transform.rotation;
-
+            currentCamera = camFree;
             camFree.SetActive(true);
 
             // All non used cameras must be set to false
-            cam1.SetActive(false);
-            cam2.SetActive(false);
-            cam3.SetActive(false);
-            cam4.SetActive(false);
-            cam5.SetActive(false);
+            camSun.SetActive(false);
+            camMercury.SetActive(false);
+            camVenus.SetActive(false);
+            camEarth.SetActive(false);
+            camMoon.SetActive(false);
             camMars.SetActive(false);
             camJupiter.SetActive(false);
             camSaturn.SetActive(false);
             camUranus.SetActive(false);
             camNeptune.SetActive(false);
-
         }
+
+        // Updates Position and Rotation of FreeCam
+        if (currentCamera != camFree)
+        {
+            camFree.transform.position = currentCamera.transform.position;
+            camFree.transform.rotation = currentCamera.transform.rotation;
+        }
+
+        // Below code swaps between main 9 celestial bodies + Earth's Moon using 0-9 keys and sets the currentCamera
         if (Input.GetButtonDown("1Key"))
         {
-            currentCamera = cam1;
-
-            cam1.SetActive(true);
-            camFree.transform.position = cam1.transform.position;
-            camFree.transform.rotation = cam1.transform.rotation;
+            currentCamera = camSun;
+            camSun.SetActive(true);
 
             // All non used cameras must be set to false
-            cam2.SetActive(false);
-            cam3.SetActive(false);
-            cam4.SetActive(false);
-            cam5.SetActive(false);
-            camFree.SetActive(false);
+            camMercury.SetActive(false);
+            camVenus.SetActive(false);
+            camEarth.SetActive(false);
+            camMoon.SetActive(false);
             camMars.SetActive(false);
             camJupiter.SetActive(false);
             camSaturn.SetActive(false);
             camUranus.SetActive(false);
             camNeptune.SetActive(false);
-
+            camFree.SetActive(false);
         }
 
         if (Input.GetButtonDown("2Key"))
         {
-            currentCamera = cam2;
-
-            cam2.SetActive(true);
-            camFree.transform.position = cam2.transform.position;
-            camFree.transform.rotation = cam2.transform.rotation;
+            currentCamera = camMercury;
+            camMercury.SetActive(true);
 
             // All non used cameras must be set to false
-            cam1.SetActive(false);
-            cam3.SetActive(false);
-            cam4.SetActive(false);
-            cam5.SetActive(false);
-            camFree.SetActive(false);
+            camSun.SetActive(false);
+            camVenus.SetActive(false);
+            camEarth.SetActive(false);
+            camMoon.SetActive(false);
             camMars.SetActive(false);
             camJupiter.SetActive(false);
             camSaturn.SetActive(false);
             camUranus.SetActive(false);
             camNeptune.SetActive(false);
-
+            camFree.SetActive(false);
         }
+
         if (Input.GetButtonDown("3Key"))
         {
-            currentCamera = cam3;
-
-            cam3.SetActive(true);
-            camFree.transform.position = cam3.transform.position;
-            camFree.transform.rotation = cam3.transform.rotation;
+            currentCamera = camVenus;
+            camVenus.SetActive(true);
 
             // All non used cameras must be set to false
-            cam1.SetActive(false);
-            cam2.SetActive(false);
-            cam4.SetActive(false);
-            cam5.SetActive(false);
-            camFree.SetActive(false);
+            camMercury.SetActive(false);
+            camSun.SetActive(false);
+            camEarth.SetActive(false);
+            camMoon.SetActive(false);
             camMars.SetActive(false);
             camJupiter.SetActive(false);
             camSaturn.SetActive(false);
             camUranus.SetActive(false);
             camNeptune.SetActive(false);
-
+            camFree.SetActive(false);
         }
+
         if (Input.GetButtonDown("4Key"))
         {
-            currentCamera = cam4;
-
-            cam4.SetActive(true);
-            camFree.transform.position = cam4.transform.position;
-            camFree.transform.rotation = cam4.transform.rotation;
+            currentCamera = camEarth;
+            camEarth.SetActive(true);
 
             // All non used cameras must be set to false
-            cam1.SetActive(false);
-            cam2.SetActive(false);
-            cam3.SetActive(false);
-            cam5.SetActive(false);
-            camFree.SetActive(false);
+            camMercury.SetActive(false);
+            camVenus.SetActive(false);
+            camSun.SetActive(false);
+            camMoon.SetActive(false);
             camMars.SetActive(false);
             camJupiter.SetActive(false);
             camSaturn.SetActive(false);
             camUranus.SetActive(false);
             camNeptune.SetActive(false);
-
+            camFree.SetActive(false);
         }
+
         if (Input.GetButtonDown("5Key"))
         {
-            currentCamera = cam5;
-
-            cam5.SetActive(true);
-            camFree.transform.position = cam5.transform.position;
-            camFree.transform.rotation = cam5.transform.rotation;
+            currentCamera = camMoon;
+            camMoon.SetActive(true);
 
             // All non used cameras must be set to false
-            cam1.SetActive(false);
-            cam2.SetActive(false);
-            cam3.SetActive(false);
-            cam4.SetActive(false);
-            camFree.SetActive(false);
+            camMercury.SetActive(false);
+            camVenus.SetActive(false);
+            camEarth.SetActive(false);
+            camSun.SetActive(false);
             camMars.SetActive(false);
             camJupiter.SetActive(false);
             camSaturn.SetActive(false);
             camUranus.SetActive(false);
             camNeptune.SetActive(false);
-
+            camFree.SetActive(false);
         }
-        if (Input.GetKeyDown(KeyCode.M))
+
+        if (Input.GetButtonDown("6Key"))
         {
             currentCamera = camMars;
-
             camMars.SetActive(true);
-            camFree.transform.position = camMars.transform.position;
-            camFree.transform.rotation = camMars.transform.rotation;
 
             // All non used cameras must be set to false
-            cam1.SetActive(false);
-            cam2.SetActive(false);
-            cam3.SetActive(false);
-            cam4.SetActive(false);
-            cam5.SetActive(false);
-            camFree.SetActive(false);
+            camMercury.SetActive(false);
+            camVenus.SetActive(false);
+            camEarth.SetActive(false);
+            camMoon.SetActive(false);
+            camSun.SetActive(false);
             camJupiter.SetActive(false);
             camSaturn.SetActive(false);
             camUranus.SetActive(false);
             camNeptune.SetActive(false);
-
+            camFree.SetActive(false);
         }
-        if (Input.GetKeyDown(KeyCode.J))
+
+        if (Input.GetButtonDown("7Key"))
         {
             currentCamera = camJupiter;
-
             camJupiter.SetActive(true);
-            camFree.transform.position = camJupiter.transform.position;
-            camFree.transform.rotation = camJupiter.transform.rotation;
 
             // All non used cameras must be set to false
-            cam1.SetActive(false);
-            cam2.SetActive(false);
-            cam3.SetActive(false);
-            cam4.SetActive(false);
-            cam5.SetActive(false);
-            camFree.SetActive(false);
+            camMercury.SetActive(false);
+            camVenus.SetActive(false);
+            camEarth.SetActive(false);
+            camMoon.SetActive(false);
             camMars.SetActive(false);
+            camSun.SetActive(false);
             camSaturn.SetActive(false);
             camUranus.SetActive(false);
             camNeptune.SetActive(false);
-
+            camFree.SetActive(false);
         }
-        if (Input.GetKeyDown(KeyCode.S))
+
+        if (Input.GetButtonDown("8Key"))
         {
             currentCamera = camSaturn;
-
             camSaturn.SetActive(true);
-            camFree.transform.position = camSaturn.transform.position;
-            camFree.transform.rotation = camSaturn.transform.rotation;
 
             // All non used cameras must be set to false
-            cam1.SetActive(false);
-            cam2.SetActive(false);
-            cam3.SetActive(false);
-            cam4.SetActive(false);
-            cam5.SetActive(false);
-            camFree.SetActive(false);
+            camMercury.SetActive(false);
+            camVenus.SetActive(false);
+            camEarth.SetActive(false);
+            camMoon.SetActive(false);
             camMars.SetActive(false);
             camJupiter.SetActive(false);
+            camSun.SetActive(false);
             camUranus.SetActive(false);
             camNeptune.SetActive(false);
-
+            camFree.SetActive(false);
         }
-        if (Input.GetKeyDown(KeyCode.U))
+
+        if (Input.GetButtonDown("9Key"))
         {
             currentCamera = camUranus;
-
             camUranus.SetActive(true);
-            camFree.transform.position = camUranus.transform.position;
-            camFree.transform.rotation = camUranus.transform.rotation;
 
             // All non used cameras must be set to false
-            cam1.SetActive(false);
-            cam2.SetActive(false);
-            cam3.SetActive(false);
-            cam4.SetActive(false);
-            cam5.SetActive(false);
-            camFree.SetActive(false);
+            camMercury.SetActive(false);
+            camVenus.SetActive(false);
+            camEarth.SetActive(false);
+            camMoon.SetActive(false);
             camMars.SetActive(false);
             camJupiter.SetActive(false);
             camSaturn.SetActive(false);
+            camSun.SetActive(false);
             camNeptune.SetActive(false);
-
+            camFree.SetActive(false);
         }
-        if (Input.GetKeyDown(KeyCode.N))
+
+        if (Input.GetButtonDown("0Key"))
         {
             currentCamera = camNeptune;
-
             camNeptune.SetActive(true);
-            camFree.transform.position = camNeptune.transform.position;
-            camFree.transform.rotation = camNeptune.transform.rotation;
 
             // All non used cameras must be set to false
-            cam1.SetActive(false);
-            cam2.SetActive(false);
-            cam3.SetActive(false);
-            cam4.SetActive(false);
-            cam5.SetActive(false);
-            camFree.SetActive(false);
+            camMercury.SetActive(false);
+            camVenus.SetActive(false);
+            camEarth.SetActive(false);
+            camMoon.SetActive(false);
             camMars.SetActive(false);
             camJupiter.SetActive(false);
             camSaturn.SetActive(false);
             camUranus.SetActive(false);
-
+            camSun.SetActive(false);
+            camFree.SetActive(false);
         }
     }
 }
