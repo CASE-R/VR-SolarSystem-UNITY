@@ -25,7 +25,7 @@ public class EllipticalTest : MonoBehaviour
     public GameObject[] celestials; // [Sun, M, V, E, Moo, Mars, J, S, U, N] 
 
     float[] semiMajor = { 38.70974211f, 72.33385473f, 99.99799463f, 104.5136967f, 152.3790425f, 520.3806201f, 957.2594553f, 1916.498215f, 3018.05706f }; // [4] = Moon wrt to Sun
-        //{ 38.70974211f, 72.33385473f, 99.99799463f, 0.256955307f, 152.3790425f, 520.3806201f, 957.2594553f, 1916.498215f, 3018.05706f }; // [4]= Moon wrt to Earth
+                      //{ 38.70974211f, 72.33385473f, 99.99799463f, 0.256955307f, 152.3790425f, 520.3806201f, 957.2594553f, 1916.498215f, 3018.05706f }; // [4]= Moon wrt to Earth
     float semiMajorAxis;
 
     //Original calculated on initial startup, changing G mid
@@ -39,12 +39,14 @@ public class EllipticalTest : MonoBehaviour
                 {
 
                     semiMajorAxis = semiMajor[COj-1]; // Aligning Body-semiMajor coupling to match correct Celestial, would use "COj" if you included semiMajor for Sun (which is 0)
+                    float m_COi = celestials[COi].GetComponent<Rigidbody>().mass;
+                    float m_COj = celestials[COj].GetComponent<Rigidbody>().mass;
 
-                    float mass1 = celestials[COi].GetComponent<Rigidbody>().mass; //Assigns mass of the object to orbit around
-                    float r = Vector3.Distance(celestials[COi].transform.position, celestials[COj].transform.position);
+                    float m_CoM = m_COi + m_COj; //Assigns Centre of Mass of 2-Body to orbit around
+                    float r = Vector3.Distance(celestials[COi].transform.position, celestials[COj].transform.position); //Distance between 2-body
                     celestials[COi].transform.LookAt(celestials[COj].transform); //Gives radial distance to "celestial1" or "COi"
 
-                    celestials[COj].GetComponent<Rigidbody>().velocity += celestials[COj].transform.forward * Mathf.Sqrt((G * mass1) * ((2 / r) - (1 / (2 * semiMajorAxis)))); //Applies Vis Viva Orbital Velocity Equation, this is wrt. whatever "COi" is
+                    celestials[COj].GetComponent<Rigidbody>().velocity += celestials[COj].transform.forward * Mathf.Sqrt((G * m_CoM) * ( (2 / r) - (1 / semiMajorAxis) )); //Applies Vis Viva Orbital Velocity Equation, this is wrt. whatever "COi" is
                     
                     print(celestials[COi] + " is paired to " + celestials[COj] + " with semiMajorAxis " + semiMajorAxis + " and orbitalVelocity " + celestials[COi].GetComponent<Rigidbody>().velocity.magnitude); // Prints pairing w/ orbit velocity for debug
 

@@ -155,7 +155,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 60
+  m_Time: 120
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -341,5 +341,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   volumetricMeanRadius: {x: 0, y: 0, z: 0}
   Mass: 1
+  angularMomentum: 0
   semiMajorAxis: 0
   orbitalVelocity: {x: 0, y: 0, z: 0}
