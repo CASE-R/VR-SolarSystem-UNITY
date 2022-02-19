@@ -22,29 +22,31 @@ public class EllipticalTest : MonoBehaviour
     */
 
     public float G = 0.08892541f;
-    public GameObject[] celestials; // [Sun, M, V, E, Moo, Mars, J, S, U, N]
-    float[] semiMajor = { 38.70974211f, 72.33385473f, 99.99799463f, 0.256955307f, 152.3790425f, 520.3806201f, 957.2594553f, 1916.498215f, 3018.05706f };
+    public GameObject[] celestials; // [Sun, M, V, E, Moo, Mars, J, S, U, N] 
+
+    float[] semiMajor = { 38.70974211f, 72.33385473f, 99.99799463f, 104.5136967f, 152.3790425f, 520.3806201f, 957.2594553f, 1916.498215f, 3018.05706f }; // [4] = Moon wrt to Sun
+        //{ 38.70974211f, 72.33385473f, 99.99799463f, 0.256955307f, 152.3790425f, 520.3806201f, 957.2594553f, 1916.498215f, 3018.05706f }; // [4]= Moon wrt to Earth
     float semiMajorAxis;
 
     //Original calculated on initial startup, changing G mid
     void InitialVelocity()
     {
-        for (int COi = 0; COi < 1; COi++) // Want only Sun-Celestial pairing
+        for (int COi = 0; COi < 1; COi++) // Want only Sun-Celestial pairing, hence we pick index 0 from celestials[] and break once length exceeds 1
         {
             for (int COj = 1; COj < celestials.Length; COj++) // Coupling Celestial-semiMajor
             {
                 if (COi != COj)
                 {
 
-                    semiMajorAxis = semiMajor[COj-1]; // Aligning Body-semiMajor coupling to match correct Celestial
+                    semiMajorAxis = semiMajor[COj-1]; // Aligning Body-semiMajor coupling to match correct Celestial, would use "COj" if you included semiMajor for Sun (which is 0)
 
-                    float mass1 = celestials[COi].GetComponent<Rigidbody>().mass;
+                    float mass1 = celestials[COi].GetComponent<Rigidbody>().mass; //Assigns mass of the object to orbit around
                     float r = Vector3.Distance(celestials[COi].transform.position, celestials[COj].transform.position);
-                    celestials[COi].transform.LookAt(celestials[COj].transform);
+                    celestials[COi].transform.LookAt(celestials[COj].transform); //Gives radial distance to "celestial1" or "COi"
 
-                    celestials[COj].GetComponent<Rigidbody>().velocity += celestials[COj].transform.forward * Mathf.Sqrt((G * mass1) * ((2 / r) - (1 / (2 * semiMajorAxis))));
+                    celestials[COj].GetComponent<Rigidbody>().velocity += celestials[COj].transform.forward * Mathf.Sqrt((G * mass1) * ((2 / r) - (1 / (2 * semiMajorAxis)))); //Applies Vis Viva Orbital Velocity Equation, this is wrt. whatever "COi" is
                     
-                    print(celestials[COi] + " is paired to " + celestials[COj] + " with semiMajorAxis " + semiMajorAxis + " and orbitalVelocity " + celestials[COi].GetComponent<Rigidbody>().velocity.magnitude);
+                    print(celestials[COi] + " is paired to " + celestials[COj] + " with semiMajorAxis " + semiMajorAxis + " and orbitalVelocity " + celestials[COi].GetComponent<Rigidbody>().velocity.magnitude); // Prints pairing w/ orbit velocity for debug
 
                     //- (1 / (2*i)) 
                     // celestials.[COi].GetComponent<Rigidbody>().velocity += celestials.[COi].transform.right * Mathf.Sqrt(G * m2 / r);
