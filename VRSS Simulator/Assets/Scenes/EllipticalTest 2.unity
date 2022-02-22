@@ -241,6 +241,10 @@ PrefabInstance:
       value: 38.709743
       objectReference: {fileID: 0}
     - target: {fileID: 5316999790496845293, guid: 42f607cc59bf85c47a4c5c74debf5449, type: 3}
+      propertyPath: m_Time
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5316999790496845293, guid: 42f607cc59bf85c47a4c5c74debf5449, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
       value: 0
       objectReference: {fileID: 0}
@@ -251,6 +255,10 @@ PrefabInstance:
     - target: {fileID: 5504214522705436016, guid: 42f607cc59bf85c47a4c5c74debf5449, type: 3}
       propertyPath: m_Mass
       value: 0.055272765
+      objectReference: {fileID: 0}
+    - target: {fileID: 5504214522705436016, guid: 42f607cc59bf85c47a4c5c74debf5449, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5980426435417561796, guid: 42f607cc59bf85c47a4c5c74debf5449, type: 3}
       propertyPath: m_RootOrder
@@ -332,6 +340,10 @@ PrefabInstance:
     - target: {fileID: 4672333423190691693, guid: 42f607cc59bf85c47a4c5c74debf5449, type: 3}
       propertyPath: semiMajorAxis
       value: 72.333855
+      objectReference: {fileID: 0}
+    - target: {fileID: 5316999790496845293, guid: 42f607cc59bf85c47a4c5c74debf5449, type: 3}
+      propertyPath: m_Time
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5504214522705436016, guid: 42f607cc59bf85c47a4c5c74debf5449, type: 3}
       propertyPath: m_Mass
@@ -432,6 +444,10 @@ PrefabInstance:
     - target: {fileID: 4672333423190691693, guid: 42f607cc59bf85c47a4c5c74debf5449, type: 3}
       propertyPath: semiMajorAxis
       value: 3018.0571
+      objectReference: {fileID: 0}
+    - target: {fileID: 5316999790496845293, guid: 42f607cc59bf85c47a4c5c74debf5449, type: 3}
+      propertyPath: m_Time
+      value: 6200
       objectReference: {fileID: 0}
     - target: {fileID: 5504214522705436016, guid: 42f607cc59bf85c47a4c5c74debf5449, type: 3}
       propertyPath: m_Mass
@@ -671,12 +687,15 @@ MonoBehaviour:
   - 34.063114
   - 20.36335
   - 17.492552
-  - 17.462282
+  - 0.6251477
   - 15.305144
   - 7.9211373
   - 5.857967
   - 4.118229
   - 3.1619885
+  acceleration: {x: 0, y: 0, z: 0}
+  massCOi: 0
+  massCOj: 0
 --- !u!114 &1084624639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -747,6 +766,10 @@ PrefabInstance:
     - target: {fileID: 4672333423190691693, guid: 42f607cc59bf85c47a4c5c74debf5449, type: 3}
       propertyPath: semiMajorAxis
       value: 1916.4982
+      objectReference: {fileID: 0}
+    - target: {fileID: 5316999790496845293, guid: 42f607cc59bf85c47a4c5c74debf5449, type: 3}
+      propertyPath: m_Time
+      value: 3200
       objectReference: {fileID: 0}
     - target: {fileID: 5504214522705436016, guid: 42f607cc59bf85c47a4c5c74debf5449, type: 3}
       propertyPath: m_Mass
@@ -1044,6 +1067,10 @@ PrefabInstance:
       propertyPath: semiMajorAxis
       value: 520.3806
       objectReference: {fileID: 0}
+    - target: {fileID: 5316999790496845293, guid: 42f607cc59bf85c47a4c5c74debf5449, type: 3}
+      propertyPath: m_Time
+      value: 600
+      objectReference: {fileID: 0}
     - target: {fileID: 5504214522705436016, guid: 42f607cc59bf85c47a4c5c74debf5449, type: 3}
       propertyPath: m_Mass
       value: 317.8276
@@ -1130,9 +1157,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Moon
       objectReference: {fileID: 0}
+    - target: {fileID: 3284064569311997356, guid: 42f607cc59bf85c47a4c5c74debf5449, type: 3}
+      propertyPath: m_TagString
+      value: Celestial
+      objectReference: {fileID: 0}
     - target: {fileID: 4672333423190691693, guid: 42f607cc59bf85c47a4c5c74debf5449, type: 3}
       propertyPath: semiMajorAxis
       value: 104.513695
+      objectReference: {fileID: 0}
+    - target: {fileID: 5316999790496845293, guid: 42f607cc59bf85c47a4c5c74debf5449, type: 3}
+      propertyPath: m_Time
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5504214522705436016, guid: 42f607cc59bf85c47a4c5c74debf5449, type: 3}
       propertyPath: m_Mass
@@ -1156,7 +1191,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5980426435417561796, guid: 42f607cc59bf85c47a4c5c74debf5449, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.1757028
+      value: -0.76655895
       objectReference: {fileID: 0}
     - target: {fileID: 5980426435417561796, guid: 42f607cc59bf85c47a4c5c74debf5449, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1218,6 +1253,10 @@ PrefabInstance:
     - target: {fileID: 4672333423190691693, guid: 42f607cc59bf85c47a4c5c74debf5449, type: 3}
       propertyPath: semiMajorAxis
       value: 957.25946
+      objectReference: {fileID: 0}
+    - target: {fileID: 5316999790496845293, guid: 42f607cc59bf85c47a4c5c74debf5449, type: 3}
+      propertyPath: m_Time
+      value: 1200
       objectReference: {fileID: 0}
     - target: {fileID: 5504214522705436016, guid: 42f607cc59bf85c47a4c5c74debf5449, type: 3}
       propertyPath: m_Mass

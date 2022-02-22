@@ -18,9 +18,19 @@ public class EllipticalTest2 : MonoBehaviour
 
     public float G = 0.08892541f;
     public GameObject[] celestials; // [Sun, M, V, E, Moo, Mars, J, S, U, N] 
-    public float[] periVelocity = { 34.06311235f, 20.36335006f, 17.49255161f, 0.625147704f, 15.30514423f, 7.92113719f, 5.857966867f, 4.118228776f, 3.161988437f};
 
-    //Original calculated on initial startup, changing G mid
+    float[] perihelion = {30.749074185f, 71.845880293f, 98.326849289f, 95.061307948f, 138.136873488f, 495.056752096f, 907.468014278f, 1826.692870226f, 2988.709742109f};
+    float[] aphelion = {46.670410032f, 72.822497627f, 101.672482252f, 105.317340535f, 166.620543055f, 545.704488028f, 1007.050227944f, 2006.303560208f, 3047.405045522f};
+
+    public float massCOi;
+    public float massCOj;
+    /// <summary>
+    /// Below are old lists used, kept for future reference but unimportant
+    /// </summary>
+    //public float[] periVelocity = { 34.06311235f, 20.36335006f, 17.49255161f, 0.625147704f, 15.30514423f, 7.92113719f, 5.857966867f, 4.118228776f, 3.161988437f};
+    //float[] semiMajor = {38.709742109f, 72.334188960f, 99.999665771f, 101.782049101f, 152.378708272f, 520.380620062f, 957.259121111f, 1916.498215217f, 3018.057393815f}; // [4] = Moon wrt to Sun
+    //{ 38.70974211f, 72.33385473f, 99.99799463f, 0.256955307f, 152.3790425f, 520.3806201f, 957.2594553f, 1916.498215f, 3018.05706f }; // [4]= Moon wrt to Earth
+
     void InitialVelocity()
     {
         for (int COi = 0; COi < 1; COi++) // Want only Sun-Celestial pairing, hence we pick index 0 from celestials[] and break once length exceeds 1
@@ -29,46 +39,34 @@ public class EllipticalTest2 : MonoBehaviour
             {
                 if (COi != COj)
                 {
-
-                    //periVelocity[COj-1];  Aligning Body-semiMajor coupling to match correct Celestial, would use "COj" if you included semiMajor for Sun (which is 0)
-                    //float m_COi = celestials[COi].GetComponent<Rigidbody>().mass;
-                    //float m_COj = celestials[COj].GetComponent<Rigidbody>().mass;
-
-                    //float m_CoM = m_COi + m_COj; //Assigns Centre of Mass of 2-Body to orbit around
-                    //float r = Vector3.Distance(celestials[COi].transform.position, celestials[COj].transform.position); //Distance between 2-body
-                    //celestials[COi].transform.LookAt(celestials[COj].transform); //Gives radial distance to "celestial1" or "COi"
-
-                    celestials[COj].GetComponent<Rigidbody>().velocity += celestials[COj].transform.forward * periVelocity[COj - 1];
+                    massCOi = celestials[COi].GetComponent<Rigidbody>().mass;
+                    massCOj = celestials[COj].GetComponent<Rigidbody>().mass;
+                    Debug.Log("COiMass = " + massCOi + " COjMass = " + massCOj);
+                    float semiMajor = (perihelion[COj - 1] + aphelion[COj - 1]) / 2; //Can be proven that 2a = r_p + r_A
 
 
-                    //print(celestials[COi] + " is paired to " + celestials[COj] + " with semiMajorAxis " + semiMajorAxis + " and orbitalVelocity " + celestials[COi].GetComponent<Rigidbody>().velocity.magnitude); // Prints pairing w/ orbit velocity for debug
+                    float distance = Vector3.Distance(celestials[COi].transform.position, celestials[COj].transform.position); //Radial Distance between 2-body
 
-                    //- (1 / (2*i)) 
-                    // celestials.[COi].GetComponent<Rigidbody>().velocity += celestials.[COi].transform.right * Mathf.Sqrt(G * m2 / r);
+                    celestials[COi].transform.LookAt(celestials[COj].transform);
+                    Debug.Log("Distance is " + distance);
+
+                    // Using original visViva
+                    celestials[COj].GetComponent<Rigidbody>().velocity += celestials[COj].transform.forward * Mathf.Sqrt((G * (massCOi + massCOj)) * ((2 / distance) - (1 / (semiMajor)))); //Applies Vis Viva Orbital Velocity Equation, this is wrt. whatever "COi" is in the anti-clockwise direction
+
+                    Debug.Log("Velocity of " + COj + " is " + celestials[COj].GetComponent<Rigidbody>().velocity);
 
                 }
             }
         }
     }
 
-
-    //Vector3 direction = celestial1.transform.position - celestial2.transform.position;
-
-    //float semiMajor = celestial2.GetComponent<CelestialProperty>().semiMajorAxis;
-
-    //celestial1.GetComponent<Rigidbody>().velocity = Vector3.Cross(direction, Vector3.forward).normalized * Mathf.Sqrt(G * mass2 * ((2 / r) - (1 / semiMajor)));
-
-    //Debug.Log("Position Vector is " + direction + "with 'magnitude'" + r);
-
-    //Debug.Log("Velocity of " + celestial1.name + "is" + celestial1.GetComponent<Rigidbody>().velocity);
-
     // Start is called before the first frame update
     void Start()
     {
         celestials = GameObject.FindGameObjectsWithTag("Celestial");
         CelestialProperty celProperty = GetComponent<CelestialProperty>();
-
         InitialVelocity();
+
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = frameRate;
 
@@ -81,12 +79,6 @@ public class EllipticalTest2 : MonoBehaviour
         Time.fixedDeltaTime = initialFixedTimeStep;
 
         timeStart += Time.deltaTime;
-        //physTimeStart += Time.fixedDeltaTime;
-        /*
-        Time.fixedUnscaledTime = fixedUnscaledDeltaTime;
-        Time.fixedUnscaledTime = fixedScaledDeltaTime;
-        [SerializeField] private float fixedScaledTime;
-        */
     }
 
     void Gravity()
@@ -115,6 +107,7 @@ public class EllipticalTest2 : MonoBehaviour
     {
         Gravity();
         physTimeStart += Time.fixedDeltaTime;
+        
     }
 
 }
