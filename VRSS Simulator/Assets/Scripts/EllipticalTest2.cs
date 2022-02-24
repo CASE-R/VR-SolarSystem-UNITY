@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 //using System.Math.Sqrt;
@@ -17,10 +18,11 @@ public class EllipticalTest2 : MonoBehaviour
     [SerializeField] private float physTimeStart;
 
     public float G = 0.08892541f;
-    public GameObject[] celestials; // [Sun, M, V, E, Moo, Mars, J, S, U, N] 
+    public GameObject[] celestials; // [Sun, M, V, E, Moo, Mars, J, S, U, Pluto, N]
+    public GameObject[] celCameras;
 
-    float[] perihelion = {30.749074185f, 71.845880293f, 98.326849289f, 95.061307948f, 138.136873488f, 495.056752096f, 907.468014278f, 1826.692870226f, 2988.709742109f};
-    float[] aphelion = {46.670410032f, 72.822497627f, 101.672482252f, 105.317340535f, 166.620543055f, 545.704488028f, 1007.050227944f, 2006.303560208f, 3047.405045522f};
+    float[] perihelion = {30.749074185f, 71.845880293f, 98.326849289f, 95.061307948f, 138.136873488f, 495.056752096f, 907.468014278f, 1826.692870226f, 2964.603136406f, 2988.709742109f};
+    float[] aphelion = {46.670410032f, 72.822497627f, 101.672482252f, 105.317340535f, 166.620543055f, 545.704488028f, 1007.050227944f, 2006.303560208f, 4882.636131499f, 3047.405045522f};
 
     public float massCOi;
     public float massCOj;
@@ -64,6 +66,7 @@ public class EllipticalTest2 : MonoBehaviour
     void Start()
     {
         celestials = GameObject.FindGameObjectsWithTag("Celestial");
+        celCameras = GameObject.FindGameObjectsWithTag("Camera"); // Lists all focus cameras for main celestials
         CelestialProperty celProperty = GetComponent<CelestialProperty>();
         InitialVelocity();
 
@@ -103,10 +106,31 @@ public class EllipticalTest2 : MonoBehaviour
         }
     }
 
+    void RotateFocusCamera()
+    {
+        // This rotates the celestial camera to point towards the Sun but they are still transformed by the angular velocity of each body
+        foreach (var cam in celCameras)
+        {
+            //cam.GetComponent<Transform>().rotation = Quaternion.SetLookRotation(celestials[0].GetComponent<Transform>().position, celestials[0].GetComponent<Transform>().position); 
+            cam.transform.LookAt(celestials[0].transform.position, Vector3.up); //Rotates camera to Sun's position
+        }
+
+        // This does weird stuff
+
+        //for (int COi = 0; COi < celestials.Length; COi++)
+        //{
+        //    //celCameras[COi].transform.LookAt(celestials[COi].transform.position, Vector3.up); // Turns Camera to focus on 'parent'
+        //    float rotationAngularSpeed = (2 * Mathf.PI) / Mathf.Sqrt(4 * Mathf.PI * (Mathf.Pow(((perihelion[COi] + aphelion[COi]) / 2), 3) / (G * (massCOi + celestials[0].GetComponent<Rigidbody>().mass))));
+        //    celCameras[COi].transform.Rotate(Vector3.up, rotationAngularSpeed);
+        //    celestials[COi].transform.LookAt(celestials[0].transform);
+        //}
+    }
+
     void FixedUpdate()
     {
         Gravity();
         physTimeStart += Time.fixedDeltaTime;
+        RotateFocusCamera();
         
     }
 

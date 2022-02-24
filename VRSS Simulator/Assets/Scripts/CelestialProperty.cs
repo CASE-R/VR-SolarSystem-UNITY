@@ -59,4 +59,6 @@ public class CelestialProperty : MonoBehaviour
 
         // orbitalPeriod = Mathf.Sqrt( Mathf.Pow(2 * Mathf.PI, 2) / (GetComponent<EllipticalTest>().G * (GetComponent<Rigidbody>().mass + Sun.GetComponent<Rigidbody>().mass)) ) *Mathf.Pow(semiMajorAxis, 3);
     }
+
+
 }

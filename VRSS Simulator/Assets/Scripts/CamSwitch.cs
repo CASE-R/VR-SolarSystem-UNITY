@@ -13,6 +13,7 @@ public class CamSwitch : MonoBehaviour //Using https://www.youtube.com/watch?v=w
     public GameObject camJupiter;
     public GameObject camSaturn;
     public GameObject camUranus;
+    public GameObject camPluto;
     public GameObject camNeptune;
     public GameObject camFree;
     public GameObject currentCamera;
@@ -20,6 +21,11 @@ public class CamSwitch : MonoBehaviour //Using https://www.youtube.com/watch?v=w
     private void Start()
     {
         currentCamera = camSun;
+    }
+
+    private void FixedUpdate()
+    {
+
     }
 
 
@@ -42,6 +48,7 @@ public class CamSwitch : MonoBehaviour //Using https://www.youtube.com/watch?v=w
             camJupiter.SetActive(false);
             camSaturn.SetActive(false);
             camUranus.SetActive(false);
+            camPluto.SetActive(false);
             camNeptune.SetActive(false);
         }
 
@@ -67,6 +74,7 @@ public class CamSwitch : MonoBehaviour //Using https://www.youtube.com/watch?v=w
             camJupiter.SetActive(false);
             camSaturn.SetActive(false);
             camUranus.SetActive(false);
+            camPluto.SetActive(false);
             camNeptune.SetActive(false);
             camFree.SetActive(false);
         }
@@ -85,6 +93,7 @@ public class CamSwitch : MonoBehaviour //Using https://www.youtube.com/watch?v=w
             camJupiter.SetActive(false);
             camSaturn.SetActive(false);
             camUranus.SetActive(false);
+            camPluto.SetActive(false);
             camNeptune.SetActive(false);
             camFree.SetActive(false);
         }
@@ -103,6 +112,7 @@ public class CamSwitch : MonoBehaviour //Using https://www.youtube.com/watch?v=w
             camJupiter.SetActive(false);
             camSaturn.SetActive(false);
             camUranus.SetActive(false);
+            camPluto.SetActive(false);
             camNeptune.SetActive(false);
             camFree.SetActive(false);
         }
@@ -121,6 +131,7 @@ public class CamSwitch : MonoBehaviour //Using https://www.youtube.com/watch?v=w
             camJupiter.SetActive(false);
             camSaturn.SetActive(false);
             camUranus.SetActive(false);
+            camPluto.SetActive(false);
             camNeptune.SetActive(false);
             camFree.SetActive(false);
         }
@@ -139,6 +150,7 @@ public class CamSwitch : MonoBehaviour //Using https://www.youtube.com/watch?v=w
             camJupiter.SetActive(false);
             camSaturn.SetActive(false);
             camUranus.SetActive(false);
+            camPluto.SetActive(false);
             camNeptune.SetActive(false);
             camFree.SetActive(false);
         }
@@ -157,6 +169,7 @@ public class CamSwitch : MonoBehaviour //Using https://www.youtube.com/watch?v=w
             camJupiter.SetActive(false);
             camSaturn.SetActive(false);
             camUranus.SetActive(false);
+            camPluto.SetActive(false);
             camNeptune.SetActive(false);
             camFree.SetActive(false);
         }
@@ -175,6 +188,7 @@ public class CamSwitch : MonoBehaviour //Using https://www.youtube.com/watch?v=w
             camSun.SetActive(false);
             camSaturn.SetActive(false);
             camUranus.SetActive(false);
+            camPluto.SetActive(false);
             camNeptune.SetActive(false);
             camFree.SetActive(false);
         }
@@ -193,6 +207,7 @@ public class CamSwitch : MonoBehaviour //Using https://www.youtube.com/watch?v=w
             camJupiter.SetActive(false);
             camSun.SetActive(false);
             camUranus.SetActive(false);
+            camPluto.SetActive(false);
             camNeptune.SetActive(false);
             camFree.SetActive(false);
         }
@@ -211,11 +226,30 @@ public class CamSwitch : MonoBehaviour //Using https://www.youtube.com/watch?v=w
             camJupiter.SetActive(false);
             camSaturn.SetActive(false);
             camSun.SetActive(false);
+            camPluto.SetActive(false);
             camNeptune.SetActive(false);
             camFree.SetActive(false);
         }
 
         if (Input.GetButtonDown("0Key"))
+        {
+            currentCamera = camNeptune;
+            camPluto.SetActive(true);
+
+            // All non used cameras must be set to false
+            camMercury.SetActive(false);
+            camVenus.SetActive(false);
+            camEarth.SetActive(false);
+            camMoon.SetActive(false);
+            camMars.SetActive(false);
+            camJupiter.SetActive(false);
+            camSaturn.SetActive(false);
+            camUranus.SetActive(false);
+            camSun.SetActive(false);
+            camFree.SetActive(false);
+        }
+
+        if (Input.GetButtonDown("-Key"))
         {
             currentCamera = camNeptune;
             camNeptune.SetActive(true);
@@ -229,6 +263,7 @@ public class CamSwitch : MonoBehaviour //Using https://www.youtube.com/watch?v=w
             camJupiter.SetActive(false);
             camSaturn.SetActive(false);
             camUranus.SetActive(false);
+            camPluto.SetActive(false);
             camSun.SetActive(false);
             camFree.SetActive(false);
         }
