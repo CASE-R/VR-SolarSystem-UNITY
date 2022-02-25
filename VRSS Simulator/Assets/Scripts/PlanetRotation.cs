@@ -12,7 +12,7 @@ public class PlanetRotation : MonoBehaviour
     [SerializeField]
     float lengthOfDay = 0f; // Based on the 'Solar Earth Day', provided in planetaryDataSheet.xlsx
     [SerializeField]
-    Vector3 axisOfRotation = Vector3.up;
+    Vector3 axisOfRotation = Vector3.up; // Should align with parent rotation
     [SerializeField]
     Vector3 angularVelocity = Vector3.zero;
 
@@ -36,6 +36,7 @@ public class PlanetRotation : MonoBehaviour
     {
         massOfSphere = gameObject.GetComponent<Rigidbody>().mass;
         radiusOfSphere = gameObject.GetComponent<Transform>().localScale.magnitude;
+        axisOfRotation = gameObject.GetComponent<Transform>().rotation.eulerAngles;
 
         angularVelocity = (2 * Mathf.PI / lengthOfDay) * axisOfRotation;
         gameObject.GetComponent<Rigidbody>().angularVelocity = angularVelocity;

@@ -49,7 +49,7 @@ public class EllipticalTest2 : MonoBehaviour
 
                     float distance = Vector3.Distance(celestials[COi].transform.position, celestials[COj].transform.position); //Radial Distance between 2-body
 
-                    celestials[COi].transform.LookAt(celestials[COj].transform);
+                    //celestials[COi].transform.LookAt(celestials[COj].transform);
                     Debug.Log("Distance is " + distance);
 
                     // Using original visViva
