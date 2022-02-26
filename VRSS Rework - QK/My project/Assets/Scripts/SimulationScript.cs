@@ -8,7 +8,7 @@ public class SimulationScript : MonoBehaviour
     [SerializeField] public int frameRate = 60;
     [Range(0f, 100f)]
     [SerializeField] public float initialTimeScale = 1f;
-    [Range(0.015f, 1f)]
+    [Range(0.002f, 1f)]
     [SerializeField] public float initialFixedTimeStep = 0.02f;
 
     //Gives visual timers (NOT TO BE CHANGED IN EDITOR)
@@ -18,7 +18,6 @@ public class SimulationScript : MonoBehaviour
     [Header("Simulation Parameters")]
     public float G = 0.08892541f;
     public GameObject[] celestials; // [Sun, M, V, E, Moo, Mars, J, S, U, Pluto, N] are the main celestials
-    public GameObject[] celCameras;
 
     public float massCOi;
     public float massCOj;
@@ -27,7 +26,6 @@ public class SimulationScript : MonoBehaviour
     void Start()
     {
         celestials = GameObject.FindGameObjectsWithTag("Celestial");
-        celCameras = GameObject.FindGameObjectsWithTag("Camera"); // Lists all focus cameras for main celestials
         InitialVelocity();
 
         QualitySettings.vSyncCount = 0;
@@ -46,8 +44,6 @@ public class SimulationScript : MonoBehaviour
     {
         Gravity();
         physTimeStart += Time.fixedDeltaTime;
-        FocusCamera();
-
     }
 
 
@@ -102,17 +98,6 @@ public class SimulationScript : MonoBehaviour
                 }
 
             }
-        }
-    }
-    void FocusCamera()
-    {
-        for (int i = 0; i < 1; i++)
-        {
-            celCameras[i].transform.LookAt(celestials[i].transform);
-            celCameras[i].transform.position = celestials[i].transform.position;
-
-            Vector3 camAngularVelocity = (2 * Mathf.PI / celestials[i].GetComponent<PlanetProperties>().dayPeriod) * Vector3.one* -1;
-            gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.Cross(celestials[i].GetComponent<PlanetProperties>().axisOfRotation, camAngularVelocity);
         }
     }
 

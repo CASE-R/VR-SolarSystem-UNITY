@@ -33,6 +33,7 @@ public class PlanetProperties : MonoBehaviour
 
         Vector3 angularVelocity = (2 * Mathf.PI / dayPeriod) * Vector3.one;
         gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.Cross(axisOfRotation, angularVelocity);
+
     }
 
     // Assign the above parameters to the gameObject
