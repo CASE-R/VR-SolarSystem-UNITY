@@ -10,20 +10,16 @@ public class CameraFocus : MonoBehaviour
     public GameObject currentCamera;
     public int celNumber = 0;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
         currentCamera = GameObject.FindGameObjectWithTag("MainCamera");
-    
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        
-
 
         // Enables FreeCam on WASD Input
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
@@ -56,7 +52,7 @@ public class CameraFocus : MonoBehaviour
             }
         }
 
-        if (celNumber >-1) // Focus onto celestial[celNumber]
+        if (celNumber > -1) // Focus onto celestial[celNumber]
         {
             currentCamera = mainCamera;
             currentCamera.SetActive(true);
@@ -66,11 +62,9 @@ public class CameraFocus : MonoBehaviour
             Vector3 objectPosition = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.position;
             Vector3 objectScale = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.localScale;
 
-            // Aligns camera to focus on celestial
+            // Aligns camera to focus on celestial if not looking
             currentCamera.transform.LookAt(gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform);
-
             currentCamera.transform.position = objectPosition + 1.5f * objectScale;
-
         }
 
     }
