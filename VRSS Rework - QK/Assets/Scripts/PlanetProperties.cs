@@ -18,7 +18,7 @@ public class PlanetProperties : MonoBehaviour
 
     private void Start()
     {
-        gameObject.GetComponent<Transform>().position = new Vector3(periDistance, 0f, 0f); // Placing this here prevents reseting position when periDistance is changed in editor. Changing Orbital Parameters mid-sim should not change the trajectory in realtime
+        //gameObject.GetComponent<Transform>().position = new Vector3(periDistance, 0f, 0f); // Placing this here prevents reseting position when periDistance is changed in editor. Changing Orbital Parameters mid-sim should not change the trajectory in realtime
     }
 
     void PropertyUpdate()
@@ -32,7 +32,7 @@ public class PlanetProperties : MonoBehaviour
         orbitalPeriod = Mathf.Sqrt( 4* Mathf.PI* Mathf.PI* semiMajor * semiMajor * semiMajor / (1f) );
 
         Vector3 angularVelocity = (2 * Mathf.PI / dayPeriod) * Vector3.one;
-        gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.Cross(axisOfRotation, angularVelocity);
+        //gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.Cross(axisOfRotation, angularVelocity);
 
     }
 

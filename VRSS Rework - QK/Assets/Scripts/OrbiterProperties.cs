@@ -18,7 +18,7 @@ public class OrbiterProperties : MonoBehaviour
 
     private void Start()
     {
-        gameObject.GetComponent<Transform>().position = gameObject.GetComponentInParent<Transform>().position + new Vector3(periDistance, 0f, 0f); // Placing this here prevents reseting position when periDistance is changed in editor. Changing Orbital Parameters mid-sim should not change the trajectory in realtime
+        //gameObject.GetComponent<Transform>().position = gameObject.GetComponentInParent<Transform>().position + new Vector3(periDistance, 0f, 0f); // Placing this here prevents reseting position when periDistance is changed in editor. Changing Orbital Parameters mid-sim should not change the trajectory in realtime
     }
 
     void PropertyUpdate()
