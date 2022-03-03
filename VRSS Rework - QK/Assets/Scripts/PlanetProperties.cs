@@ -8,7 +8,7 @@ public class PlanetProperties : MonoBehaviour
     public float volumetricMeanRadius = 1f; // Celestial Size/Radius
     public float mass = 1f; // Mass of Celestial
     public float dayPeriod = 1f; // Length of SOLAR Day in realtime seconds (remember 1t = 0.1 Earth Days)
-    public Vector3 axisOfRotation = Vector3.up;
+    public float obliquityToOrbit; // Angle from perpendicular axis of orbit
 
     [Header("Orbital Parameters")]
     public float periDistance = 1f; // Closest orbital distance to host
@@ -31,8 +31,8 @@ public class PlanetProperties : MonoBehaviour
 
         orbitalPeriod = Mathf.Sqrt( 4* Mathf.PI* Mathf.PI* semiMajor * semiMajor * semiMajor / (1f) );
 
-        Vector3 angularVelocity = (2 * Mathf.PI / dayPeriod) * Vector3.one;
-        //gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.Cross(axisOfRotation, angularVelocity);
+        Vector3 angularVelocity = (2 * Mathf.PI / dayPeriod) * Vector3.up;
+        gameObject.GetComponent<Rigidbody>().angularVelocity =  Quaternion.AngleAxis(obliquityToOrbit, Vector3.right) * angularVelocity;
 
     }
 
