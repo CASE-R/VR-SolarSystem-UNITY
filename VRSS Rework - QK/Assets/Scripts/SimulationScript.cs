@@ -93,6 +93,9 @@ public class SimulationScript : MonoBehaviour
             //GameObject[] subCelestials = new GameObject[noOfChildren]; // Initialises array of children to loop through parentObj-Child
 
             // Checks for parent-child pairing and assigns array index to subCelestial[i]
+            GameObject parentParent = parentObj.transform.parent.gameObject;
+            Debug.Log("Parent of " + parentObj + " is " + parentParent);
+            bool celTagParent = parentParent.CompareTag("Celestial");
             for (int i = 0; i < noOfChildren; i++)
             {
                 GameObject child = parentObj.transform.GetChild(i).gameObject;
@@ -100,30 +103,33 @@ public class SimulationScript : MonoBehaviour
                 if (celTag)
                 {
                     Debug.Log("Child of " + parentObj + " is " + child + " of index " + i);
-                
+
                     // Below is the velocity script
                     float mass1 = parentObj.GetComponent<PlanetProperties>().mass;
                     float mass2 = child.GetComponent<PlanetProperties>().mass;
-                    //Debug.Log("Mass 1 = " + mass1 + " Mass 2 = " + mass2);
-                    float parentScale = parentObj.transform.localScale.magnitude;
-                    // Rescales semiMajor value put into PlanetProperties.cs fields
-                    if (parentScale >= 1f)
+                    float parentScale = parentObj.GetComponent<PlanetProperties>().volumetricMeanRadius *2f;
+                    
+                    if (celTagParent && celTag)
                     {
-                        semiMajor = child.GetComponent<PlanetProperties>().semiMajor * (.5f * parentScale);
-                        Debug.Log("Scale >= 1");
+                        float parentParentScale = parentParent.GetComponent<PlanetProperties>().volumetricMeanRadius * 2f;
+                        Debug.Log("Scaled are " + parentScale + " and " + parentParentScale);
+
+                        semiMajor = child.GetComponent<PlanetProperties>().semiMajor * ((parentScale) * (parentParentScale));
+                        Debug.Log("Conditions are " + celTag + " and " + celTagParent);
                     }
-                    else if (parentScale < 1f)
+                    if (celTag && !celTagParent)
                     {
-                        semiMajor = child.GetComponent<PlanetProperties>().semiMajor / (2f * parentScale);
-                        Debug.Log("Scale <= 1");
+                        // Rescales semiMajor value put into PlanetProperties.cs fields
+                        semiMajor = child.GetComponent<PlanetProperties>().semiMajor * (parentScale);
+                        //Debug.Log("Scale >= 1");
+                        Debug.Log("Conditions are " + celTag + " and " + celTagParent);
                     }
-                    //float semiMajor = (perihelion[COj - 1] + aphelion[COj - 1]) / 2; //Can be proven that 2a = r_p + r_A
 
                     float distance = Vector3.Distance(parentObj.transform.position, child.transform.position); //Radial Distance between 2-body. Doesn't need rescaling due to function of Vector3.Distance
 
                     // Using original visViva
                     Vector3 parentObjVelocity = parentObj.GetComponent<Rigidbody>().velocity;
-                    child.GetComponent<Rigidbody>().velocity += parentObjVelocity + Vector3.forward * Mathf.Sqrt((G * (mass1 + mass2)) * ((2/distance) - (1/semiMajor)));
+                    child.GetComponent<Rigidbody>().velocity += parentObjVelocity + Vector3.forward * Mathf.Sqrt((G * (mass1 + mass2)) * ((2 / distance) - (1 / semiMajor)));
 
                     //Applies Vis Viva Orbital Velocity Equation, this is wrt. whatever "COi" is in the anti-clockwise direction
 

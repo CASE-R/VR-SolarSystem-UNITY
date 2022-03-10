@@ -5,15 +5,15 @@ using UnityEngine;
 public class PlanetProperties : MonoBehaviour
 {
     [Header("Rigid Body Parameters")]
-    public float volumetricMeanRadius = 1f; // Celestial Size/Radius
-    public float mass = 1f; // Mass of Celestial
-    public float dayPeriod = 1f; // Length of SOLAR Day in realtime seconds (remember 1t = 0.1 Earth Days)
+    public float volumetricMeanRadius; // Celestial Size/Radius
+    public float mass; // Mass of Celestial
+    public float dayPeriod; // Length of SOLAR Day in realtime seconds (remember 1t = 0.1 Earth Days)
     public float obliquityToOrbit; // Angle from perpendicular axis of orbit
 
     [Header("Orbital Parameters")]
-    public float periDistance = 1f; // Closest orbital distance to host
-    public float apDistance = 1f; // Furthest orbital distance to host
-    public float orbitalPeriod = 1f; // Time taken in realtime seconds to orbit around the host
+    public float periDistance; // Closest orbital distance to host
+    public float apDistance; // Furthest orbital distance to host
+    public float orbitalPeriod; // Time taken in realtime seconds to orbit around the host
     public float semiMajor;
     public float eccentricity;
 
