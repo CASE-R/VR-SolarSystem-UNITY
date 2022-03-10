@@ -64,7 +64,7 @@ public class CameraFocus : MonoBehaviour
 
             // Aligns camera to focus on celestial if not looking
             currentCamera.transform.LookAt(gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform);
-            currentCamera.transform.position = objectPosition + 10f * objectScale;
+            currentCamera.transform.position = objectPosition + (10f * objectScale);
         }
 
     }

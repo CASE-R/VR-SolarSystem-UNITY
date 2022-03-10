@@ -8,14 +8,15 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Rings
-  m_Shader: {fileID: 202, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 210, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
-  disabledShaderPasses: []
+  disabledShaderPasses:
+  - ALWAYS
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -61,7 +62,7 @@ Material:
     - _CameraFadingEnabled: 0
     - _CameraFarFadeDistance: 2
     - _CameraNearFadeDistance: 1
-    - _Cull: 2
+    - _Cull: 0
     - _Cutoff: 0.197
     - _DetailNormalMapScale: 1
     - _DistortionBlend: 0.5
@@ -72,7 +73,7 @@ Material:
     - _EmissionEnabled: 0
     - _FlipbookMode: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.361
+    - _Glossiness: 0.059
     - _GlossyReflections: 1
     - _InvFade: 3
     - _LightingEnabled: 1
@@ -91,7 +92,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 0.7075472, g: 0.6938458, b: 0.6040851, a: 1}
+    - _Color: {r: 0.6698113, g: 0.63590753, b: 0.37597898, a: 1}
     - _Emission: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}

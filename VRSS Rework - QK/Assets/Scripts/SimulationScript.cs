@@ -21,6 +21,7 @@ public class SimulationScript : MonoBehaviour
 
     public float massCOi;
     public float massCOj;
+    public float semiMajor;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,7 @@ public class SimulationScript : MonoBehaviour
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = frameRate;
     }
+
 
     // Update is called once per rendered frame
     void Update()
@@ -48,6 +50,7 @@ public class SimulationScript : MonoBehaviour
 
 
     // Sets initial orbital velocities of celestials
+    /*
     void InitialVelocity()
     {
         for (int COi = 0; COi < 1; COi++) // Want only Sun-Celestial pairing, hence we pick index 0 from celestials[] and break once length exceeds 1
@@ -79,7 +82,60 @@ public class SimulationScript : MonoBehaviour
             }
         }
     }
+    */
+    // Original Velocity Script for Elliptical orbits and parent-child systems
+    private void InitialVelocity()
+    {
+        foreach (GameObject parentObj in celestials)
+        {
+            // Initialises size of subCelestial array
+            int noOfChildren = parentObj.transform.childCount; // Gets children count
+            //GameObject[] subCelestials = new GameObject[noOfChildren]; // Initialises array of children to loop through parentObj-Child
 
+            // Checks for parent-child pairing and assigns array index to subCelestial[i]
+            for (int i = 0; i < noOfChildren; i++)
+            {
+                GameObject child = parentObj.transform.GetChild(i).gameObject;
+                bool celTag = child.CompareTag("Celestial");
+                if (celTag)
+                {
+                    Debug.Log("Child of " + parentObj + " is " + child + " of index " + i);
+                
+                    // Below is the velocity script
+                    float mass1 = parentObj.GetComponent<PlanetProperties>().mass;
+                    float mass2 = child.GetComponent<PlanetProperties>().mass;
+                    //Debug.Log("Mass 1 = " + mass1 + " Mass 2 = " + mass2);
+                    float parentScale = parentObj.transform.localScale.magnitude;
+                    // Rescales semiMajor value put into PlanetProperties.cs fields
+                    if (parentScale >= 1f)
+                    {
+                        semiMajor = child.GetComponent<PlanetProperties>().semiMajor * (.5f * parentScale);
+                        Debug.Log("Scale >= 1");
+                    }
+                    else if (parentScale < 1f)
+                    {
+                        semiMajor = child.GetComponent<PlanetProperties>().semiMajor / (2f * parentScale);
+                        Debug.Log("Scale <= 1");
+                    }
+                    //float semiMajor = (perihelion[COj - 1] + aphelion[COj - 1]) / 2; //Can be proven that 2a = r_p + r_A
+
+                    float distance = Vector3.Distance(parentObj.transform.position, child.transform.position); //Radial Distance between 2-body. Doesn't need rescaling due to function of Vector3.Distance
+
+                    // Using original visViva
+                    Vector3 parentObjVelocity = parentObj.GetComponent<Rigidbody>().velocity;
+                    child.GetComponent<Rigidbody>().velocity += parentObjVelocity + Vector3.forward * Mathf.Sqrt((G * (mass1 + mass2)) * ((2/distance) - (1/semiMajor)));
+
+                    //Applies Vis Viva Orbital Velocity Equation, this is wrt. whatever "COi" is in the anti-clockwise direction
+
+                    Debug.Log("Distance is " + distance + " || " + "SemiMajor is " + semiMajor + " || " + "Velocity of " + child + " is " + child.GetComponent<Rigidbody>().velocity.magnitude);
+
+
+                }
+
+            }
+
+        }
+    }
     // Calculates Gravitational Force of Attraction between 2 bodies
     void Gravity()
     {
@@ -94,7 +150,7 @@ public class SimulationScript : MonoBehaviour
 
                     float distance = Vector3.Distance(celestial1.transform.position, celestial2.transform.position);
 
-                    celestial1.GetComponent<Rigidbody>().AddForce((celestial2.transform.position - celestial1.transform.position).normalized * (G * mass1 * mass2 / (distance* distance)));
+                    celestial1.GetComponent<Rigidbody>().AddForce((celestial2.transform.position - celestial1.transform.position).normalized * (G * mass1 * mass2 / (distance * distance)));
                 }
 
             }

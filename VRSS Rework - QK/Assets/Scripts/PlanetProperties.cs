@@ -15,24 +15,29 @@ public class PlanetProperties : MonoBehaviour
     public float apDistance = 1f; // Furthest orbital distance to host
     public float orbitalPeriod = 1f; // Time taken in realtime seconds to orbit around the host
     public float semiMajor;
+    public float eccentricity;
 
     private void Start()
     {
         //gameObject.GetComponent<Transform>().position = new Vector3(periDistance, 0f, 0f); // Placing this here prevents reseting position when periDistance is changed in editor. Changing Orbital Parameters mid-sim should not change the trajectory in realtime
+        
     }
 
     void PropertyUpdate()
     {
         gameObject.GetComponent<Rigidbody>().mass = mass;
-        gameObject.GetComponent<Transform>().localScale = new Vector3(volumetricMeanRadius, volumetricMeanRadius, volumetricMeanRadius);
+        gameObject.GetComponent<Transform>().localScale = new Vector3(volumetricMeanRadius, volumetricMeanRadius, volumetricMeanRadius) * 2f; // Radius of Sphere is 0.5 Scale/Diameter
         
 
         semiMajor = 0.5f * (periDistance + apDistance);
+
+        eccentricity = -1f * (periDistance - apDistance)/(periDistance+apDistance);
 
         orbitalPeriod = Mathf.Sqrt( 4* Mathf.PI* Mathf.PI* semiMajor * semiMajor * semiMajor / (1f) );
 
         Vector3 angularVelocity = (2 * Mathf.PI / dayPeriod) * Vector3.up;
         gameObject.GetComponent<Rigidbody>().angularVelocity =  Quaternion.AngleAxis(obliquityToOrbit, Vector3.right) * angularVelocity;
+
 
     }
 
@@ -41,4 +46,5 @@ public class PlanetProperties : MonoBehaviour
     {
         PropertyUpdate();
     }
+
 }
