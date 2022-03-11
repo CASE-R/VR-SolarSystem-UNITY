@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System;
 
 public class SimulationScript : MonoBehaviour
 {
@@ -10,6 +13,8 @@ public class SimulationScript : MonoBehaviour
     [SerializeField] public float initialTimeScale = 1f;
     [Range(0.002f, 1f)]
     [SerializeField] public float initialFixedTimeStep = 0.02f;
+
+    public float timeUnitMultiplier = 1;        //depending on which time unit is chosen, the time will be adjusted
 
     //Gives visual timers (NOT TO BE CHANGED IN EDITOR)
     [SerializeField] private float timeStart;
@@ -31,13 +36,14 @@ public class SimulationScript : MonoBehaviour
 
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = frameRate;
+        
     }
 
 
     // Update is called once per rendered frame
     void Update()
     {
-        Time.timeScale = initialTimeScale;
+        Time.timeScale = initialTimeScale * timeUnitMultiplier;
         Time.fixedDeltaTime = initialFixedTimeStep;
 
         timeStart += Time.deltaTime;
@@ -163,6 +169,10 @@ public class SimulationScript : MonoBehaviour
         }
     }
 
+    public void restartSimulation()
+    {
+        SceneManager.LoadScene(0);
+    }
 
 }
 
