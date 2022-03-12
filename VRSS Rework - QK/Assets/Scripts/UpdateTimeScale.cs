@@ -16,6 +16,7 @@ public class UpdateTimeScale : MonoBehaviour
     {
         simulation = GetComponent<SimulationScript>();
         updateTimescale();
+        updateTimeUnit();
     }
 
     // Update is called once per frame
@@ -38,7 +39,7 @@ public class UpdateTimeScale : MonoBehaviour
     {
         if (timeUnitMenu.value == 0)
         {
-            simulation.timeUnitMultiplier = (1 / (24 * 60 * 60));
+            simulation.timeUnitMultiplier = 1f / (24f * 60f * 60f);
         }
 
         else if (timeUnitMenu.value == 1)
