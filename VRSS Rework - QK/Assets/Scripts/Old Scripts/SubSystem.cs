@@ -17,8 +17,8 @@ public class SubSystem : MonoBehaviour
 
     private void OnValidate()
     {
-        G = gameObject.GetComponentInParent<SimulationScript>().G;
-        parentObj = gameObject.GetComponentInParent<PlanetProperties>().gameObject;
+        G = gameObject.GetComponentInParent<SimulationScript>().gravitationalConstant;
+        parentObj = gameObject.GetComponentInParent<BodyProperties>().gameObject;
 
         // Initialises size of subCelestial array
         int noOfchildren = gameObject.transform.childCount;
@@ -46,7 +46,7 @@ public class SubSystem : MonoBehaviour
     {
         for (int COj = 0; COj < subCelestials.Length; COj++) // Coupling parent-Orbiter
         {
-            parentMass = parentObj.GetComponent<PlanetProperties>().mass;
+            parentMass = parentObj.GetComponent<BodyProperties>().mass;
             orbiterMass = subCelestials[COj].GetComponent<OrbiterProperties>().mass;
             Debug.Log("Parent Mass = " + parentMass + " Orbiter Mass = " + orbiterMass);
 
@@ -72,7 +72,7 @@ public class SubSystem : MonoBehaviour
     {
         foreach (GameObject orbiter in subCelestials)
         {
-            float parentMass = parentObj.GetComponent<PlanetProperties>().mass;
+            float parentMass = parentObj.GetComponent<BodyProperties>().mass;
             float orbiterMass = orbiter.GetComponent<OrbiterProperties>().mass;
 
             float distance = Vector3.Distance(parentObj.transform.position, orbiter.transform.position);

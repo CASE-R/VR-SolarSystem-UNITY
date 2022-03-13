@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlanetProperties : MonoBehaviour
+public class BodyProperties : MonoBehaviour
 {
     [Header("Rigid Body Parameters")]
     public float volumetricMeanRadius; // Celestial Size/Radius
