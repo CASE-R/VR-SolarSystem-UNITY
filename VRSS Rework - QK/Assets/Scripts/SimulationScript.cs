@@ -19,7 +19,10 @@ public class SimulationScript : MonoBehaviour
     //Gives visual timers (NOT TO BE CHANGED IN EDITOR)
     [SerializeField] private float timeStart;
     [SerializeField] private float physTimeStart;
-
+    private DateTime startTime;
+    public Text timer;
+    private DateTime currentTime;
+    TimeSpan timeToAdd;
     [Header("Simulation Parameters")]
     ///<summary>
     /// G is recalculated to be in the new unity dimensions
@@ -43,6 +46,10 @@ public class SimulationScript : MonoBehaviour
         // Caps/Syncs Simulation FPS
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = frameRate;
+
+        startTime = System.DateTime.Now;
+        currentTime = startTime;
+        timer.GetComponent<Text>().text = startTime.ToString();
     }
     public void OnValidate()
     {
@@ -65,6 +72,8 @@ public class SimulationScript : MonoBehaviour
         }
 
         timeStart += Time.deltaTime; // Used for an in-editor runtime counter
+
+        updateInGameTimer();
     }
 
     void FixedUpdate()
@@ -133,6 +142,13 @@ public class SimulationScript : MonoBehaviour
 
             }
         }
+    }
+
+    public void updateInGameTimer()
+    {
+        timeToAdd = TimeSpan.FromSeconds(Time.deltaTime*24*60*60);
+        currentTime = currentTime.Add(timeToAdd);
+        timer.text = currentTime.ToString();
     }
 
     public void restartSimulation()

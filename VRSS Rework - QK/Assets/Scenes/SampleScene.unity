@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.000199062, g: 0.00040492494, b: 0.00076457905, a: 1}
+  m_IndirectSpecularColor: {r: 0.00018507536, g: 0.00040396096, b: 0.00071425486, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11658,6 +11658,7 @@ MonoBehaviour:
   timeUnitMultiplier: 1
   timeStart: 0
   physTimeStart: 0
+  timer: {fileID: 0}
   gravitationalConstant: 0.0008887185
   timeUnit: 1
   massUnit: 1
@@ -13444,6 +13445,7 @@ MonoBehaviour:
   timeUnitMultiplier: 1
   timeStart: 0
   physTimeStart: 0
+  timer: {fileID: 510754736}
   gravitationalConstant: 0.0008887185
   timeUnit: 1
   massUnit: 1

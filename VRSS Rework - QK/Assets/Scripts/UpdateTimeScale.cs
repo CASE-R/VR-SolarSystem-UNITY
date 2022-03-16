@@ -39,7 +39,7 @@ public class UpdateTimeScale : MonoBehaviour
     {
         if (timeUnitMenu.value == 0)
         {
-            simulation.timeUnitMultiplier = 1f / (24f * 60f * 60f);
+            simulation.timeUnitMultiplier = 1f / (24 * 60 * 60);
         }
 
         else if (timeUnitMenu.value == 1)
