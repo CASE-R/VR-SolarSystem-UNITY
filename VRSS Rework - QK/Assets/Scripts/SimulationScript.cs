@@ -53,8 +53,36 @@ public class SimulationScript : MonoBehaviour
     }
     public void OnValidate()
     {
-        gravitationalConstant = 4f * Mathf.Pow(Mathf.PI / (365.26f), 2f) * Mathf.Pow(lengthUnit,3f) * Mathf.Pow(massUnit*celestials[0].GetComponent<Rigidbody>().mass, -1f) * Mathf.Pow(timeUnit, -2f);
+        gravitationalConstant = 4f * Mathf.Pow(Mathf.PI / (365.26f), 2f) * Mathf.Pow(lengthUnit, 3f) * Mathf.Pow(massUnit * celestials[0].GetComponent<Rigidbody>().mass, -1f) * Mathf.Pow(timeUnit, -2f);
+
+
+        //foreach (GameObject Celestial in celestials)
+        //{
+        //    if (Celestial.GetComponentInChildren<ParticleSystemForceField>() != null)
+        //    {
+        //        //Debug.Log("Has ring");
+        //        var fo = Celestial.GetComponentInChildren<ParticleSystemForceField>();
+        //        //fo.enabled = true;
+
+        //        fo.gravity = 1;
+        //        //fo.endRange = Celestial.transform.lossyScale.x * 50f;
+        //        fo.directionX = fo.directionY = fo.directionZ = gravitationalConstant;
+
+        //        fo.rotationAttraction = 1;
+        //        //float minSpeed = Mathf.Sqrt(gravitationalConstant * Celestial.GetComponent<BodyProperties>().mass / Celestial.GetComponent<BodyProperties>().volumetricMeanRadius);
+        //        var rotSpeed = Celestial.GetComponentInChildren<ParticleSystemForceField>().rotationSpeed;
+        //        rotSpeed.mode = ParticleSystemCurveMode.TwoConstants;
+        //        rotSpeed.constantMin = 1;
+        //        rotSpeed.constantMax = 1;
+
+        //        //rotSpeed.constantMin = Mathf.Sqrt(gravitationalConstant * Celestial.GetComponent<BodyProperties>().mass / Celestial.GetComponent<BodyProperties>().volumetricMeanRadius);
+        //        //rotSpeed.constantMax = 2 * Mathf.Sqrt(gravitationalConstant * Celestial.GetComponent<BodyProperties>().mass / Celestial.GetComponent<BodyProperties>().volumetricMeanRadius);
+
+        //    }
+        //}
+
     }
+
     // Update is called once per rendered frame
     void Update()
     {
