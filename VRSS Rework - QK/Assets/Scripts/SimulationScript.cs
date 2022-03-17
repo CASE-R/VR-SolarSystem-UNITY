@@ -35,11 +35,12 @@ public class SimulationScript : MonoBehaviour
     //public float G = 0.08892541f;
 
     public GameObject[] celestials; // [Sun, Merc, Ven, Earth, Moon, Mars, Jup, Sat, Uran, Nep, Plut] are the main celestials
+    public GameObject[] particleSystems;
 
     // Start is called before the first frame update
     public void Start()
     {
-        celestials = GameObject.FindGameObjectsWithTag("Celestial"); // Collates all GameObjects w/ "Celestial" tag into an array
+        
 
         InitialVelocity(); // Executes Velocity method to give Celestials initial velocities to induce orbits
        
@@ -55,31 +56,9 @@ public class SimulationScript : MonoBehaviour
     {
         gravitationalConstant = 4f * Mathf.Pow(Mathf.PI / (365.26f), 2f) * Mathf.Pow(lengthUnit, 3f) * Mathf.Pow(massUnit * celestials[0].GetComponent<Rigidbody>().mass, -1f) * Mathf.Pow(timeUnit, -2f);
 
-
-        //foreach (GameObject Celestial in celestials)
-        //{
-        //    if (Celestial.GetComponentInChildren<ParticleSystemForceField>() != null)
-        //    {
-        //        //Debug.Log("Has ring");
-        //        var fo = Celestial.GetComponentInChildren<ParticleSystemForceField>();
-        //        //fo.enabled = true;
-
-        //        fo.gravity = 1;
-        //        //fo.endRange = Celestial.transform.lossyScale.x * 50f;
-        //        fo.directionX = fo.directionY = fo.directionZ = gravitationalConstant;
-
-        //        fo.rotationAttraction = 1;
-        //        //float minSpeed = Mathf.Sqrt(gravitationalConstant * Celestial.GetComponent<BodyProperties>().mass / Celestial.GetComponent<BodyProperties>().volumetricMeanRadius);
-        //        var rotSpeed = Celestial.GetComponentInChildren<ParticleSystemForceField>().rotationSpeed;
-        //        rotSpeed.mode = ParticleSystemCurveMode.TwoConstants;
-        //        rotSpeed.constantMin = 1;
-        //        rotSpeed.constantMax = 1;
-
-        //        //rotSpeed.constantMin = Mathf.Sqrt(gravitationalConstant * Celestial.GetComponent<BodyProperties>().mass / Celestial.GetComponent<BodyProperties>().volumetricMeanRadius);
-        //        //rotSpeed.constantMax = 2 * Mathf.Sqrt(gravitationalConstant * Celestial.GetComponent<BodyProperties>().mass / Celestial.GetComponent<BodyProperties>().volumetricMeanRadius);
-
-        //    }
-        //}
+        celestials = GameObject.FindGameObjectsWithTag("Celestial"); // Collates all GameObjects w/ "Celestial" tag into an array
+        particleSystems = GameObject.FindGameObjectsWithTag("ParticleSystem");
+        
 
     }
 
@@ -98,6 +77,8 @@ public class SimulationScript : MonoBehaviour
             initialFixedTimeStep = 0.02f;
             Time.fixedDeltaTime = initialFixedTimeStep;
         }
+        
+
 
         timeStart += Time.deltaTime; // Used for an in-editor runtime counter
 
@@ -108,6 +89,22 @@ public class SimulationScript : MonoBehaviour
     {
         Gravity();
         physTimeStart += Time.fixedDeltaTime; // USed for an in-editor runtime counter for physics clock
+
+        if ((initialTimeScale >= 2 && gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value == 1) || gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value == 2) // SetActive=false for asteroid belt in faster timescales
+        {
+            foreach (GameObject partSys in particleSystems)
+            {
+                partSys.SetActive(false);
+            }
+            
+        }
+        else
+        {
+            foreach (GameObject partSys in particleSystems)
+            {
+                partSys.SetActive(true);
+            }
+        }
     }
 
     // Original Velocity Script for Elliptical orbits edited for parent-child systems. THIS SYSTEM ALLOWS FOR A GOOD MOON ORBIT

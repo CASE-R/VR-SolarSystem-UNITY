@@ -5,7 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Celestial
-  - subCelestial
+  - ParticleSystem
   layers:
   - Default
   - TransparentFX
