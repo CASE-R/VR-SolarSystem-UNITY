@@ -22,7 +22,7 @@ public class particleRingProperties : MonoBehaviour
             //Debug.Log(forceField.name);
             if (forceField != null)
             {
-                parentObj = forceField.GetComponentInParent<BodyProperties>().gameObject;
+                parentObj = gameObject.GetComponentInParent<BodyProperties>().gameObject;
                 float gravConstant = parentObj.GetComponentInParent<SimulationScript>().gravitationalConstant;
 
 

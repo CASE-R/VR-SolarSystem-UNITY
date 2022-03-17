@@ -295,3 +295,6 @@ MonoBehaviour:
   orbitalPeriod: 6.2831855
   semiMajor: 1
   eccentricity: -0
+  inclination: 0
+  rightAscension: 0
+  argumentOfPeriapsis: 0

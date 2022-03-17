@@ -14,8 +14,13 @@ public class BodyProperties : MonoBehaviour
     public float periDistance; // Closest orbital distance to host
     public float apDistance; // Furthest orbital distance to host
     public float orbitalPeriod; // Time taken in realtime seconds to orbit around the host
+    [Header("Shape (Read Only)")]
     public float semiMajor;
     public float eccentricity;
+    [Header("Orientation")]
+    public float inclination;
+    public float rightAscension;
+    public float argumentOfPeriapsis;
 
     private void Start()
     {
@@ -34,6 +39,21 @@ public class BodyProperties : MonoBehaviour
         eccentricity = -1f * (periDistance - apDistance)/(periDistance+apDistance);
 
         orbitalPeriod = Mathf.Sqrt( 4* Mathf.PI* Mathf.PI* semiMajor * semiMajor * semiMajor / (1f) );
+
+        /// <summary>
+        /// From Unity Cartesian to Spherical
+        /// x = rho * sin(phi) * cos(theta)
+        /// z = rho * sin(phi) * sin(theta)
+        /// y = rho * cos(phi)
+        /// rho = distance btwn point and origin
+        /// theta = angle in XZ plane
+        /// phi = angle from positive y to rho line = 90 - inclination
+        /// </summary>
+
+        //// Next 2 lines will give the orbital inclination of the planet, rotating along the z-axis once setting initial position
+        Vector3 posVector = Quaternion.Euler(0, 0, inclination) * new Vector3(periDistance, 0, 0);
+        gameObject.transform.localPosition = posVector;
+        //gameObject.transform.localPosition = new Vector3(periDistance, 0, 0);
 
         Vector3 angularVelocity = (2 * Mathf.PI / dayPeriod) * Vector3.up;
         gameObject.GetComponent<Rigidbody>().angularVelocity =  Quaternion.AngleAxis(obliquityToOrbit, Vector3.right) * angularVelocity;
