@@ -5621,11 +5621,12 @@ MonoBehaviour:
   mass: 1
   dayPeriod: 1
   obliquityToOrbit: 0
-  periDistance: 1
-  apDistance: 1
+  periapsis: 0
+  apoapsis: 0
   orbitalPeriod: 6.2831855
-  semiMajor: 1
-  eccentricity: -0
+  semiMajor: 0
+  eccentricity: NaN
+  angularMomentum: {x: 0, y: 0, z: 0}
   inclination: 0
   rightAscension: 0
   argumentOfPeriapsis: 0
@@ -5935,8 +5936,8 @@ ParticleSystemForceField:
         m_RotationOrder: 4
     m_RotationSpeedCurve:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
+      minMaxState: 3
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2

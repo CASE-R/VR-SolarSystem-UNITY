@@ -5088,8 +5088,16 @@ PrefabInstance:
       value: 0.0080372
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: apoapsis
+      value: 2.4214
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: dayPeriod
       value: 3.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: periapsis
+      value: 2.3782
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: semiMajor
@@ -5109,7 +5117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
-      value: 23.358366
+      value: 1.8878489
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: volumetricMeanRadius
@@ -5192,6 +5200,175 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 172123503}
   m_CullTransparentMesh: 1
+--- !u!1001 &184192893
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2054445840}
+    m_Modifications:
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.07291
+      objectReference: {fileID: 0}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.07291
+      objectReference: {fileID: 0}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.07291
+      objectReference: {fileID: 0}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1963.8226
+      objectReference: {fileID: 0}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 26.393469
+      objectReference: {fileID: 0}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074005836415942187, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_Parameters.m_DirectionCurveX.scalar
+      value: 0.0008887185
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074005836415942187, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_Parameters.m_DirectionCurveY.scalar
+      value: 0.0008887185
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074005836415942187, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_Parameters.m_DirectionCurveZ.scalar
+      value: 0.0008887185
+      objectReference: {fileID: 0}
+    - target: {fileID: 1456800220179561703, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_Mass
+      value: 14.536
+      objectReference: {fileID: 0}
+    - target: {fileID: 2905209344496648530, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_Parameters.m_EndRange
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2905209344496648530, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_Parameters.m_DirectionCurveX.scalar
+      value: 0.0008887185
+      objectReference: {fileID: 0}
+    - target: {fileID: 2905209344496648530, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_Parameters.m_DirectionCurveY.scalar
+      value: 0.0008887185
+      objectReference: {fileID: 0}
+    - target: {fileID: 2905209344496648530, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_Parameters.m_DirectionCurveZ.scalar
+      value: 0.0008887185
+      objectReference: {fileID: 0}
+    - target: {fileID: 2905209344496648530, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_Parameters.m_RotationSpeedCurve.scalar
+      value: 2.010347
+      objectReference: {fileID: 0}
+    - target: {fileID: 2905209344496648530, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_Parameters.m_RotationSpeedCurve.minScalar
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805106565392877989, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_Name
+      value: Uranus + Rings
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181314965352556989, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181314965352556989, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181314965352556989, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.9622642
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181314965352556989, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.80580556
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181314965352556989, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.67630833
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: mass
+      value: 14.536
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: apoapsis
+      value: 2157.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: periapsis
+      value: 1964
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: semiMajor
+      value: 2060.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: inclination
+      value: 0.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: eccentricity
+      value: 0.046856444
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: orbitalPeriod
+      value: 527168.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: obliquityToOrbit
+      value: 97.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: volumetricMeanRadius
+      value: 0.036455
+      objectReference: {fileID: 0}
+    - target: {fileID: 5681803638431856627, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: be93f73317e9816458379fdf2076726a, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
 --- !u!1 &225039770
 GameObject:
   m_ObjectHideFlags: 0
@@ -5307,7 +5484,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 71.84588
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5375,7 +5552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: semiMajor
-      value: 72.33418
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: apDistance
@@ -5383,7 +5560,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: eccentricity
-      value: 0.0067507215
+      value: NaN
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: periDistance
@@ -5391,7 +5568,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
-      value: 3865.4072
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: axisOfRotation.x
@@ -5436,7 +5613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 57.024014
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5516,7 +5693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: semiMajor
-      value: 60.335896
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: apDistance
@@ -5524,7 +5701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: eccentricity
-      value: 0.05489074
+      value: NaN
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: periDistance
@@ -5532,7 +5709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
-      value: 2944.7168
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: axisOfRotation.w
@@ -5722,7 +5899,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 495.05676
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5790,7 +5967,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: semiMajor
-      value: 520.3806
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: apDistance
@@ -5798,7 +5975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: eccentricity
-      value: 0.048664097
+      value: NaN
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: periDistance
@@ -5806,7 +5983,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
-      value: 74586.73
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: axisOfRotation.x
@@ -5906,6 +6083,14 @@ PrefabInstance:
       value: 0.00000000177489
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: apoapsis
+      value: 0.70214
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: periapsis
+      value: 0.68125
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: semiMajor
       value: 0.691695
       objectReference: {fileID: 0}
@@ -5923,7 +6108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
-      value: 3.6145298
+      value: 0.0031186426
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: volumetricMeanRadius
@@ -6021,15 +6206,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1074005836415942187, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_Parameters.m_DirectionCurveX.scalar
-      value: 24056.86
+      value: 0.0008887185
       objectReference: {fileID: 0}
     - target: {fileID: 1074005836415942187, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_Parameters.m_DirectionCurveY.scalar
-      value: 24056.86
+      value: 0.0008887185
       objectReference: {fileID: 0}
     - target: {fileID: 1074005836415942187, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_Parameters.m_DirectionCurveZ.scalar
-      value: 24056.86
+      value: 0.0008887185
       objectReference: {fileID: 0}
     - target: {fileID: 1074005836415942187, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_Parameters.m_RotationSpeedCurve.scalar
@@ -6061,15 +6246,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2905209344496648530, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_Parameters.m_DirectionCurveX.scalar
-      value: 24056.86
+      value: 0.0008887185
       objectReference: {fileID: 0}
     - target: {fileID: 2905209344496648530, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_Parameters.m_DirectionCurveY.scalar
-      value: 24056.86
+      value: 0.0008887185
       objectReference: {fileID: 0}
     - target: {fileID: 2905209344496648530, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_Parameters.m_DirectionCurveZ.scalar
-      value: 24056.86
+      value: 0.0008887185
       objectReference: {fileID: 0}
     - target: {fileID: 2905209344496648530, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_Parameters.m_RotationSpeedCurve.scalar
@@ -6085,7 +6270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4805106565392877989, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_Name
-      value: Sat
+      value: Saturn + Rings
       objectReference: {fileID: 0}
     - target: {fileID: 4805106565392877989, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_TagString
@@ -6176,8 +6361,16 @@ PrefabInstance:
       value: 95.161
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: apoapsis
+      value: 1082.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: dayPeriod
       value: 0.444
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: periapsis
+      value: 975.67
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: semiMajor
@@ -6201,7 +6394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: orbitalPeriod
-      value: 207453.14
+      value: 186086.34
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: obliquityToOrbit
@@ -6525,8 +6718,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: apoapsis
+      value: 109.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: dayPeriod
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: periapsis
+      value: 105.72
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: semiMajor
@@ -6550,7 +6751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
-      value: 7004.602
+      value: 6283.1577
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: axisOfRotation.w
@@ -6667,8 +6868,16 @@ PrefabInstance:
       value: 0.018015
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: apoapsis
+      value: 6.7796
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: dayPeriod
       value: 16.688
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: periapsis
+      value: 6.6854
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: semiMajor
@@ -6688,7 +6897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
-      value: 109.760086
+      value: 8.870931
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: volumetricMeanRadius
@@ -7033,29 +7242,27 @@ MonoBehaviour:
   timeStart: 0
   physTimeStart: 0
   timer: {fileID: 0}
-  gravitationalConstant: 0.0008887185
+  gravitationalConstant: 2.9590717e+9
   timeUnit: 1
   massUnit: 1
   lengthUnit: 100
   celestials:
+  - {fileID: 1670756826}
+  - {fileID: 2113196136}
   - {fileID: 1536779614}
-  - {fileID: 2056749589}
   - {fileID: 2126824923}
+  - {fileID: 2092732793}
+  - {fileID: 1338552220}
+  - {fileID: 2068945517}
+  - {fileID: 1719506498}
+  - {fileID: 866719898}
+  - {fileID: 2056749589}
+  - {fileID: 1490846087}
+  - {fileID: 1360148909}
   - {fileID: 1991571765}
   - {fileID: 940378899}
-  - {fileID: 2092732793}
-  - {fileID: 866719898}
-  - {fileID: 1670756826}
-  - {fileID: 1338552220}
-  - {fileID: 1360148909}
-  - {fileID: 1719506498}
-  - {fileID: 2113196136}
-  - {fileID: 1490846087}
   - {fileID: 805731563}
   - {fileID: 1200081896}
-  - {fileID: 1575814085}
-  - {fileID: 1693143189}
-  - {fileID: 2068945517}
   particleSystems:
   - {fileID: 2108745968}
   - {fileID: 443697346}
@@ -7169,8 +7376,16 @@ PrefabInstance:
       value: 4.01862e-10
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: apoapsis
+      value: 1.7311
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: dayPeriod
       value: 0.052602
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: periapsis
+      value: 1.7294
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: semiMajor
@@ -7190,7 +7405,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
-      value: 14.300235
+      value: 0.012338346
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: volumetricMeanRadius
@@ -7710,7 +7925,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 138.13687
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7778,7 +7993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: semiMajor
-      value: 152.37871
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: apDistance
@@ -7786,7 +8001,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: eccentricity
-      value: 0.09346343
+      value: NaN
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: periDistance
@@ -7794,7 +8009,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
-      value: 11818.607
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: axisOfRotation.x
@@ -7844,7 +8059,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2988.7097
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7912,7 +8127,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: semiMajor
-      value: 3018.0574
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: apDistance
@@ -7920,7 +8135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: eccentricity
-      value: 0.009724022
+      value: NaN
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: periDistance
@@ -7928,7 +8143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
-      value: 1041768.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: axisOfRotation.x
@@ -8291,7 +8506,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30.749075
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8363,7 +8578,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: semiMajor
-      value: 38.709743
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: apDistance
@@ -8371,7 +8586,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: eccentricity
-      value: 0.20565024
+      value: NaN
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: periDistance
@@ -8379,7 +8594,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
-      value: 1513.2488
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: axisOfRotation.x
@@ -8716,8 +8931,16 @@ PrefabInstance:
       value: 0.012300325
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: apoapsis
+      value: 15.912
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: dayPeriod
       value: 29.52917
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: periapsis
+      value: 14.256
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: semiMajor
@@ -8737,7 +8960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
-      value: 368.09055
+      value: 0.81841534
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: axisOfRotation.w
@@ -8835,29 +9058,27 @@ MonoBehaviour:
   timeStart: 0
   physTimeStart: 0
   timer: {fileID: 510754736}
-  gravitationalConstant: 0.0008887185
+  gravitationalConstant: 2.9590717e+9
   timeUnit: 1
   massUnit: 1
   lengthUnit: 100
   celestials:
+  - {fileID: 1670756826}
+  - {fileID: 2113196136}
   - {fileID: 1536779614}
-  - {fileID: 2056749589}
   - {fileID: 2126824923}
+  - {fileID: 2092732793}
+  - {fileID: 1338552220}
+  - {fileID: 2068945517}
+  - {fileID: 1719506498}
+  - {fileID: 866719898}
+  - {fileID: 2056749589}
+  - {fileID: 1490846087}
+  - {fileID: 1360148909}
   - {fileID: 1991571765}
   - {fileID: 940378899}
-  - {fileID: 2092732793}
-  - {fileID: 866719898}
-  - {fileID: 1670756826}
-  - {fileID: 1338552220}
-  - {fileID: 1360148909}
-  - {fileID: 1719506498}
-  - {fileID: 2113196136}
-  - {fileID: 1490846087}
   - {fileID: 805731563}
   - {fileID: 1200081896}
-  - {fileID: 1575814085}
-  - {fileID: 1693143189}
-  - {fileID: 2068945517}
   particleSystems:
   - {fileID: 2108745968}
   - {fileID: 443697346}
@@ -9002,8 +9223,16 @@ PrefabInstance:
       value: 0.022529
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: apoapsis
+      value: 5.3987
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: dayPeriod
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: periapsis
+      value: 5.0924
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: semiMajor
@@ -9023,7 +9252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
-      value: 75.48601
+      value: 4.637858
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: volumetricMeanRadius
@@ -9115,8 +9344,16 @@ PrefabInstance:
       value: 316.99
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: apoapsis
+      value: 586.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: dayPeriod
       value: 0.41354
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: periapsis
+      value: 532.27
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: semiMajor
@@ -9140,7 +9377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
-      value: 83152.28
+      value: 74587.95
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: axisOfRotation.x
@@ -9468,7 +9705,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 98.32685
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9556,7 +9793,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: semiMajor
-      value: 99.999664
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: apDistance
@@ -9564,7 +9801,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: eccentricity
-      value: 0.016728228
+      value: NaN
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: periDistance
@@ -9572,7 +9809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
-      value: 6283.154
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: axisOfRotation.w
@@ -19841,7 +20078,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 907.468
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -19909,7 +20146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: semiMajor
-      value: 957.25916
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: apDistance
@@ -19917,7 +20154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: eccentricity
-      value: 0.052014243
+      value: NaN
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: periDistance
@@ -19925,7 +20162,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
-      value: 186090.48
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: axisOfRotation.x
@@ -20250,140 +20487,179 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1574076117}
   m_CullTransparentMesh: 1
---- !u!1001 &1575814083
+--- !u!1001 &1582330735
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 2054445840}
     m_Modifications:
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.7884133
+      value: 0.070784
       objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7884133
+      value: 0.070784
       objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.7884133
+      value: 0.070784
       objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1963.8226
+      value: 3211.7668
       objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 26.393469
+      value: 99.250534
       objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+    - target: {fileID: 795562322475213173, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1456800220179561703, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+    - target: {fileID: 1074005836415942187, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_Parameters.m_DirectionCurveX.scalar
+      value: 0.0008887185
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074005836415942187, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_Parameters.m_DirectionCurveY.scalar
+      value: 0.0008887185
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074005836415942187, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_Parameters.m_DirectionCurveZ.scalar
+      value: 0.0008887185
+      objectReference: {fileID: 0}
+    - target: {fileID: 1456800220179561703, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_Mass
-      value: 14.53585
+      value: 17.148
       objectReference: {fileID: 0}
-    - target: {fileID: 4805106565392877989, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+    - target: {fileID: 2905209344496648530, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_Parameters.m_EndRange
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2905209344496648530, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_Parameters.m_DirectionCurveX.scalar
+      value: 0.0008887185
+      objectReference: {fileID: 0}
+    - target: {fileID: 2905209344496648530, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_Parameters.m_DirectionCurveY.scalar
+      value: 0.0008887185
+      objectReference: {fileID: 0}
+    - target: {fileID: 2905209344496648530, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_Parameters.m_DirectionCurveZ.scalar
+      value: 0.0008887185
+      objectReference: {fileID: 0}
+    - target: {fileID: 2905209344496648530, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_Parameters.m_RotationSpeedCurve.scalar
+      value: 2.010347
+      objectReference: {fileID: 0}
+    - target: {fileID: 2905209344496648530, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_Parameters.m_RotationSpeedCurve.minScalar
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2905209344496648530, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_Parameters.m_RotationSpeedCurve.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805106565392877989, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_Name
-      value: Uranus
+      value: Neptune + Rings
       objectReference: {fileID: 0}
-    - target: {fileID: 4805106565392877989, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 5181314965352556989, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181314965352556989, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181314965352556989, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4805106565392877989, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: m_TagString
-      value: Celestial
+    - target: {fileID: 5181314965352556989, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.32983604
       objectReference: {fileID: 0}
-    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+    - target: {fileID: 5181314965352556989, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.3254717
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: mass
-      value: 14.53585
+      value: 17.148
       objectReference: {fileID: 0}
-    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: dayPeriod
-      value: -0.7166667
+    - target: {fileID: 5327980531987697873, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: apoapsis
+      value: 3276.5
       objectReference: {fileID: 0}
-    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+    - target: {fileID: 5327980531987697873, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: periapsis
+      value: 3213.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: semiMajor
-      value: 2060.55
+      value: 3244.9
       objectReference: {fileID: 0}
-    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: apDistance
-      value: 2157.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+    - target: {fileID: 5327980531987697873, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: inclination
-      value: 0.77
+      value: 1.77
       objectReference: {fileID: 0}
-    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+    - target: {fileID: 5327980531987697873, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: eccentricity
-      value: 0.046856444
+      value: 0.009738351
       objectReference: {fileID: 0}
-    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: periDistance
-      value: 1964
-      objectReference: {fileID: 0}
-    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+    - target: {fileID: 5327980531987697873, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: orbitalPeriod
-      value: 587698.56
+      value: 1041780.75
       objectReference: {fileID: 0}
-    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: axisOfRotation.x
-      value: 97.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+    - target: {fileID: 5327980531987697873, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: obliquityToOrbit
-      value: 97.8
+      value: 28.32
       objectReference: {fileID: 0}
-    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+    - target: {fileID: 5327980531987697873, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: volumetricMeanRadius
-      value: 0.39420664
+      value: 0.035392
       objectReference: {fileID: 0}
-    - target: {fileID: 5681803638431856627, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+    - target: {fileID: 5681803638431856627, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: be93f73317e9816458379fdf2076726a, type: 2}
+      objectReference: {fileID: 2100000, guid: 88e8212afaaec4045a7ce18a9a34085e, type: 2}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
---- !u!1 &1575814085 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4805106565392877989, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-  m_PrefabInstance: {fileID: 1575814083}
-  m_PrefabAsset: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
 --- !u!1 &1600715267
 GameObject:
   m_ObjectHideFlags: 0
@@ -20588,7 +20864,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1826.6929
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -20656,7 +20932,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: semiMajor
-      value: 1916.4983
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: apDistance
@@ -20664,7 +20940,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: eccentricity
-      value: 0.04685909
+      value: NaN
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: periDistance
@@ -20672,7 +20948,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
-      value: 527160.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: axisOfRotation.x
@@ -20696,140 +20972,6 @@ PrefabInstance:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4805106565392877989, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
   m_PrefabInstance: {fileID: 747357806}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1693143187
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2054445840}
-    m_Modifications:
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.76540935
-      objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.76540935
-      objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.76540935
-      objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3211.7668
-      objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 99.250534
-      objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1456800220179561703, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: m_Mass
-      value: 17.147617
-      objectReference: {fileID: 0}
-    - target: {fileID: 4805106565392877989, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: m_Name
-      value: Neptune
-      objectReference: {fileID: 0}
-    - target: {fileID: 4805106565392877989, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4805106565392877989, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: m_TagString
-      value: Celestial
-      objectReference: {fileID: 0}
-    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: mass
-      value: 17.147617
-      objectReference: {fileID: 0}
-    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: dayPeriod
-      value: 0.6708334
-      objectReference: {fileID: 0}
-    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: semiMajor
-      value: 3244.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: apDistance
-      value: 3276.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: inclination
-      value: 1.77
-      objectReference: {fileID: 0}
-    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: eccentricity
-      value: 0.009738351
-      objectReference: {fileID: 0}
-    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: periDistance
-      value: 3213.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: orbitalPeriod
-      value: 1161400
-      objectReference: {fileID: 0}
-    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: axisOfRotation.x
-      value: 28.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: obliquityToOrbit
-      value: 28.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: volumetricMeanRadius
-      value: 0.38270468
-      objectReference: {fileID: 0}
-    - target: {fileID: 5681803638431856627, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 88e8212afaaec4045a7ce18a9a34085e, type: 2}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
---- !u!1 &1693143189 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4805106565392877989, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
-  m_PrefabInstance: {fileID: 1693143187}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1716281523
 GameObject:
@@ -22252,8 +22394,16 @@ PrefabInstance:
       value: 0.024813
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: apoapsis
+      value: 3.8316
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: dayPeriod
       value: 7.1542
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: periapsis
+      value: 3.8239
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: semiMajor
@@ -22273,7 +22423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
-      value: 47.053856
+      value: 3.8029442
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: volumetricMeanRadius
@@ -22458,8 +22608,16 @@ PrefabInstance:
       value: 0.014956
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: apoapsis
+      value: 1.5144
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: dayPeriod
       value: 1.7708
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: periapsis
+      value: 1.5023
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: semiMajor
@@ -22479,7 +22637,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
-      value: 11.639467
+      value: 0.9407145
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: volumetricMeanRadius
@@ -22741,8 +22899,16 @@ PrefabInstance:
       value: 0.055272765
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: apoapsis
+      value: 50.178
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: dayPeriod
       value: 175.94167
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: periapsis
+      value: 33.06
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: semiMajor
@@ -22766,7 +22932,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
-      value: 1687.0089
+      value: 1513.2542
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: axisOfRotation.x
@@ -22875,8 +23041,16 @@ PrefabInstance:
       value: 0.002181776
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: apoapsis
+      value: 5249.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: dayPeriod
       value: -6.3875
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: periapsis
+      value: 3187.4
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: semiMajor
@@ -22900,7 +23074,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
-      value: 1721539.4
+      value: 1544228.1
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: axisOfRotation.x
@@ -22950,7 +23124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2964.603
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -23018,7 +23192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: semiMajor
-      value: 3923.6196
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: apDistance
@@ -23026,7 +23200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: eccentricity
-      value: 0.2444214
+      value: NaN
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: periDistance
@@ -23034,7 +23208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
-      value: 1544223.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: axisOfRotation.x
@@ -23138,8 +23312,16 @@ PrefabInstance:
       value: 0.107446164
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: apoapsis
+      value: 179.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: dayPeriod
       value: 1.0291667
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: periapsis
+      value: 148.52
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: semiMajor
@@ -23163,7 +23345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
-      value: 13175.589
+      value: 11818.559
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: axisOfRotation.x
@@ -23597,8 +23779,16 @@ PrefabInstance:
       value: 0.8149928
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: apoapsis
+      value: 78.296
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: dayPeriod
       value: -116.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: periapsis
+      value: 77.246
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: semiMajor
@@ -23622,7 +23812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
-      value: 4309.2964
+      value: 3865.457
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: axisOfRotation.x

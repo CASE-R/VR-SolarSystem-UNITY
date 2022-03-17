@@ -139,6 +139,7 @@ public class SimulationScript : MonoBehaviour
                     Vector3 parentObjVelocity = parentObj.GetComponent<Rigidbody>().velocity;
 
                     child.GetComponent<Rigidbody>().velocity += parentObjVelocity + Vector3.forward * Mathf.Sqrt((gravitationalConstant * (mass1 + mass2)) * ((2 / distance) - (1 / semiMajor))); // Adds required orbit velocity to host's velocity so it moves w/ correct relative velocity.
+                    child.GetComponent<BodyProperties>().angularMomentum = Vector3.Cross(parentObj.transform.position - child.transform.position, child.GetComponent<Rigidbody>().velocity);
 
                     Debug.Log("Distance is " + distance + " || " + "SemiMajor is " + semiMajor + " || " + "Velocity of " + child + " is " + child.GetComponent<Rigidbody>().velocity.magnitude + " || " + "Mass of Parent = " + mass1 + " Mass of Child = " + mass2);
                 }
