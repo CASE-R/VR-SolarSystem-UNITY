@@ -69,13 +69,13 @@ public class SimulationScript : MonoBehaviour
 
         if (gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value == 0) // Check for seconds/second setting
         {
-            initialFixedTimeStep = timeUnitMultiplier; // increases physics update rate to match new timescale
-            Time.fixedDeltaTime = timeUnitMultiplier; // Sets physUpdates to equal to realtimeSecond multiplier to simulate 1 Earth second/realtime second
+            //initialFixedTimeStep = timeUnitMultiplier; // increases physics update rate to match new timescale
+            //Time.fixedDeltaTime = timeUnitMultiplier; // Sets physUpdates to equal to realtimeSecond multiplier to simulate 1 Earth second/realtime second
         }
         if (gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value != 0) // This statement will reset updates to the default setting
         {
-            initialFixedTimeStep = 0.02f;
-            Time.fixedDeltaTime = initialFixedTimeStep;
+            //initialFixedTimeStep = 0.02f;
+            //Time.fixedDeltaTime = initialFixedTimeStep;
         }
         
 

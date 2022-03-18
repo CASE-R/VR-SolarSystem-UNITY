@@ -40,16 +40,19 @@ public class UpdateTimeScale : MonoBehaviour
         if (timeUnitMenu.value == 0)
         {
             simulation.timeUnitMultiplier = 1f / (24 * 60 * 60);
+            Time.fixedDeltaTime = simulation.initialFixedTimeStep * 1 / (24 * 60 * 60);
         }
 
         else if (timeUnitMenu.value == 1)
         {
             simulation.timeUnitMultiplier = 1;
+            Time.fixedDeltaTime = simulation.initialFixedTimeStep;
         }
 
         else if (timeUnitMenu.value == 2)
         {
             simulation.timeUnitMultiplier = 1 * 7;
+            Time.fixedDeltaTime = simulation.initialFixedTimeStep * 7;
         }
     }
 
