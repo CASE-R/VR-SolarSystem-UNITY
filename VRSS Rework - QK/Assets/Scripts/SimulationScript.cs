@@ -134,12 +134,16 @@ public class SimulationScript : MonoBehaviour
                     float semiMajor = child.GetComponent<BodyProperties>().semiMajor * (scaleMultiplier); // Transforms semiMajor input value from BodyProperties.cs to the correct Global value
 
                     float distance = Vector3.Distance(parentObj.transform.position, child.transform.position); //Radial Distance between 2-body. Doesn't need rescaling due to function of Vector3.Distance
+                    //Vector3 radialDistance = parentObj.transform.position - child.transform.position;
 
                     // Using original visViva
                     Vector3 parentObjVelocity = parentObj.GetComponent<Rigidbody>().velocity;
 
-                    child.GetComponent<Rigidbody>().velocity += parentObjVelocity + Vector3.forward * Mathf.Sqrt((gravitationalConstant * (mass1 + mass2)) * ((2 / distance) - (1 / semiMajor))); // Adds required orbit velocity to host's velocity so it moves w/ correct relative velocity.
-                    child.GetComponent<BodyProperties>().angularMomentum = Vector3.Cross(parentObj.transform.position - child.transform.position, child.GetComponent<Rigidbody>().velocity);
+                    Vector3 velocityDirection = child.GetComponent<BodyProperties>().initDirection; // Defines temporary vector direction for velocity at periapsis
+
+                    //Debug.Log("Vel Direction: " + velocityDirection + " || " + "Rad Direction: " + radialDistance +" || " + "dotProd(radDist,angMoment): " + dotProduct + " || " + "angMoment: " + child.GetComponent<BodyProperties>().angularMomentum);
+
+                    child.GetComponent<Rigidbody>().velocity += parentObjVelocity + velocityDirection * Mathf.Sqrt((gravitationalConstant * (mass1 + mass2)) * ((2 / distance) - (1 / semiMajor))); // Adds required orbit velocity to host's velocity so it moves w/ correct relative velocity.
 
                     Debug.Log("Distance is " + distance + " || " + "SemiMajor is " + semiMajor + " || " + "Velocity of " + child + " is " + child.GetComponent<Rigidbody>().velocity.magnitude + " || " + "Mass of Parent = " + mass1 + " Mass of Child = " + mass2);
                 }

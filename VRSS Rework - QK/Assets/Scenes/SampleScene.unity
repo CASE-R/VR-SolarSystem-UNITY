@@ -7242,27 +7242,27 @@ MonoBehaviour:
   timeStart: 0
   physTimeStart: 0
   timer: {fileID: 0}
-  gravitationalConstant: 2.9590717e+9
+  gravitationalConstant: 0.0008887185
   timeUnit: 1
   massUnit: 1
   lengthUnit: 100
   celestials:
-  - {fileID: 1670756826}
-  - {fileID: 2113196136}
   - {fileID: 1536779614}
-  - {fileID: 2126824923}
-  - {fileID: 2092732793}
-  - {fileID: 1338552220}
-  - {fileID: 2068945517}
-  - {fileID: 1719506498}
-  - {fileID: 866719898}
   - {fileID: 2056749589}
-  - {fileID: 1490846087}
-  - {fileID: 1360148909}
+  - {fileID: 2126824923}
   - {fileID: 1991571765}
   - {fileID: 940378899}
+  - {fileID: 2092732793}
+  - {fileID: 866719898}
+  - {fileID: 1670756826}
+  - {fileID: 1338552220}
+  - {fileID: 1360148909}
+  - {fileID: 1719506498}
+  - {fileID: 2113196136}
+  - {fileID: 1490846087}
   - {fileID: 805731563}
   - {fileID: 1200081896}
+  - {fileID: 2068945517}
   particleSystems:
   - {fileID: 2108745968}
   - {fileID: 443697346}
@@ -9058,27 +9058,27 @@ MonoBehaviour:
   timeStart: 0
   physTimeStart: 0
   timer: {fileID: 510754736}
-  gravitationalConstant: 2.9590717e+9
+  gravitationalConstant: 0.0008887185
   timeUnit: 1
   massUnit: 1
   lengthUnit: 100
   celestials:
-  - {fileID: 1670756826}
-  - {fileID: 2113196136}
   - {fileID: 1536779614}
-  - {fileID: 2126824923}
-  - {fileID: 2092732793}
-  - {fileID: 1338552220}
-  - {fileID: 2068945517}
-  - {fileID: 1719506498}
-  - {fileID: 866719898}
   - {fileID: 2056749589}
-  - {fileID: 1490846087}
-  - {fileID: 1360148909}
+  - {fileID: 2126824923}
   - {fileID: 1991571765}
   - {fileID: 940378899}
+  - {fileID: 2092732793}
+  - {fileID: 866719898}
+  - {fileID: 1670756826}
+  - {fileID: 1338552220}
+  - {fileID: 1360148909}
+  - {fileID: 1719506498}
+  - {fileID: 2113196136}
+  - {fileID: 1490846087}
   - {fileID: 805731563}
   - {fileID: 1200081896}
+  - {fileID: 2068945517}
   particleSystems:
   - {fileID: 2108745968}
   - {fileID: 443697346}
@@ -22836,15 +22836,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 32.813297
+      value: 21.814846
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.0312915
+      value: 2.680072
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 24.696018
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -22935,12 +22935,20 @@ PrefabInstance:
       value: 1513.2542
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: rightAscension
+      value: -48.33169
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: axisOfRotation.x
       value: 0.034
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: obliquityToOrbit
       value: 0.034
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: argumentOfPeriapsis
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: volumetricMeanRadius
