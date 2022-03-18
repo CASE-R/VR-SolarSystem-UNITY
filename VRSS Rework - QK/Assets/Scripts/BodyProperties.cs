@@ -95,7 +95,7 @@ public class BodyProperties : MonoBehaviour
             angularMomentum = Quaternion.Euler(0, rightAscension, inclination) * Vector3.up; // Rotates specific angular momentum vector from the initial 'up' position
 
             Vector3 posVectorResult = Quaternion.Euler(0, 0, inclination) * Quaternion.Euler(0, rightAscension, 0) * Quaternion.AngleAxis(argumentOfPeriapsis, angularMomentum) * new Vector3(periapsis, 0, 0); // transfroms/rotates periapsis position vector
-            initDirection = Quaternion.Euler(0, 0, inclination) * Quaternion.Euler(0, rightAscension, 0) * Quaternion.AngleAxis(argumentOfPeriapsis, angularMomentum) * Vector3.forward; // applies same transform/rotation as applied to periapsis rotation vector where velocity was originally in 'forward' direction
+            initDirection = Quaternion.Euler(0, 0, inclination) * Quaternion.Euler(0, rightAscension, 0) * Quaternion.AngleAxis(argumentOfPeriapsis, angularMomentum) * Vector3.forward; // applies same transform/rotation as applied to periapsis rotation vector where velocity was originally in 'forward' direction (used in SimulationScript.cs)
 
 
             gameObject.transform.localPosition = posVectorResult;
