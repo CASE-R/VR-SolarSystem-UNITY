@@ -290,11 +290,15 @@ MonoBehaviour:
   mass: 1
   dayPeriod: 1
   obliquityToOrbit: 0
-  periDistance: 1
-  apDistance: 1
+  periapsis: 0
+  apoapsis: 0
   orbitalPeriod: 6.2831855
   semiMajor: 1
   eccentricity: -0
+  angularMomentum: {x: 0, y: 0, z: 0}
   inclination: 0
   rightAscension: 0
   argumentOfPeriapsis: 0
+  dotProductOfVelAndRadial: 0
+  dotProductOfAngMomAndVel: 0
+  initDirection: {x: 0, y: 0, z: 0}
