@@ -31,15 +31,15 @@ public class particleRingProperties : MonoBehaviour
                 var fo = forceField.GetComponent<ParticleSystemForceField>();
                 //fo.enabled = true;
 
-                fo.gravity = 1;
+                //fo.gravity = 1;
                 //fo.endRange = Celestial.transform.lossyScale.x * 50f;
                 fo.directionX = fo.directionY = fo.directionZ = gravConstant;
 
                 fo.rotationAttraction = 1;
                 float circularSpeed = Mathf.Sqrt(gravConstant * parentObj.GetComponent<BodyProperties>().mass / parentObj.GetComponent<BodyProperties>().volumetricMeanRadius);
 
-                var rotSpeed = forceField.GetComponentInChildren<ParticleSystemForceField>().rotationSpeed;
-                rotSpeed.mode = ParticleSystemCurveMode.TwoConstants;
+                //var rotSpeed = forceField.GetComponentInChildren<ParticleSystemForceField>().rotationSpeed;
+                //rotSpeed.mode = ParticleSystemCurveMode.TwoConstants;
                 //rotSpeed.constantMin = circularSpeed;
                 //fo.rotationSpeed = circularSpeed * 2;
 
