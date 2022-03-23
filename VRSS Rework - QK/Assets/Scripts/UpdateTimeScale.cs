@@ -40,22 +40,19 @@ public class UpdateTimeScale : MonoBehaviour
         if (timeUnitMenu.value == 0)
         {
             simulation.timeUnitMultiplier = 1f / (24 * 60 * 60);
-            Time.timeScale = simulation.initialTimeScale * simulation.timeUnitMultiplier;
-            Time.fixedDeltaTime = (float)(Time.timeScale * 0.02);
+            Time.fixedDeltaTime = simulation.initialFixedTimeStep * (1 / (24 * 60 * 60));
         }
 
         else if (timeUnitMenu.value == 1)
         {
             simulation.timeUnitMultiplier = 1;
-            Time.timeScale = simulation.initialTimeScale * simulation.timeUnitMultiplier;
-            //Time.fixedDeltaTime = simulation.initialFixedTimeStep;
+            Time.fixedDeltaTime = simulation.initialFixedTimeStep;
         }
 
         else if (timeUnitMenu.value == 2)
         {
             simulation.timeUnitMultiplier = 1 * 7;
-            Time.timeScale = simulation.initialTimeScale * simulation.timeUnitMultiplier;
-            Time.fixedDeltaTime = (float)(Time.timeScale * 0.02);
+            Time.fixedDeltaTime = simulation.initialFixedTimeStep * 7;
         }
     }
 
@@ -63,14 +60,12 @@ public class UpdateTimeScale : MonoBehaviour
     {
         if (slider.GetComponent<Slider>().value == 0)
         {
-            simulation.initialTimeScale = 0.0000001f;   //if the slider is moved all the way to the left, set it to a very low number to avoid dividing by 0
+            simulation.initialTimeScale = 0.00000001f;   //if the slider is moved all the way to the left, set it to a very low number to avoid dividing by 0
         }
 
         else
         {
             simulation.initialTimeScale = slider.GetComponent<Slider>().value;
         }
-
-        Time.timeScale = simulation.initialTimeScale * simulation.timeUnitMultiplier;
     }
 }

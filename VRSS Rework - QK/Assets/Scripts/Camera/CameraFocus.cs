@@ -6,6 +6,7 @@ public class CameraFocus : MonoBehaviour
 {
     public GameObject mainCamera;
     public GameObject freeCamera;
+    public GameObject playerCamera;
 
     public GameObject currentCamera;
     public int celNumber = 0;
@@ -14,6 +15,7 @@ public class CameraFocus : MonoBehaviour
     void Start()
     {
         currentCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        playerCamera = GameObject.FindGameObjectWithTag("Player");
 
     }
 
@@ -38,6 +40,15 @@ public class CameraFocus : MonoBehaviour
             freeCamera.transform.position = currentCamera.transform.position;
             freeCamera.transform.rotation = currentCamera.transform.rotation;
         }
+
+        // Used for Ship Controller testing, ignore this for now
+        //if (Input.GetKeyDown(KeyCode.P) || celNumber < 0)
+        //{
+        //    celNumber = -1;
+        //    currentCamera = playerCamera;
+        //    mainCamera.SetActive(false);
+        //    currentCamera.SetActive(true);
+        //}
 
         // Switches between celestial bodies using Ctrl + L/R Arrow Key
         if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftCommand) || Input.GetKey(KeyCode.RightCommand))
