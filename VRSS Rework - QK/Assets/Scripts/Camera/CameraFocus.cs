@@ -11,6 +11,9 @@ public class CameraFocus : MonoBehaviour
     public GameObject currentCamera;
     public int celNumber = 0;
 
+    public Vector3 objectPosition;
+    public Vector3 objectScale;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,12 +22,10 @@ public class CameraFocus : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void Update()
     {
-
         // Enables FreeCam on WASD Input
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
         {
             celNumber = -1;
             currentCamera = freeCamera;
@@ -33,6 +34,10 @@ public class CameraFocus : MonoBehaviour
             // All non used cameras must be set to false
             mainCamera.SetActive(false);
         }
+    }
+    // Update is called once per frame
+    private void FixedUpdate()
+    {
 
         // Updates Position and Rotation of FreeCam
         if (currentCamera != freeCamera)
@@ -70,12 +75,12 @@ public class CameraFocus : MonoBehaviour
             freeCamera.SetActive(false);
 
             // Creates short-script lines
-            Vector3 objectPosition = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.position;
-            Vector3 objectScale = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.localScale;
+            objectPosition = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.position;
+            objectScale = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.localScale;
 
             // Aligns camera to focus on celestial if not looking
             currentCamera.transform.LookAt(gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform);
-            currentCamera.transform.position = objectPosition + (10f * objectScale);
+            currentCamera.transform.position = objectPosition + (5f * objectScale);
         }
 
     }

@@ -40,8 +40,6 @@ public class SimulationScript : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        
-
         InitialVelocity(); // Executes Velocity method to give Celestials initial velocities to induce orbits
        
         // Caps/Syncs Simulation FPS
