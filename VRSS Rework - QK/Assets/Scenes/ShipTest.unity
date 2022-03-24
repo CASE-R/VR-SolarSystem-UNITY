@@ -7612,6 +7612,9 @@ MonoBehaviour:
   forwardSpeed: 5
   sideSpeed: 3.5
   hoverSpeed: 3
+  lookRotateSpeed: 90
+  rollSpeed: 90
+  rollAccel: 3.5
 --- !u!65 &763545192
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7644,7 +7647,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a1831d7e363115b4d81fd4c7d55ee370, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
