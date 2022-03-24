@@ -6828,9 +6828,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c89aa9b2c0bf84295159d5a6c1d0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardSpeed: 5
-  sideSpeed: 3.5
-  hoverSpeed: 3
+  rocketSpeed: 163
+  speedMultiplier: 1
+  forwardSpeed: 0.0009414029
+  sideSpeed: 0.0009414029
+  hoverSpeed: 0.0009414029
   lookRotateSpeed: 90
   rollSpeed: 90
   rollAccel: 3.5
@@ -23212,7 +23214,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalScale.x

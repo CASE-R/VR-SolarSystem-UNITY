@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class ShipController : MonoBehaviour // Tutorial: https://www.youtube.com/watch?v=J6QR4KzNeJU&t=1187s + taken from FreeCam.cs
 {
-    public float forwardSpeed = 5f, sideSpeed = 3.5f, hoverSpeed = 3f;
-    private float activeForwardSpeed, activeSideSpeed, activeHoverSpeed;
-    private float forwardAccel = 2.5f, sideAccel = 2f, hoverAccel = 2f;
+    [Header("Realistic Variables")]
+    [Tooltip("Enter the speed you want to compare to in km/s")]
+    public float rocketSpeed;
+    [Tooltip("If Rocket Speed is too slow but you want a comparison, use this as a speed multiplier")]
+    public float speedMultiplier = 1f;
 
+    [Header("Rocket Properties")]
+    public float forwardSpeed = 5f;
+    public float sideSpeed = 3.5f;
+    public float hoverSpeed = 3f;
     public float lookRotateSpeed = 90f;
-    private Vector2 lookInput, screenCenter, mouseDistance;
-
-    private float rollInput;
     public float rollSpeed = 90f, rollAccel = 3.5f;
 
     /// <summary>
@@ -29,6 +32,10 @@ public class ShipController : MonoBehaviour // Tutorial: https://www.youtube.com
     /// </summary>
     public float fastZoomSensitivity = 50f;
 
+    private float activeForwardSpeed, activeSideSpeed, activeHoverSpeed;
+    private float forwardAccel = 2.5f, sideAccel = 2f, hoverAccel = 2f;
+    private float rollInput;
+
     /// <summary>
     /// Set to true when free looking (on right mouse button).
     /// </summary>
@@ -40,19 +47,22 @@ public class ShipController : MonoBehaviour // Tutorial: https://www.youtube.com
     void OnValidate()
     {
         partSys = GetComponentsInChildren<ParticleSystem>();
+        forwardSpeed = (rocketSpeed * speedMultiplier) * ((24f * 60f * 60f) / 149598000f) / 100f;
+        sideSpeed = (rocketSpeed * speedMultiplier) * ((24f * 60f * 60f) / 149598000f) / 100f;
+        hoverSpeed = (rocketSpeed * speedMultiplier) * ((24f * 60f * 60f) / 149598000f) / 100f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
 
         rollInput = Mathf.Lerp(rollInput, Input.GetAxis("Roll"), rollAccel * Time.deltaTime);
-               
+
         // Take keyboard input for movement
-        activeForwardSpeed = Mathf.Lerp(activeForwardSpeed, Input.GetAxisRaw("Vertical") * forwardSpeed, forwardAccel*Time.deltaTime);
-        activeSideSpeed = Mathf.Lerp(activeSideSpeed, Input.GetAxisRaw("Horizontal") * sideSpeed, sideAccel*Time.deltaTime);
-        activeHoverSpeed = Mathf.Lerp(activeHoverSpeed, Input.GetAxisRaw("Hover") * hoverSpeed, hoverAccel*Time.deltaTime);
+        activeForwardSpeed = Mathf.Lerp(activeForwardSpeed, Input.GetAxisRaw("Vertical") * forwardSpeed, forwardAccel * Time.deltaTime);
+        activeSideSpeed = Mathf.Lerp(activeSideSpeed, Input.GetAxisRaw("Horizontal") * sideSpeed, sideAccel * Time.deltaTime);
+        activeHoverSpeed = Mathf.Lerp(activeHoverSpeed, Input.GetAxisRaw("Hover") * hoverSpeed, hoverAccel * Time.deltaTime);
 
         // Apply input as transform; changed from tutorial to follow FreeCam.cs logic
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
@@ -69,7 +79,7 @@ public class ShipController : MonoBehaviour // Tutorial: https://www.youtube.com
                 var psMain = obj.main;
                 psMain.startSpeed = -activeForwardSpeed;
             }
-            
+
         }
         else
         {
@@ -79,7 +89,7 @@ public class ShipController : MonoBehaviour // Tutorial: https://www.youtube.com
                 psMain.startSpeed = 0;
             }
         }
-        
+
         if (Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.Q))
         {
             transform.Rotate(0, 0, rollInput * rollSpeed * Time.deltaTime, Space.Self);
