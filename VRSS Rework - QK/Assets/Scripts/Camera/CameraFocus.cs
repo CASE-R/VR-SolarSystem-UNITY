@@ -85,10 +85,13 @@ public class CameraFocus : MonoBehaviour
 
     public void UpdateFocusCamera()
     {
-        currentCamera = mainCamera;
-        currentCamera.SetActive(true);
-        freeCamera.SetActive(false);
-
+        if (celNumber >-1)
+        {
+            currentCamera = mainCamera;
+            currentCamera.SetActive(true);
+            freeCamera.SetActive(false);
+        }
+        
         // Creates short-script lines
         objectPosition = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.position;
         objectScale = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.localScale;

@@ -22,12 +22,13 @@ public class FreeCam : MonoBehaviour
     /// <summary>
     /// Normal speed of camera movement.
     /// </summary>
-    public float movementSpeed = 10f;
+    [Range(0f, 100f)]
+    public float movementSpeed = 1f;
 
     /// <summary>
     /// Speed of camera movement when shift is held down,
     /// </summary>
-    public float fastMovementSpeed = 100f;
+    public float fastMovementSpeed = 10f;
 
     /// <summary>
     /// Sensitivity for free look.

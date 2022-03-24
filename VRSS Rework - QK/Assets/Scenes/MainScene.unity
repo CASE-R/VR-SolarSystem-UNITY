@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.000046632642, g: 0.00010247312, b: 0.00025539822, a: 1}
+  m_IndirectSpecularColor: {r: 0.00004532664, g: 0.00013413765, b: 0.00012548965, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5120,6 +5120,14 @@ PrefabInstance:
       value: 1.8878489
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: initDirection.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: angularMomentum.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: volumetricMeanRadius
       value: 0.010382
       objectReference: {fileID: 0}
@@ -5872,7 +5880,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.2
+  m_Intensity: 0.1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -6195,6 +6203,14 @@ PrefabInstance:
       value: 0.0031186426
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: initDirection.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: angularMomentum.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: volumetricMeanRadius
       value: 0.003246
       objectReference: {fileID: 0}
@@ -6441,9 +6457,17 @@ PrefabInstance:
       value: ParticleSystem
       objectReference: {fileID: 0}
     - target: {fileID: 5181314965352556989, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: LightsModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181314965352556989, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: ShapeModule.m_Texture
       value: 
       objectReference: {fileID: 2800000, guid: 4cfd3201cb758cf4b8344fe52f5f1a13, type: 3}
+    - target: {fileID: 5181314965352556989, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5181314965352556989, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: InitialModule.rotation3D
       value: 0
@@ -6451,6 +6475,10 @@ PrefabInstance:
     - target: {fileID: 5181314965352556989, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: ShapeModule.radius.value
       value: 0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181314965352556989, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: CollisionModule.radiusScale
+      value: 93.83
       objectReference: {fileID: 0}
     - target: {fileID: 5181314965352556989, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: ShapeModule.radiusThickness
@@ -6463,6 +6491,14 @@ PrefabInstance:
     - target: {fileID: 5181314965352556989, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 0.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181314965352556989, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: CollisionModule.m_Bounce.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181314965352556989, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: CollisionModule.m_Dampen.scalar
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5181314965352556989, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: InitialModule.startSize.minScalar
@@ -6609,9 +6645,33 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6640593896596946423, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_ShadowBias
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6640593896596946423, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6640593896596946423, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6640593896596946423, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 6640593896596946423, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_VertexStreams.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6640593896596946423, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_VertexStreams.Array.data[4]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6640593896596946423, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
+      propertyPath: m_VertexStreams.Array.data[5]
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7443492209532877456, guid: 7a6b281121b52f94585642623ecc1560, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
@@ -6987,7 +7047,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: dotProductOfVelAndRadial
-      value: -95.830315
+      value: 0.00000009710048
       objectReference: {fileID: 0}
     - target: {fileID: 5681803638431856627, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -7118,6 +7178,14 @@ PrefabInstance:
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
       value: 8.870931
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: initDirection.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: angularMomentum.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: volumetricMeanRadius
@@ -7448,6 +7516,8 @@ MonoBehaviour:
   playerCamera: {fileID: 0}
   currentCamera: {fileID: 0}
   celNumber: 2
+  objectPosition: {x: 0, y: 0, z: 0}
+  objectScale: {x: 0, y: 0, z: 0}
 --- !u!114 &737807469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7635,6 +7705,14 @@ PrefabInstance:
       value: 0.012338346
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: initDirection.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: angularMomentum.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: volumetricMeanRadius
       value: 0.0020334
       objectReference: {fileID: 0}
@@ -7710,7 +7788,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -9298,6 +9376,10 @@ PrefabInstance:
       value: 0.81841534
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: initDirection.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: axisOfRotation.w
       value: 0.99799925
       objectReference: {fileID: 0}
@@ -9308,6 +9390,10 @@ PrefabInstance:
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: obliquityToOrbit
       value: 6.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: angularMomentum.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: volumetricMeanRadius
@@ -9436,8 +9522,8 @@ Transform:
   m_Children:
   - {fileID: 493002211}
   - {fileID: 1489456909}
-  - {fileID: 2054445840}
   - {fileID: 2046814894}
+  - {fileID: 2054445840}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9457,7 +9543,9 @@ MonoBehaviour:
   freeCamera: {fileID: 1489456908}
   playerCamera: {fileID: 0}
   currentCamera: {fileID: 0}
-  celNumber: 4
+  celNumber: 0
+  objectPosition: {x: 0, y: 0, z: 0}
+  objectScale: {x: 0, y: 0, z: 0}
 --- !u!114 &1326233074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9596,6 +9684,14 @@ PrefabInstance:
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: orbitalPeriod
       value: 4.637858
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: initDirection.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: angularMomentum.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: volumetricMeanRadius
@@ -9776,7 +9872,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: dotProductOfVelAndRadial
-      value: -126.04665
+      value: 0.000005428301
       objectReference: {fileID: 0}
     - target: {fileID: 5681803638431856627, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -9942,7 +10038,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.2
+  m_Intensity: 0.1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -20195,7 +20291,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1489456908}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.8942, y: -0.0001310276, z: -98.27531}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 0.0001, y: 0.0001, z: 0.0001}
   m_Children:
   - {fileID: 330880432}
@@ -23100,6 +23196,14 @@ PrefabInstance:
       value: 3.8029442
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: initDirection.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: angularMomentum.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: volumetricMeanRadius
       value: 0.017503
       objectReference: {fileID: 0}
@@ -23318,6 +23422,14 @@ PrefabInstance:
       value: 0.9407145
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: initDirection.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
+      propertyPath: angularMomentum.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: volumetricMeanRadius
       value: 0.012117
       objectReference: {fileID: 0}
@@ -23358,7 +23470,7 @@ Transform:
   m_LocalScale: {x: 100, y: 1, z: 100}
   m_Children: []
   m_Father: {fileID: 1326233072}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &2046814895
 MeshCollider:
@@ -23432,7 +23544,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 795562322475213173, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_LocalScale.x
@@ -23762,7 +23874,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: dotProductOfVelAndRadial
-      value: 12.507478
+      value: 0.00000047135686
       objectReference: {fileID: 0}
     - target: {fileID: 5681803638431856627, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -23948,7 +24060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: dotProductOfVelAndRadial
-      value: 1825.8945
+      value: 0.00006946497
       objectReference: {fileID: 0}
     - target: {fileID: 5681803638431856627, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -24264,7 +24376,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: dotProductOfVelAndRadial
-      value: 56.074768
+      value: -0.0000030584267
       objectReference: {fileID: 0}
     - target: {fileID: 5681803638431856627, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -24775,7 +24887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5327980531987697873, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: dotProductOfVelAndRadial
-      value: -53.594105
+      value: -0.000001554903
       objectReference: {fileID: 0}
     - target: {fileID: 5681803638431856627, guid: dc6f7f001dbfea84e867383fa39a509b, type: 3}
       propertyPath: m_Materials.Array.data[0]
