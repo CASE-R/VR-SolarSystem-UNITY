@@ -14,6 +14,8 @@ public class CameraFocus : MonoBehaviour
     public Vector3 objectPosition;
     public Vector3 objectScale;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,25 @@ public class CameraFocus : MonoBehaviour
             // All non used cameras must be set to false
             mainCamera.SetActive(false);
         }
+
+        // Switches between celestial bodies using Ctrl + < or > keys
+        if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftCommand) || Input.GetKey(KeyCode.RightCommand))
+        {
+            if (Input.GetKeyDown(KeyCode.Comma) && celNumber > -1) // uses '<'
+            {
+                celNumber--;
+            }
+            if (Input.GetKeyDown(KeyCode.Period) && celNumber < gameObject.GetComponent<SimulationScript>().celestials.Length - 1) // uses '>'
+            {
+                celNumber++;
+            }
+        }
+
+        if (gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value == 0 && celNumber > -1) // Focus onto celestial[celNumber]
+        {
+            UpdateFocusCamera();
+        }
+
     }
     // Update is called once per frame
     private void FixedUpdate()
@@ -55,34 +76,26 @@ public class CameraFocus : MonoBehaviour
         //    currentCamera.SetActive(true);
         //}
 
-        // Switches between celestial bodies using Ctrl + L/R Arrow Key
-        if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftCommand) || Input.GetKey(KeyCode.RightCommand))
+        if (gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value != 0) // Focus onto celestial[celNumber]
         {
-            if (Input.GetKeyDown(KeyCode.Comma) && celNumber > -1) // uses '<'
-            {
-                celNumber--;
-            }
-            if (Input.GetKeyDown(KeyCode.Period) && celNumber < gameObject.GetComponent<SimulationScript>().celestials.Length - 1) // uses '>'
-            {
-                celNumber++;
-            }
+            UpdateFocusCamera();
         }
 
-        if (celNumber > -1) // Focus onto celestial[celNumber]
-        {
-            currentCamera = mainCamera;
-            currentCamera.SetActive(true);
-            freeCamera.SetActive(false);
+    }
 
-            // Creates short-script lines
-            objectPosition = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.position;
-            objectScale = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.localScale;
+    public void UpdateFocusCamera()
+    {
+        currentCamera = mainCamera;
+        currentCamera.SetActive(true);
+        freeCamera.SetActive(false);
 
-            // Aligns camera to focus on celestial if not looking
-            currentCamera.transform.LookAt(gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform);
-            currentCamera.transform.position = objectPosition + (5f * objectScale);
-        }
+        // Creates short-script lines
+        objectPosition = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.position;
+        objectScale = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.localScale;
 
+        // Aligns camera to focus on celestial if not looking
+        currentCamera.transform.LookAt(gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform);
+        currentCamera.transform.position = objectPosition + new Vector3(0f, 1.5f*objectScale.y, -1.5f*objectScale.z);
     }
 
 }
