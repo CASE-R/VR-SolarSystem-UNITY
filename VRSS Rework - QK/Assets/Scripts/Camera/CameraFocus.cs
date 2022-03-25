@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraFocus : MonoBehaviour
 {
@@ -14,7 +15,10 @@ public class CameraFocus : MonoBehaviour
     public Vector3 objectPosition;
     public Vector3 objectScale;
 
-
+    public Dropdown celestialMenu;
+    SimulationScript simulation;
+    PlanetProperties planetProperties;
+    BodyProperties bodyProperties;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +26,10 @@ public class CameraFocus : MonoBehaviour
         currentCamera = GameObject.FindGameObjectWithTag("MainCamera");
         playerCamera = GameObject.FindGameObjectWithTag("Player");
 
+        simulation = gameObject.GetComponent<SimulationScript>();
+        planetProperties = gameObject.GetComponent<PlanetProperties>();
+
+        //planetProperties.massInput.text = simulation.celestials[celNumber].GetComponent<Rigidbody>().mass.ToString();
     }
 
     private void Update()
@@ -43,10 +51,12 @@ public class CameraFocus : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Comma) && celNumber > -1) // uses '<'
             {
                 celNumber--;
+                celestialMenu.value = celNumber;
             }
             if (Input.GetKeyDown(KeyCode.Period) && celNumber < gameObject.GetComponent<SimulationScript>().celestials.Length - 1) // uses '>'
             {
                 celNumber++;
+                celestialMenu.value = celNumber;
             }
         }
 
@@ -90,15 +100,24 @@ public class CameraFocus : MonoBehaviour
             currentCamera = mainCamera;
             currentCamera.SetActive(true);
             freeCamera.SetActive(false);
+
+            planetProperties.massInput.text = simulation.celestials[celNumber].GetComponent<Rigidbody>().mass.ToString();
+            planetProperties.velocityInput.text = simulation.celestials[celNumber].GetComponent<Rigidbody>().velocity.magnitude.ToString();
+            planetProperties.radiusInput.text = simulation.celestials[celNumber].GetComponent<Transform>().localScale.x.ToString();
+
+            objectPosition = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.position;
+            objectScale = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.localScale;
+
+            currentCamera.transform.LookAt(gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform);
+            currentCamera.transform.position = objectPosition + new Vector3(0f, 1.5f * objectScale.y, -1.5f * objectScale.z);
         }
-        
+
+
         // Creates short-script lines
-        objectPosition = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.position;
-        objectScale = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.localScale;
+        
 
         // Aligns camera to focus on celestial if not looking
-        currentCamera.transform.LookAt(gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform);
-        currentCamera.transform.position = objectPosition + new Vector3(0f, 1.5f*objectScale.y, -1.5f*objectScale.z);
+        
     }
 
 }
