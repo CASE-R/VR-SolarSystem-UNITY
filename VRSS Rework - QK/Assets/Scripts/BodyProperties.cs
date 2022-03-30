@@ -60,7 +60,7 @@ public class BodyProperties : MonoBehaviour
     {
         GameObject parentObj = gameObject.transform.parent.gameObject;
         systemObj = GameObject.Find("System");
-        if (parentObj.CompareTag("Celestial"))
+        if (parentObj.CompareTag("Celestial") || gameObject.name=="Sun")
         {
             gameObject.GetComponent<Rigidbody>().mass = mass;
             gameObject.GetComponent<Transform>().localScale = new Vector3(volumetricMeanRadius, volumetricMeanRadius, volumetricMeanRadius) * 2f; // Radius of Sphere is 0.5 Scale/Diameter
