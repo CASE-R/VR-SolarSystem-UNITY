@@ -10,7 +10,7 @@ public class CameraFocus : MonoBehaviour
     public GameObject playerCamera;
 
     public GameObject currentCamera;
-    public int celNumber = 0;
+    public int celNumber;
 
     public Vector3 objectPosition;
     public Vector3 objectScale;
@@ -60,7 +60,7 @@ public class CameraFocus : MonoBehaviour
             }
         }
 
-        if (gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value == 0 && celNumber > -1) // Focus onto celestial[celNumber]
+        if (gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value == 0 && celNumber > -1) // Focus onto celestial[celNumber] for smaller timeframes at faster rate
         {
             UpdateFocusCamera();
         }
@@ -86,7 +86,7 @@ public class CameraFocus : MonoBehaviour
         //    currentCamera.SetActive(true);
         //}
 
-        if (gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value != 0) // Focus onto celestial[celNumber]
+        if (gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value != 0) // Focus onto celestial[celNumber] in faster timeframes
         {
             UpdateFocusCamera();
         }
@@ -107,16 +107,15 @@ public class CameraFocus : MonoBehaviour
 
             objectPosition = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.position;
             objectScale = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.localScale;
+            Vector3 offset = 5f * objectScale;
+            if (!Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                currentCamera.transform.LookAt(gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform);
+            }
 
-            currentCamera.transform.LookAt(gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform);
-            currentCamera.transform.position = objectPosition + new Vector3(0f, 1.5f * objectScale.y, -1.5f * objectScale.z);
+            currentCamera.transform.position = objectPosition + offset;
         }
 
-
-        // Creates short-script lines
-        
-
-        // Aligns camera to focus on celestial if not looking
         
     }
 

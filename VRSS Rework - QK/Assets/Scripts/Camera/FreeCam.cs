@@ -23,7 +23,8 @@ public class FreeCam : MonoBehaviour
     /// Normal speed of camera movement.
     /// </summary>
     [Range(0f, 100f)]
-    public float movementSpeed = 1f;
+    public float movementSpeed = .1f;
+    public float acceleration = 0.001f;
 
     /// <summary>
     /// Speed of camera movement when shift is held down,
@@ -49,6 +50,11 @@ public class FreeCam : MonoBehaviour
     /// Set to true when free looking (on right mouse button).
     /// </summary>
     private bool looking = false;
+
+    public GameObject inRange = null;
+
+    SimulationScript simulationScript;
+    CameraFocus camFocus;
 
 
     void Start()
@@ -109,11 +115,20 @@ public class FreeCam : MonoBehaviour
             transform.localEulerAngles = new Vector3(newRotationY, newRotationX, 0f);
         }
 
-        float axis = Input.GetAxis("Mouse ScrollWheel");
-        if (axis != 0)
+        //float axis = Input.GetAxis("Mouse ScrollWheel");
+        //if (axis != 0)
+        //{
+        //    var zoomSensitivity = fastMode ? this.fastZoomSensitivity : this.zoomSensitivity;
+        //    transform.position = transform.position + transform.forward * axis * zoomSensitivity;
+        //}
+
+        if (Input.GetAxisRaw("Mouse ScrollWheel") > 0f)
         {
-            var zoomSensitivity = fastMode ? this.fastZoomSensitivity : this.zoomSensitivity;
-            transform.position = transform.position + transform.forward * axis * zoomSensitivity;
+            movementSpeed += acceleration;
+        }
+        if (Input.GetAxisRaw("Mouse ScrollWheel") < 0f)
+        {
+            movementSpeed -= acceleration;
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse1))
@@ -124,7 +139,9 @@ public class FreeCam : MonoBehaviour
         {
             StopLooking();
         }
+
     }
+
 
     void OnDisable()
     {
