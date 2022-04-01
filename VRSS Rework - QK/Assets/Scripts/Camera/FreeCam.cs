@@ -74,49 +74,49 @@ public class FreeCam : MonoBehaviour
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             transform.position = transform.position + (-transform.right * movementSpeed );
-            celestialDropdown.value = 17;
+            celestialDropdown.value = 18;
         }
 
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             transform.position = transform.position + (transform.right * movementSpeed );
-            celestialDropdown.value = 17;
+            celestialDropdown.value = 18;
         }
 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             transform.position = transform.position + (transform.forward * movementSpeed );
-            celestialDropdown.value = 17;
+            celestialDropdown.value = 18;
         }
 
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             transform.position = transform.position + (-transform.forward * movementSpeed );
-            celestialDropdown.value = 17;
+            celestialDropdown.value = 18;
         }
 
         if (Input.GetKey(KeyCode.Q))
         {
             transform.position = transform.position + (transform.up * movementSpeed );
-            celestialDropdown.value = 17;
+            celestialDropdown.value = 18;
         }
 
         if (Input.GetKey(KeyCode.E))
         {
             transform.position = transform.position + (-transform.up * movementSpeed );
-            celestialDropdown.value = 17;
+            celestialDropdown.value = 18;
         }
 
         if (Input.GetKey(KeyCode.R) || Input.GetKey(KeyCode.PageUp))
         {
             transform.position = transform.position + (Vector3.up * movementSpeed );
-            celestialDropdown.value = 17;
+            celestialDropdown.value = 18;
         }
 
         if (Input.GetKey(KeyCode.F) || Input.GetKey(KeyCode.PageDown))
         {
             transform.position = transform.position + (-Vector3.up * movementSpeed );
-            celestialDropdown.value = 17;
+            celestialDropdown.value = 18;
         }
 
         if (looking)
