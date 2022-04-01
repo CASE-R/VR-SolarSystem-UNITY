@@ -20,6 +20,9 @@ public class CameraFocus : MonoBehaviour
     PlanetProperties planetProperties;
     BodyProperties bodyProperties;
 
+    Vector3 previousPosition;
+    float distanceToTarget;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,6 +68,35 @@ public class CameraFocus : MonoBehaviour
             UpdateFocusCamera();
         }
 
+        if (celNumber > -1)
+        { // Taken from: https://emmaprats.com/p/how-to-rotate-the-camera-around-an-object-in-unity3d/
+            if (Input.GetMouseButtonDown(1))
+            {
+                previousPosition = currentCamera.GetComponent<Camera>().ScreenToViewportPoint(Input.mousePosition);
+            }
+            else if (Input.GetMouseButton(1))
+            {
+                Vector3 newPosition = currentCamera.GetComponent<Camera>().ScreenToViewportPoint(Input.mousePosition);
+                Vector3 direction = previousPosition - newPosition;
+                distanceToTarget = simulation.celestials[celNumber].transform.lossyScale.magnitude * 3f;
+
+                float rotationAroundYAxis = -direction.x * 180; // camera moves horizontally
+                float rotationAroundXAxis = direction.y * 180; // camera moves vertically
+
+                currentCamera.transform.position = simulation.celestials[celNumber].transform.position;
+
+                currentCamera.transform.Rotate(new Vector3(1, 0, 0), rotationAroundXAxis);
+                currentCamera.transform.Rotate(new Vector3(0, 1, 0), rotationAroundYAxis, Space.World); // <— This is what makes it work!
+
+                currentCamera.transform.Translate(new Vector3(0, 0, -distanceToTarget));
+
+                previousPosition = newPosition;
+            }
+
+        }
+
+
+
     }
     // Update is called once per frame
     private void FixedUpdate()
@@ -95,7 +127,7 @@ public class CameraFocus : MonoBehaviour
 
     public void UpdateFocusCamera()
     {
-        if (celNumber >-1)
+        if (celNumber >-1 && !Input.GetKey(KeyCode.Mouse1))
         {
             currentCamera = mainCamera;
             currentCamera.SetActive(true);
