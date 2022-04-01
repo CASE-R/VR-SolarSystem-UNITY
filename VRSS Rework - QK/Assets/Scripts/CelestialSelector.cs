@@ -23,7 +23,7 @@ public class CelestialSelector : MonoBehaviour
 
     public void UpdateCelNumber()
     {
-        if (dropdown.GetComponent<Dropdown>().value == 17)
+        if (dropdown.GetComponent<Dropdown>().value == 18)
         {
             camFocus.celNumber = -1;
         }
