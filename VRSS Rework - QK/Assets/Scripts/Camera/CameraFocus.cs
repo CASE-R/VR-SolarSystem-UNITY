@@ -22,7 +22,6 @@ public class CameraFocus : MonoBehaviour
 
     Vector3 previousPosition;
     float distanceToTarget;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -127,25 +126,38 @@ public class CameraFocus : MonoBehaviour
 
     public void UpdateFocusCamera()
     {
-        if (celNumber >-1 && !Input.GetKey(KeyCode.Mouse1))
+        if (celNumber >-1)
         {
-            currentCamera = mainCamera;
-            currentCamera.SetActive(true);
-            freeCamera.SetActive(false);
-
-            planetProperties.massInput.text = simulation.celestials[celNumber].GetComponent<Rigidbody>().mass.ToString();
-            planetProperties.velocityInput.text = simulation.celestials[celNumber].GetComponent<Rigidbody>().velocity.magnitude.ToString();
-            planetProperties.radiusInput.text = (simulation.celestials[celNumber].transform.GetChild(0).GetComponent<Transform>().localScale.x).ToString();
-
-            objectPosition = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.position;
-            objectScale = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.localScale;
             Vector3 offset = 5f * objectScale;
+
             if (!Input.GetKeyDown(KeyCode.Mouse1))
             {
                 currentCamera.transform.LookAt(gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform);
+                currentCamera = mainCamera;
+                currentCamera.SetActive(true);
+                freeCamera.SetActive(false);
+
+                objectPosition = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.position;
+                objectScale = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.localScale;
+                offset = 5f * objectScale;
             }
 
             currentCamera.transform.position = objectPosition + offset;
+
+            if (planetProperties.massInput.isFocused == false)
+            {
+                planetProperties.massInput.text = simulation.celestials[celNumber].GetComponent<Rigidbody>().mass.ToString();
+            }
+
+            if (planetProperties.velocityInput.isFocused == false)
+            {
+                planetProperties.velocityInput.text = simulation.celestials[celNumber].GetComponent<Rigidbody>().velocity.magnitude.ToString();
+            }
+
+            if (planetProperties.radiusInput.isFocused == false)
+            {
+                planetProperties.radiusInput.text = (simulation.celestials[celNumber].transform.GetChild(0).GetComponent<Transform>().localScale.x).ToString();
+            }
         }
 
         
