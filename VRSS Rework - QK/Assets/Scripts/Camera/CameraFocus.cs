@@ -103,7 +103,7 @@ public class CameraFocus : MonoBehaviour
 
             planetProperties.massInput.text = simulation.celestials[celNumber].GetComponent<Rigidbody>().mass.ToString();
             planetProperties.velocityInput.text = simulation.celestials[celNumber].GetComponent<Rigidbody>().velocity.magnitude.ToString();
-            planetProperties.radiusInput.text = simulation.celestials[celNumber].GetComponent<Transform>().localScale.x.ToString();
+            planetProperties.radiusInput.text = (simulation.celestials[celNumber].transform.GetChild(0).GetComponent<Transform>().localScale.x).ToString();
 
             objectPosition = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.position;
             objectScale = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.localScale;

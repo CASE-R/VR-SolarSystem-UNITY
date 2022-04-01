@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary> From: https://gist.github.com/ashleydavis/f025c03a9221bc840a2b
 /// A simple free camera to be added to a Unity game object.
@@ -56,6 +57,8 @@ public class FreeCam : MonoBehaviour
     SimulationScript simulationScript;
     CameraFocus camFocus;
 
+    public Dropdown celestialDropdown;
+
 
     void Start()
     {
@@ -71,41 +74,49 @@ public class FreeCam : MonoBehaviour
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             transform.position = transform.position + (-transform.right * movementSpeed );
+            celestialDropdown.value = 17;
         }
 
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             transform.position = transform.position + (transform.right * movementSpeed );
+            celestialDropdown.value = 17;
         }
 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             transform.position = transform.position + (transform.forward * movementSpeed );
+            celestialDropdown.value = 17;
         }
 
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             transform.position = transform.position + (-transform.forward * movementSpeed );
+            celestialDropdown.value = 17;
         }
 
         if (Input.GetKey(KeyCode.Q))
         {
             transform.position = transform.position + (transform.up * movementSpeed );
+            celestialDropdown.value = 17;
         }
 
         if (Input.GetKey(KeyCode.E))
         {
             transform.position = transform.position + (-transform.up * movementSpeed );
+            celestialDropdown.value = 17;
         }
 
         if (Input.GetKey(KeyCode.R) || Input.GetKey(KeyCode.PageUp))
         {
             transform.position = transform.position + (Vector3.up * movementSpeed );
+            celestialDropdown.value = 17;
         }
 
         if (Input.GetKey(KeyCode.F) || Input.GetKey(KeyCode.PageDown))
         {
             transform.position = transform.position + (-Vector3.up * movementSpeed );
+            celestialDropdown.value = 17;
         }
 
         if (looking)

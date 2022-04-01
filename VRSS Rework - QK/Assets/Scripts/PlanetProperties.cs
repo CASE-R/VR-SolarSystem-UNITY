@@ -51,4 +51,10 @@ public class PlanetProperties : MonoBehaviour
     {
         simulation.celestials[cameraFocus.celNumber].GetComponent<Rigidbody>().velocity = simulation.celestials[cameraFocus.celNumber].GetComponent<Rigidbody>().velocity.normalized * float.Parse(velocityInput.text);
     }
+
+    public void ChangeRadius()
+    {
+        float newRadius = float.Parse(radiusInput.text);
+        simulation.celestials[cameraFocus.celNumber].transform.GetChild(0).gameObject.transform.localScale = new Vector3 (newRadius, newRadius, newRadius);
+    }
 }
