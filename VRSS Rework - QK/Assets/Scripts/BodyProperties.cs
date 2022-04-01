@@ -5,8 +5,9 @@ using UnityEngine;
 public class BodyProperties : MonoBehaviour
 {
     GameObject systemObj;
+    public GameObject parentObj;
 
-    
+
     [Header("Rigid Body Parameters")]
 
     [Tooltip("(Scaled) Radius of Sphere = Half of Scale Component")]
@@ -58,9 +59,16 @@ public class BodyProperties : MonoBehaviour
 
     void PropertyUpdate()
     {
-        GameObject parentObj = gameObject.transform.parent.gameObject;
+        if (gameObject.transform.parent != null)
+        {
+            parentObj = gameObject.transform.parent.gameObject;
+        }
+        else
+        {
+            parentObj = null;
+        }
         systemObj = GameObject.Find("System");
-        if (parentObj.CompareTag("Celestial") || gameObject.name=="Sun")
+        if (parentObj.CompareTag("Celestial") || gameObject.name == "Sun")
         {
             gameObject.GetComponent<Rigidbody>().mass = mass;
             gameObject.GetComponent<Transform>().localScale = new Vector3(volumetricMeanRadius, volumetricMeanRadius, volumetricMeanRadius) * 2f; // Radius of Sphere is 0.5 Scale/Diameter
@@ -113,7 +121,6 @@ public class BodyProperties : MonoBehaviour
     void OnValidate()
     {
         PropertyUpdate();
-        
     }
 
 }
