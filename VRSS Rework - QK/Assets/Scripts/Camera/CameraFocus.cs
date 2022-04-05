@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CameraFocus : MonoBehaviour
 {
-    public GameObject mainCamera;
+    public GameObject focusCamera;
     public GameObject freeCamera;
     public GameObject playerCamera;
 
@@ -25,7 +25,7 @@ public class CameraFocus : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        currentCamera = GameObject.FindGameObjectWithTag("focusCamera");
         playerCamera = GameObject.FindGameObjectWithTag("Player");
 
         simulation = gameObject.GetComponent<SimulationScript>();
@@ -44,7 +44,7 @@ public class CameraFocus : MonoBehaviour
             freeCamera.SetActive(true);
 
             // All non used cameras must be set to false
-            mainCamera.SetActive(false);
+            focusCamera.SetActive(false);
         }
 
         // Switches between celestial bodies using Ctrl + < or > keys
@@ -113,7 +113,7 @@ public class CameraFocus : MonoBehaviour
         //{
         //    celNumber = -1;
         //    currentCamera = playerCamera;
-        //    mainCamera.SetActive(false);
+        //    focusCamera.SetActive(false);
         //    currentCamera.SetActive(true);
         //}
 
@@ -133,7 +133,7 @@ public class CameraFocus : MonoBehaviour
             if (!Input.GetKeyDown(KeyCode.Mouse1))
             {
                 currentCamera.transform.LookAt(gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform);
-                currentCamera = mainCamera;
+                currentCamera = focusCamera;
                 currentCamera.SetActive(true);
                 freeCamera.SetActive(false);
 
