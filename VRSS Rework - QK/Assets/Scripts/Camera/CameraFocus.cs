@@ -8,7 +8,7 @@ public class CameraFocus : MonoBehaviour
 {
     public GameObject focusCamera;
     public GameObject freeCamera;
-    public GameObject HMDCamera;
+    //public GameObject HMDCamera;
 
     public GameObject currentCamera;
     public int celNumber;
