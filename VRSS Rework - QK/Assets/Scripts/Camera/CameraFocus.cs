@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR;
 
 public class CameraFocus : MonoBehaviour
 {
     public GameObject focusCamera;
     public GameObject freeCamera;
-    public GameObject playerCamera;
+    public GameObject HMDCamera;
 
     public GameObject currentCamera;
     public int celNumber;
@@ -25,17 +26,15 @@ public class CameraFocus : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentCamera = GameObject.FindGameObjectWithTag("focusCamera");
-        playerCamera = GameObject.FindGameObjectWithTag("Player");
+        currentCamera = GameObject.FindGameObjectWithTag("MainCamera");
 
         simulation = gameObject.GetComponent<SimulationScript>();
         planetProperties = gameObject.GetComponent<PlanetProperties>();
 
-        //planetProperties.massInput.text = simulation.celestials[celNumber].GetComponent<Rigidbody>().mass.ToString();
     }
 
-    private void Update()
-    {
+        void Update()
+    {        
         // Enables FreeCam on WASD Input
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
         {
@@ -98,7 +97,7 @@ public class CameraFocus : MonoBehaviour
 
     }
     // Update is called once per frame
-    private void FixedUpdate()
+    void FixedUpdate()
     {
 
         // Updates Position and Rotation of FreeCam

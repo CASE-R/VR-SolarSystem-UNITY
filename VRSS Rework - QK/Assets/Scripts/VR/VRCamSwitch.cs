@@ -10,7 +10,8 @@ public class VRCamSwitch : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        
+        camFoc.currentCamera = gameObject.GetComponentInChildren<Camera>().gameObject;
+        camFoc.currentCamera.tag = "MainCamera";
     }
 
     // Update is called once per frame
