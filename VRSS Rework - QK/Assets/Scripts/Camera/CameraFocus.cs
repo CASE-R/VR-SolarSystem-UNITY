@@ -107,15 +107,6 @@ public class CameraFocus : MonoBehaviour
             freeCamera.transform.rotation = currentCamera.transform.rotation;
         }
 
-        // Used for Ship Controller testing, ignore this for now
-        //if (Input.GetKeyDown(KeyCode.P) || celNumber < 0)
-        //{
-        //    celNumber = -1;
-        //    currentCamera = playerCamera;
-        //    focusCamera.SetActive(false);
-        //    currentCamera.SetActive(true);
-        //}
-
         if (gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value != 0) // Focus onto celestial[celNumber] in faster timeframes
         {
             UpdateFocusCamera();
