@@ -23,6 +23,8 @@ public class SimulationScript : MonoBehaviour
     public Text timer;
     private DateTime currentTime;
     TimeSpan timeToAdd;
+    public Scene currentScene;
+
     [Header("Simulation Parameters")]
     ///<summary>
     /// G is recalculated to be in the new unity dimensions
@@ -57,6 +59,7 @@ public class SimulationScript : MonoBehaviour
         celestials = GameObject.FindGameObjectsWithTag("Celestial"); // Collates all GameObjects w/ "Celestial" tag into an array
         particleSystems = GameObject.FindGameObjectsWithTag("ParticleSystem");
         
+        currentScene = SceneManager.GetActiveScene();
 
     }
 
@@ -181,7 +184,8 @@ public class SimulationScript : MonoBehaviour
 
     public void restartSimulation()
     {
-        SceneManager.LoadScene(0);
+        //SceneManager.LoadScene(0);
+        SceneManager.LoadScene(currentScene.name);
     }
 
 }

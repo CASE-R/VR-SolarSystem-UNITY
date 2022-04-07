@@ -30,17 +30,21 @@ public class VRCamSwitch : MonoBehaviour
         simulation = gameObject.GetComponent<SimulationScript>();
         planetProperties = gameObject.GetComponent<PlanetProperties>();
 
+        celNumber = -1;
+        currentCamera = HMDCamera;
+        HMDCamera.SetActive(true);
+
     }
 
     void Update()
     {
-        // Enables FreeCam on WASD Input
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
-        {
-            celNumber = -1;
-            currentCamera = HMDCamera;
-            HMDCamera.SetActive(true);
-        }
+        //// Enables FreeCam on WASD Input
+        //if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+        //{
+        //    celNumber = -1;
+        //    currentCamera = HMDCamera;
+        //    HMDCamera.SetActive(true);
+        //}
 
         // Switches between celestial bodies using Ctrl + < or > keys
         if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftCommand) || Input.GetKey(KeyCode.RightCommand))

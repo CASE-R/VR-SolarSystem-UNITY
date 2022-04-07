@@ -16,7 +16,8 @@ public class VRContinuousMovement : MonoBehaviour //https://www.youtube.com/watc
     public Transform cameraTransform;
     public LayerMask groundLayer;
 
-    private Vector2 inputAxis;
+    private Vector2 inputLeftAxis;
+    private Vector2 inputRightAxis;
     private bool leftStickPressed;
     private bool rightStickPressed;
     private float leftTriggerValue;
@@ -25,7 +26,6 @@ public class VRContinuousMovement : MonoBehaviour //https://www.youtube.com/watc
     private XROrigin rig;
     private float additionalHeight = 0.15f;
 
-    private Vector3 flyDirection;
     private CharacterController character;
     
     // Start is called before the first frame update
@@ -41,30 +41,37 @@ public class VRContinuousMovement : MonoBehaviour //https://www.youtube.com/watc
         InputDevice deviceLeft = InputDevices.GetDeviceAtXRNode(inputSourceLeft);
         InputDevice deviceRight = InputDevices.GetDeviceAtXRNode(inputSourceRight);
 
-        deviceLeft.TryGetFeatureValue(CommonUsages.primary2DAxis, out inputAxis); // Gives 2D motion from left joystick
+        deviceLeft.TryGetFeatureValue(CommonUsages.primary2DAxis, out inputLeftAxis); // Gives 2D motion from left joystick
+        deviceRight.TryGetFeatureValue(CommonUsages.primary2DAxis, out inputRightAxis); // Gives 2D motion from left joystick
         deviceLeft.TryGetFeatureValue(CommonUsages.primary2DAxisClick, out leftStickPressed); // Checks for press on left stick
         deviceRight.TryGetFeatureValue(CommonUsages.primary2DAxisClick, out rightStickPressed); // Checks for press on right stick
         deviceLeft.TryGetFeatureValue(CommonUsages.trigger, out leftTriggerValue); // Checks for how pressed left trigger is
         deviceRight.TryGetFeatureValue(CommonUsages.trigger, out rightTriggerValue); // Checks for how pressed right trigger is
-    }
 
-    private void FixedUpdate()
-    {
         // Horizontal
-        Vector3 direction = cameraTransform.rotation * new Vector3(inputAxis.x, 0f, inputAxis.y); // Gives a resultant direction to transform the VR Player, using the directino they are facing. This also allows 3D movement
+        Vector3 direction = cameraTransform.rotation * new Vector3(inputLeftAxis.x, 0f, inputLeftAxis.y); // Gives a resultant direction to transform the VR Player, using the directino they are facing. This also allows 3D movement
 
-        character.Move(direction * ((speed*rightTriggerValue) + (speed*(1-leftTriggerValue)))); // Applies motion, this is however affected by timeScale
+        character.Move(direction * ((speed * rightTriggerValue) + (speed * (1 - leftTriggerValue)))); // Applies motion, this is however affected by timeScale
 
 
         // Vertical movement independent of look direction
         if (leftStickPressed)
         {
-            character.Move(Vector3.up * -speed * Time.fixedDeltaTime);
+            character.Move(Vector3.up * -speed * Time.unscaledDeltaTime);
         }
         if (rightStickPressed)
         {
-            character.Move(Vector3.up * speed * Time.fixedDeltaTime);
+            character.Move(Vector3.up * speed * Time.unscaledDeltaTime);
         }
+
+        // Rotate VR Rig
+        character.transform.localEulerAngles += new Vector3(Mathf.Clamp(-inputRightAxis.y,-60f, 60f), Mathf.Clamp(inputRightAxis.x, -60f, 60f), 0f);
+
+    }
+
+    private void FixedUpdate()
+    {
+        
     }
 
 }
