@@ -76,7 +76,7 @@ public class CameraFocus : MonoBehaviour
             {
                 Vector3 newPosition = currentCamera.GetComponent<Camera>().ScreenToViewportPoint(Input.mousePosition);
                 Vector3 direction = previousPosition - newPosition;
-                distanceToTarget = simulation.celestials[celNumber].transform.lossyScale.magnitude * 3f;
+                distanceToTarget = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.lossyScale.x * simulation.celestials[celNumber].transform.GetChild(0).GetComponent<Transform>().localScale.x * 2f; // Multiplying by localScale.x allows camera to scale outwards when radius is changed via UI
 
                 float rotationAroundYAxis = -direction.x * 180; // camera moves horizontally
                 float rotationAroundXAxis = direction.y * 180; // camera moves vertically
@@ -137,8 +137,8 @@ public class CameraFocus : MonoBehaviour
                 freeCamera.SetActive(false);
 
                 objectPosition = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.position;
-                objectScale = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.localScale;
-                offset = 5f * objectScale;
+                objectScale = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.lossyScale;
+                offset = objectScale * simulation.celestials[celNumber].transform.GetChild(0).GetComponent<Transform>().localScale.x * 2f; // Multiplying by localScale.x allows camera to scale outwards when radius is changed via UI
             }
 
             currentCamera.transform.position = objectPosition + offset;
