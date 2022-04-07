@@ -286,6 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 818d83c5565e14448915970687c75eff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentObj: {fileID: 0}
   volumetricMeanRadius: 1
   mass: 1
   dayPeriod: 1
