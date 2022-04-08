@@ -36,9 +36,9 @@ public class VRPlanetProperties : MonoBehaviour
 
     public void RemovePlanet()
     {
-        simulation.celestials[VRCamSwitch.celNumber].GetComponent<Rigidbody>().mass = 0;
+        simulation.celestials[VRCamSwitch.celNumber].GetComponent<Rigidbody>().mass = 0f;
+        simulation.celestials[VRCamSwitch.celNumber].GetComponent<Rigidbody>().velocity = Vector3.zero;
         simulation.celestials[VRCamSwitch.celNumber].transform.GetChild(0).gameObject.GetComponent<Renderer>().enabled = false;
-        simulation.celestials[VRCamSwitch.celNumber].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
         VRCamSwitch.celNumber = -1;
     }
 

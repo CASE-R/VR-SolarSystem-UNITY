@@ -17,7 +17,7 @@ public class VRCamSwitch : MonoBehaviour
 
     public Dropdown celestialMenu;
     SimulationScript simulation;
-    PlanetProperties planetProperties;
+    VRPlanetProperties VRplanetProperties;
     BodyProperties bodyProperties;
 
     Vector3 previousPosition;
@@ -28,7 +28,7 @@ public class VRCamSwitch : MonoBehaviour
         currentCamera = GameObject.FindGameObjectWithTag("MainCamera");
 
         simulation = gameObject.GetComponent<SimulationScript>();
-        planetProperties = gameObject.GetComponent<PlanetProperties>();
+        VRplanetProperties = gameObject.GetComponent<VRPlanetProperties>();
 
         celNumber = -1;
         currentCamera = HMDCamera;
@@ -122,10 +122,10 @@ public class VRCamSwitch : MonoBehaviour
 
             if (!Input.GetKeyDown(KeyCode.Mouse1))
             {
-                currentCamera.transform.LookAt(gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform);
-                currentCamera = focusCamera;
-                currentCamera.SetActive(true);
-                HMDCamera.SetActive(false);
+                focusCamera.transform.LookAt(gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform);
+                //currentCamera = focusCamera;
+                //currentCamera.SetActive(true);
+                //HMDCamera.SetActive(false);
 
                 objectPosition = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.position;
                 objectScale = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.lossyScale;
@@ -134,19 +134,19 @@ public class VRCamSwitch : MonoBehaviour
 
             currentCamera.transform.position = objectPosition + offset;
 
-            if (planetProperties.massInput.isFocused == false)
+            if (VRplanetProperties.massInput.isFocused == false)
             {
-                planetProperties.massInput.text = simulation.celestials[celNumber].GetComponent<Rigidbody>().mass.ToString();
+                VRplanetProperties.massInput.text = simulation.celestials[celNumber].GetComponent<Rigidbody>().mass.ToString();
             }
 
-            if (planetProperties.velocityInput.isFocused == false)
+            if (VRplanetProperties.velocityInput.isFocused == false)
             {
-                planetProperties.velocityInput.text = simulation.celestials[celNumber].GetComponent<Rigidbody>().velocity.magnitude.ToString();
+                VRplanetProperties.velocityInput.text = simulation.celestials[celNumber].GetComponent<Rigidbody>().velocity.magnitude.ToString();
             }
 
-            if (planetProperties.radiusInput.isFocused == false)
+            if (VRplanetProperties.radiusInput.isFocused == false)
             {
-                planetProperties.radiusInput.text = (simulation.celestials[celNumber].transform.GetChild(0).GetComponent<Transform>().localScale.x).ToString();
+                VRplanetProperties.radiusInput.text = (simulation.celestials[celNumber].transform.GetChild(0).GetComponent<Transform>().localScale.x).ToString();
             }
         }
 

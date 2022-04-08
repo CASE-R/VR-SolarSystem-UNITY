@@ -30,45 +30,60 @@ public class VRDistanceDisplay : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate() //use this for any motion related calculation since it takes into account the timeScale
     {
-        
-        if (VRCamSwitch.celNumber == -1)
-        {
-            thisFramePos = freeCam.transform.position;
+        thisFramePos = freeCam.transform.position;
 
-            velocity = Vector3.Distance(thisFramePos, lastFramePos) / (0.02f);
+        velocity = Vector3.Distance(thisFramePos, lastFramePos) / (0.02f);
 
-            xdistance = (sun.transform.position.x - thisFramePos.x) / 100;
-            ydistance = (sun.transform.position.y - thisFramePos.y) / 100;
-            zdistance = (sun.transform.position.z - thisFramePos.z) / 100;
+        xdistance = (sun.transform.position.x - thisFramePos.x) / 100;
+        ydistance = (sun.transform.position.y - thisFramePos.y) / 100;
+        zdistance = (sun.transform.position.z - thisFramePos.z) / 100;
 
-            gameObject.GetComponent<Text>().text = ("Coordinates from sun:\nX: "
-                                                    + xdistance.ToString("n4") + " AU\nY: "
-                                                    + ydistance.ToString("n4") + " AU\nZ: "
-                                                    + zdistance.ToString("n4") + "AU\n"
-                                                    + "\nCurrent velocity: " + (velocity * 149.598073 / 100).ToString("n3") + "million km/in game second");
-            lastFramePos = freeCam.transform.position;
-        }
-        else
-        {
-            thisFramePos = simulation.celestials[VRCamSwitch.celNumber].transform.position;
+        gameObject.GetComponent<Text>().text = ("Coordinates from sun:\nX: "
+                                                + xdistance.ToString("n4") + " AU\nY: "
+                                                + ydistance.ToString("n4") + " AU\nZ: "
+                                                + zdistance.ToString("n4") + "AU\n"
+                                                + "\nCurrent velocity: " + (velocity * 149.598073 / 100).ToString("n3") + "million km/in game second");
+        lastFramePos = freeCam.transform.position;
 
-            if (thisFramePos != lastFramePos)
-            {
 
-                velocity = Vector3.Distance(thisFramePos, lastFramePos) / (0.02f);
+        //if (VRCamSwitch.celNumber == -1)
+        //{
+        //    thisFramePos = freeCam.transform.position;
 
-                xdistance = (sun.transform.position.x - thisFramePos.x) / 100;
-                ydistance = (sun.transform.position.y - thisFramePos.y) / 100;
-                zdistance = (sun.transform.position.z - thisFramePos.z) / 100;
+        //    velocity = Vector3.Distance(thisFramePos, lastFramePos) / (0.02f);
 
-                gameObject.GetComponent<Text>().text = ("Coordinates from sun:\nX: "
-                                                        + xdistance.ToString("n4") + " AU\nY: "
-                                                        + ydistance.ToString("n4") + " AU\nZ: "
-                                                        + zdistance.ToString("n4") + "AU\n"
-                                                        + "\nCurrent velocity: " + (velocity * 149.598073 / 100).ToString("n3") + "million km/in game second");
-            }
-            lastFramePos = simulation.celestials[VRCamSwitch.celNumber].transform.position;
-        }
-        
+        //    xdistance = (sun.transform.position.x - thisFramePos.x) / 100;
+        //    ydistance = (sun.transform.position.y - thisFramePos.y) / 100;
+        //    zdistance = (sun.transform.position.z - thisFramePos.z) / 100;
+
+        //    gameObject.GetComponent<Text>().text = ("Coordinates from sun:\nX: "
+        //                                            + xdistance.ToString("n4") + " AU\nY: "
+        //                                            + ydistance.ToString("n4") + " AU\nZ: "
+        //                                            + zdistance.ToString("n4") + "AU\n"
+        //                                            + "\nCurrent velocity: " + (velocity * 149.598073 / 100).ToString("n3") + "million km/in game second");
+        //    lastFramePos = freeCam.transform.position;
+        //}
+        //else
+        //{
+        //    thisFramePos = simulation.celestials[VRCamSwitch.celNumber].transform.position;
+
+        //    if (thisFramePos != lastFramePos)
+        //    {
+
+        //        velocity = Vector3.Distance(thisFramePos, lastFramePos) / (0.02f);
+
+        //        xdistance = (sun.transform.position.x - thisFramePos.x) / 100;
+        //        ydistance = (sun.transform.position.y - thisFramePos.y) / 100;
+        //        zdistance = (sun.transform.position.z - thisFramePos.z) / 100;
+
+        //        gameObject.GetComponent<Text>().text = ("Coordinates from sun:\nX: "
+        //                                                + xdistance.ToString("n4") + " AU\nY: "
+        //                                                + ydistance.ToString("n4") + " AU\nZ: "
+        //                                                + zdistance.ToString("n4") + "AU\n"
+        //                                                + "\nCurrent velocity: " + (velocity * 149.598073 / 100).ToString("n3") + "million km/in game second");
+        //    }
+        //    lastFramePos = simulation.celestials[VRCamSwitch.celNumber].transform.position;
+        //}
+
     }
 }
