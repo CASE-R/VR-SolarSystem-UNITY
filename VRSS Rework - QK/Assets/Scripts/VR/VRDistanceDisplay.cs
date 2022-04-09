@@ -42,7 +42,7 @@ public class VRDistanceDisplay : MonoBehaviour
                                                 + xdistance.ToString("n4") + " AU\nY: "
                                                 + ydistance.ToString("n4") + " AU\nZ: "
                                                 + zdistance.ToString("n4") + "AU\n"
-                                                + "\nCurrent velocity: " + (velocity * 149.598073 / 100).ToString("n3") + "million km/in game second");
+                                                + "\nCurrent velocity: " + (velocity * 149.598073 / 100).ToString("n3") + "million km/realtime sec");
         lastFramePos = freeCam.transform.position;
 
 

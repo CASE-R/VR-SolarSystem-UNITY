@@ -19,10 +19,7 @@ public class VRCamSwitch : MonoBehaviour
     public Dropdown celestialMenu;
     SimulationScript simulation;
     VRPlanetProperties VRplanetProperties;
-    BodyProperties bodyProperties;
 
-    Vector3 previousPosition;
-    float distanceToTarget;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +28,7 @@ public class VRCamSwitch : MonoBehaviour
         simulation = gameObject.GetComponent<SimulationScript>();
         VRplanetProperties = gameObject.GetComponent<VRPlanetProperties>();
 
+        // Initialises VR player view
         celNumber = -1;
         currentCamera = HMDCamera;
         HMDCamera.SetActive(true);
@@ -38,16 +36,9 @@ public class VRCamSwitch : MonoBehaviour
 
     }
 
+    // Update is called once per frame
     void Update()
     {
-        //// Enables FreeCam on WASD Input
-        //if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
-        //{
-        //    celNumber = -1;
-        //    currentCamera = HMDCamera;
-        //    HMDCamera.SetActive(true);
-        //}
-
         // Switches between celestial bodies using Ctrl + < or > keys
         if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftCommand) || Input.GetKey(KeyCode.RightCommand))
         {
@@ -63,51 +54,15 @@ public class VRCamSwitch : MonoBehaviour
             }
         }
 
-        if (gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value == 0) // Focus onto celestial[celNumber] for smaller timeframes at faster rate
+        if (gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value == 0) // Speeds up update rate for focusCam in seconds/sec timeframe
         {
             UpdateFocusCamera();
         }
-
-        //if (celNumber > -1)
-        //{ // Taken from: https://emmaprats.com/p/how-to-rotate-the-camera-around-an-object-in-unity3d/
-        //    if (Input.GetMouseButtonDown(1))
-        //    {
-        //        previousPosition = currentCamera.GetComponent<Camera>().ScreenToViewportPoint(Input.mousePosition);
-        //    }
-        //    else if (Input.GetMouseButton(1))
-        //    {
-        //        Vector3 newPosition = currentCamera.GetComponent<Camera>().ScreenToViewportPoint(Input.mousePosition);
-        //        Vector3 direction = previousPosition - newPosition;
-        //        distanceToTarget = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.lossyScale.x * simulation.celestials[celNumber].transform.GetChild(0).GetComponent<Transform>().localScale.x * 2f; // Multiplying by localScale.x allows camera to scale outwards when radius is changed via UI
-
-        //        float rotationAroundYAxis = -direction.x * 180; // camera moves horizontally
-        //        float rotationAroundXAxis = direction.y * 180; // camera moves vertically
-
-        //        currentCamera.transform.position = simulation.celestials[celNumber].transform.position;
-
-        //        currentCamera.transform.Rotate(new Vector3(1, 0, 0), rotationAroundXAxis);
-        //        currentCamera.transform.Rotate(new Vector3(0, 1, 0), rotationAroundYAxis, Space.World); // <— This is what makes it work!
-
-        //        currentCamera.transform.Translate(new Vector3(0, 0, -distanceToTarget));
-
-        //        previousPosition = newPosition;
-        //    }
-
-        //}
-
-
-
     }
-    // Update is called once per frame
+
+    
     void FixedUpdate()
     {
-
-        // Updates Position and Rotation of FreeCam
-        if (currentCamera != HMDCamera)
-        {
-            HMDCamera.transform.position = currentCamera.transform.position;
-            HMDCamera.transform.rotation = currentCamera.transform.rotation;
-        }
 
         if (gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value != 0) // Focus onto celestial[celNumber] in faster timeframes
         {
