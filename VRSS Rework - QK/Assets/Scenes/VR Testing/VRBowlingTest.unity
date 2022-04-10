@@ -8512,6 +8512,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SphereBody (Grabbable)
       objectReference: {fileID: 0}
+    - target: {fileID: 3161072666194441934, guid: 1388b2533fae7914a87c7429d2d8a2f3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3747094288727049703, guid: 1388b2533fae7914a87c7429d2d8a2f3, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -8632,6 +8636,22 @@ PrefabInstance:
     - target: {fileID: 5506105967767363832, guid: 29dc3f5952140944ba6189fe2e2d1004, type: 3}
       propertyPath: speed
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506105969126718064, guid: 29dc3f5952140944ba6189fe2e2d1004, type: 3}
+      propertyPath: m_MoveObjectIn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506105969126718064, guid: 29dc3f5952140944ba6189fe2e2d1004, type: 3}
+      propertyPath: m_MoveObjectOut
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506105969126718064, guid: 29dc3f5952140944ba6189fe2e2d1004, type: 3}
+      propertyPath: m_RotateAnchorLeft
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506105969126718064, guid: 29dc3f5952140944ba6189fe2e2d1004, type: 3}
+      propertyPath: m_RotateAnchorRight
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29dc3f5952140944ba6189fe2e2d1004, type: 3}

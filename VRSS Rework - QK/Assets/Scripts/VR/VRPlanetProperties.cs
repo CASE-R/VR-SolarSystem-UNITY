@@ -39,7 +39,12 @@ public class VRPlanetProperties : MonoBehaviour
         simulation.celestials[VRCamSwitch.celNumber].GetComponent<Rigidbody>().mass = 0f;
         simulation.celestials[VRCamSwitch.celNumber].GetComponent<Rigidbody>().velocity = Vector3.zero;
         simulation.celestials[VRCamSwitch.celNumber].transform.GetChild(0).gameObject.GetComponent<Renderer>().enabled = false;
-        VRCamSwitch.celNumber = -1;
+        simulation.celestials[VRCamSwitch.celNumber].transform.GetChild(0).gameObject.GetComponent<SphereCollider>().enabled = false;
+        simulation.celestials[VRCamSwitch.celNumber].GetComponentInChildren<TrailRenderer>().enabled = false;
+        simulation.celestials[VRCamSwitch.celNumber].GetComponentInChildren<Light>().enabled = false;
+        simulation.celestials[VRCamSwitch.celNumber].GetComponentInChildren<ParticleSystem>().gameObject.SetActive(false);
+        simulation.celestials[VRCamSwitch.celNumber].GetComponentInChildren<ParticleSystemForceField>().gameObject.SetActive(false);
+        VRCamSwitch.celNumber = 0;
     }
 
     public void ChangeMass()

@@ -78,7 +78,7 @@ public class BodyProperties : MonoBehaviour
 
 
         // Below contains the main properties to be updated
-        if (parentObj.CompareTag("Celestial") || gameObject.name == "Sun")
+        if (parentObj.CompareTag("Celestial") || gameObject.name == "Sun" || gameObject.name.Contains("Grabbable Celestial"))
         {
             gameObject.GetComponent<Rigidbody>().mass = mass;
             gameObject.GetComponent<Transform>().localScale = new Vector3(volumetricMeanRadius, volumetricMeanRadius, volumetricMeanRadius) * 2f; // Radius of Sphere is 0.5 Scale/Diameter, and we are treating these as perfect spheres
