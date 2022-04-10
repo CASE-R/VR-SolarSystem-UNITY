@@ -36,9 +36,17 @@ public class PlanetProperties : MonoBehaviour
 
     public void RemovePlanet()
     {
+        GameObject SphereChildObject = simulation.celestials[cameraFocus.celNumber].transform.GetChild(0).gameObject;
         simulation.celestials[cameraFocus.celNumber].GetComponent<Rigidbody>().mass = 0;
-        simulation.celestials[cameraFocus.celNumber].transform.GetChild(0).gameObject.GetComponent<Renderer>().enabled = false;
-        simulation.celestials[cameraFocus.celNumber].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
+        SphereChildObject.GetComponent<Renderer>().enabled = false;
+        for (int i = 0; i < SphereChildObject.transform.childCount; i++)
+        {
+            SphereChildObject.transform.GetChild(i).GetComponent<Renderer>().enabled = false;
+        }
+        simulation.celestials[cameraFocus.celNumber].GetComponentInChildren<TrailRenderer>().enabled = false;
+
+        //simulation.celestials[cameraFocus.celNumber].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
+        simulation.celestials[cameraFocus.celNumber].GetComponent<Rigidbody>().velocity = Vector3.zero;
         cameraFocus.celNumber = -1;
     }
 
