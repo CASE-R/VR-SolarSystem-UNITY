@@ -13,16 +13,28 @@ public class CameraFocus : MonoBehaviour
     public GameObject currentCamera;
     public int celNumber;
 
+    /// <summary>
+    /// Focused GameObject's position as Vector3
+    /// </summary>
     public Vector3 objectPosition;
+
+    /// <summary>
+    /// Focused GameObject's GLOBAL scale as Vector3
+    /// </summary>
     public Vector3 objectScale;
+
+    /// <summary>
+    /// Offset as Vector3 that the focusCamera is placed away from the focused object
+    /// </summary>
+    public Vector3 offset;
 
     public Dropdown celestialMenu;
     SimulationScript simulation;
     PlanetProperties planetProperties;
-    BodyProperties bodyProperties;
 
     Vector3 previousPosition;
     float distanceToTarget;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,9 +45,12 @@ public class CameraFocus : MonoBehaviour
 
     }
 
-        void Update()
+    // Update is called once per frame
+    void Update()
     {        
-        // Enables FreeCam on WASD Input
+        ///
+        /// Activates FreeCam on WASD input
+        /// 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
         {
             celNumber = -1;
@@ -46,28 +61,36 @@ public class CameraFocus : MonoBehaviour
             focusCamera.SetActive(false);
         }
 
-        // Switches between celestial bodies using Ctrl + < or > keys
+        ///
+        /// FocusCam switch on 'Ctrl' + '<' or '>' input
+        /// 
         if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftCommand) || Input.GetKey(KeyCode.RightCommand))
         {
-            if (Input.GetKeyDown(KeyCode.Comma) && celNumber > -1) // uses '<'
+            if (Input.GetKeyDown(KeyCode.Comma) && celNumber > -1) // uses '<' to switch backwards in celestials[]
             {
                 celNumber--;
                 celestialMenu.value = celNumber;
             }
-            if (Input.GetKeyDown(KeyCode.Period) && celNumber < gameObject.GetComponent<SimulationScript>().celestials.Length - 1) // uses '>'
+            if (Input.GetKeyDown(KeyCode.Period) && celNumber < gameObject.GetComponent<SimulationScript>().celestials.Length - 1) // uses '>' to switch forwards in in celestials[]
             {
                 celNumber++;
                 celestialMenu.value = celNumber;
             }
         }
 
-        if (gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value == 0 && celNumber > -1) // Focus onto celestial[celNumber] for smaller timeframes at faster rate
+        ///
+        /// Increase rate of UpdateFocusCamera() in smaller timeframes (seconds/realtime second)
+        ///
+        if (gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value == 0 && celNumber > -1) // Focus onto celestial[celNumber] for smaller timeframes at faster rate as timeScale affects effective rate of FixedUpdate(). The value we set is in terms of scaledTime
         {
             UpdateFocusCamera();
         }
 
+        ///
+        /// Rotate FocusCam around planet
+        /// 
         if (celNumber > -1)
-        { // Taken from: https://emmaprats.com/p/how-to-rotate-the-camera-around-an-object-in-unity3d/
+        { // Taken from: https://emmaprats.com/p/how-to-rotate-the-camera-around-an-object-in-unity3d/ and edited to match needs
             if (Input.GetMouseButtonDown(1))
             {
                 previousPosition = currentCamera.GetComponent<Camera>().ScreenToViewportPoint(Input.mousePosition);
@@ -93,33 +116,37 @@ public class CameraFocus : MonoBehaviour
 
         }
 
-
-
     }
-    // Update is called once per frame
+
     void FixedUpdate()
     {
 
-        // Updates Position and Rotation of FreeCam
-        if (currentCamera != freeCamera)
+        ///
+        /// Update Position and Rotation of FreeCam in focus mode
+        /// 
+        if (currentCamera != freeCamera) // i.e currentCamera = focusCamera
         {
             freeCamera.transform.position = currentCamera.transform.position;
             freeCamera.transform.rotation = currentCamera.transform.rotation;
         }
 
-        if (gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value != 0) // Focus onto celestial[celNumber] in faster timeframes
+        ///
+        /// Update Position and Rotation of FocusCam in focus mode at rate = Time.fixedDeltaTime
+        /// 
+        if (gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value != 0 && !Input.GetKey(KeyCode.Mouse1)) // Focus onto celestial[celNumber] in faster timeframes
         {
             UpdateFocusCamera();
         }
 
     }
 
+    /// <summary>
+    /// Updates FocusCamera position, rotation and state when necessary. UI info fields are also updated here.
+    /// </summary>
     public void UpdateFocusCamera()
     {
         if (celNumber >-1)
         {
-            Vector3 offset = 5f * objectScale;
-
             if (!Input.GetKeyDown(KeyCode.Mouse1))
             {
                 currentCamera.transform.LookAt(gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform);
@@ -130,9 +157,11 @@ public class CameraFocus : MonoBehaviour
                 objectPosition = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.position;
                 objectScale = gameObject.GetComponent<SimulationScript>().celestials[celNumber].transform.lossyScale;
                 offset = objectScale * simulation.celestials[celNumber].transform.GetChild(0).GetComponent<Transform>().localScale.x * 2f; // Multiplying by localScale.x allows camera to scale outwards when radius is changed via UI
+
+                currentCamera.transform.position = objectPosition + offset;
             }
 
-            currentCamera.transform.position = objectPosition + offset;
+            
 
             if (planetProperties.massInput.isFocused == false)
             {
