@@ -304,6 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 818d83c5565e14448915970687c75eff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  systemObj: {fileID: 0}
   parentObj: {fileID: 0}
   volumetricMeanRadius: 0.5
   mass: 1
@@ -312,6 +313,8 @@ MonoBehaviour:
   periapsis: 0
   apoapsis: 0
   orbitalPeriod: 6.2831855
+  periapsisLocal: 0
+  apoapsisLocal: 0
   semiMajor: 0
   eccentricity: NaN
   angularMomentum: {x: 0, y: 0, z: 0}

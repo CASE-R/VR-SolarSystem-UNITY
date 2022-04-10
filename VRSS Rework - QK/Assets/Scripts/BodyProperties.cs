@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class BodyProperties : MonoBehaviour
 {
-    GameObject systemObj;
-    public GameObject parentObj;
+    SimulationScript simScript;
+    
+    [Tooltip("The Empty GameObject which the Solar System simulation runs from")]
+    public GameObject systemObj; // This is searched for later on by name
 
+    [Tooltip("The GameObject that this object is attached to")]
+    public GameObject parentObj;
 
     [Header("Rigid Body Parameters")]
 
-    [Tooltip("(Scaled) Radius of Sphere = Half of Scale Component")]
+    [Tooltip("('Scaled') Radius of Sphere = Half of Scale Component")]
     public float volumetricMeanRadius; // Celestial Size/Radius
 
     [Tooltip("Mass of Body in Earth Masses.")]
@@ -22,29 +26,30 @@ public class BodyProperties : MonoBehaviour
     [Tooltip("The angle between the body's equator and the body's orbital plane, with north defined by the right - hand rule. (J2000).")]
     public float obliquityToOrbit;
 
-    [Header("Orbital Parameters")]
+    [Header("Orbital Parameters (Input)")]
     [Tooltip("Closest distance between body and host.")]
     public float periapsis; // Closest orbital distance to host
     [Tooltip("Furthest distance between body and host.")]
     public float apoapsis; // Furthest orbital distance to host
-    [Tooltip("")]
+    [Tooltip("Calculated time taken in realtime seconds to orbit around the host")]
     public float orbitalPeriod; // Time taken in realtime seconds to orbit around the host
 
     [Header("Shape (Read Only)")]
+    public float periapsisLocal;
+    public float apoapsisLocal;
     public float semiMajor;
     public float eccentricity;
 
     [Tooltip("Vector components of the Specific Angular Momentum, a perpendicular vector to the orbital plane.")]
     public Vector3 angularMomentum; // Calculated upon InitialVelocity calculation in SimulationScript.cs
 
-    [Header("Orientation")]
+    [Header("Orientation (Input)")]
     [Tooltip("The inclination of the orbit to the ecliptic, in degrees.")]
     public float inclination;
-
     public float rightAscension;
     public float argumentOfPeriapsis;
 
-    [Header("Value Checks (Don't need for calc)")]
+    [Header("Value Checks (Read Only)")]
     public float dotProductOfVelAndRadial;
     public float dotProductOfAngMomAndVel;
 
@@ -67,43 +72,40 @@ public class BodyProperties : MonoBehaviour
         {
             parentObj = null;
         }
+
         systemObj = GameObject.Find("System");
+        simScript = systemObj.GetComponent<SimulationScript>();
+
+
+        // Below contains the main properties to be updated
         if (parentObj.CompareTag("Celestial") || gameObject.name == "Sun")
         {
             gameObject.GetComponent<Rigidbody>().mass = mass;
-            gameObject.GetComponent<Transform>().localScale = new Vector3(volumetricMeanRadius, volumetricMeanRadius, volumetricMeanRadius) * 2f; // Radius of Sphere is 0.5 Scale/Diameter
+            gameObject.GetComponent<Transform>().localScale = new Vector3(volumetricMeanRadius, volumetricMeanRadius, volumetricMeanRadius) * 2f; // Radius of Sphere is 0.5 Scale/Diameter, and we are treating these as perfect spheres
+
+            periapsisLocal = periapsis * parentObj.transform.lossyScale.x;
+            apoapsisLocal = apoapsis * parentObj.transform.lossyScale.x;
 
 
-            semiMajor = 0.5f * (periapsis + apoapsis);
+            semiMajor = 0.5f * (periapsisLocal + apoapsisLocal); // Same as saying 2a = r_P + r_A as explained in report/notes etc.
 
-            eccentricity = -1f * (periapsis - apoapsis) / (periapsis + apoapsis);
+            eccentricity = (apoapsis - periapsis) / (periapsis + apoapsis); // Changed 09/04/22 to match derivations
 
+            angularMomentum = Quaternion.Euler(0, rightAscension, inclination) * Vector3.up; // Rotates specific angular momentum vector from the initial 'up' (Y) position (which comes from first setting the positions of bodies in the XZ plane)
 
-            orbitalPeriod = Mathf.Sqrt(4 * Mathf.PI * Mathf.PI * (semiMajor * parentObj.transform.lossyScale.x) * (semiMajor * gameObject.transform.parent.lossyScale.x) * (semiMajor * gameObject.transform.parent.lossyScale.x) / (1f));
+            Vector3 posVectorResult = Quaternion.Euler(0, 0, inclination) * Quaternion.Euler(0, rightAscension, 0) * Quaternion.AngleAxis(argumentOfPeriapsis, angularMomentum) * new Vector3(periapsis, 0, 0); // transforms/rotates periapsis position vector to not be aligned in the XZ plane with other celestials
+            initDirection = Quaternion.Euler(0, 0, inclination) * Quaternion.Euler(0, rightAscension, 0) * Quaternion.AngleAxis(argumentOfPeriapsis, angularMomentum) * Vector3.forward; // applies same transform/rotation as applied to periapsis rotation vector where velocity was originally in 'forward' direction (used in SimulationScript.cs)
+
+            if (parentObj.CompareTag("Celestial"))
+            {
+                orbitalPeriod = Mathf.Sqrt(4 * Mathf.Pow(Mathf.PI, 2) * Mathf.Pow((semiMajor), 3f) / (simScript.gravitationalConstant * (mass + parentObj.GetComponent<Rigidbody>().mass)));
+            }
+            else 
+            { 
+                orbitalPeriod = 0;
+            }
 
             Vector3 radDist = parentObj.transform.position - gameObject.transform.position;
-
-
-            /// <summary>
-            /// From Unity Cartesian to Spherical
-            /// x = rho * sin(phi) * cos(theta)
-            /// z = rho * sin(phi) * sin(theta)
-            /// y = rho * cos(phi)
-            /// rho = distance btwn point and origin
-            /// theta = angle in XZ plane
-            /// phi = angle from positive y to rho line = 90 - inclination
-            /// </summary>
-
-            // Next 2 lines will give the orbital inclination of the planet, rotating along the z-axis once setting initial position
-            //Vector3 posVectorInclined = Quaternion.Euler(0, 0, inclination) * new Vector3(periapsis, 0, 0);
-            //Vector3 posVectorInclinedRotateY = Quaternion.Euler(0, rightAscension, 0) * posVectorInclined;
-
-            //Vector3 posVectorResult = Quaternion.AngleAxis(argumentOfPeriapsis, angularMomentum) * posVectorInclinedRotateY;
-
-            angularMomentum = Quaternion.Euler(0, rightAscension, inclination) * Vector3.up; // Rotates specific angular momentum vector from the initial 'up' position
-
-            Vector3 posVectorResult = Quaternion.Euler(0, 0, inclination) * Quaternion.Euler(0, rightAscension, 0) * Quaternion.AngleAxis(argumentOfPeriapsis, angularMomentum) * new Vector3(periapsis, 0, 0); // transfroms/rotates periapsis position vector
-            initDirection = Quaternion.Euler(0, 0, inclination) * Quaternion.Euler(0, rightAscension, 0) * Quaternion.AngleAxis(argumentOfPeriapsis, angularMomentum) * Vector3.forward; // applies same transform/rotation as applied to periapsis rotation vector where velocity was originally in 'forward' direction (used in SimulationScript.cs)
 
 
             gameObject.transform.localPosition = posVectorResult;

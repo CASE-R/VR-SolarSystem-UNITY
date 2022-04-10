@@ -130,9 +130,9 @@ public class SimulationScript : MonoBehaviour
                     // Below is the velocity script
                     float mass1 = parentObj.GetComponent<Rigidbody>().mass;
                     float mass2 = child.GetComponent<Rigidbody>().mass;
-                    float scaleMultiplier = parentObj.transform.lossyScale.x; // Using lossyScale gives 'global scale of the object chosen'. This replaces need to manually find product of scales of ancestors.
+                    //float scaleMultiplier = parentObj.transform.lossyScale.x; // Using lossyScale gives 'global scale of the object chosen'. This replaces need to manually find product of scales of ancestors.
 
-                    float semiMajor = child.GetComponent<BodyProperties>().semiMajor * (scaleMultiplier); // Transforms semiMajor input value from BodyProperties.cs to the correct Global value
+                    float semiMajor = child.GetComponent<BodyProperties>().semiMajor; // * (scaleMultiplier); // Transforms semiMajor input value from BodyProperties.cs to the correct Global value
 
                     float distance = Vector3.Distance(parentObj.transform.position, child.transform.position); //Radial Distance between 2-body. Doesn't need rescaling due to function of Vector3.Distance
                     //Vector3 radialDistance = parentObj.transform.position - child.transform.position;
