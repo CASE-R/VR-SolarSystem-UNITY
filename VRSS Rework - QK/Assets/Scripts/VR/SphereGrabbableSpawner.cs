@@ -16,14 +16,14 @@ public class SphereGrabbableSpawner : MonoBehaviour
     private bool isButtonPressed = false;
 
     VRCelestialSelector VRCelSel;
-    public GameObject VRCelSelDropDown;
+    public Dropdown VRCelSelDropDown;
     GameObject spawnedObj;
 
     // Start is called before the first frame update
     void Start()
     {
         VRCelSel = GetComponent<VRCelestialSelector>();
-        VRCelSelDropDown = VRCelSel.dropdown.gameObject;
+        VRCelSelDropDown = VRCelSel.GetComponent<Dropdown>();
         parent = gameObject;
     }
 
@@ -42,6 +42,10 @@ public class SphereGrabbableSpawner : MonoBehaviour
         cooldownResetTime = Time.time + spawnCooldown; // Updates time to compare cooldown to, which is set higher than Time.time for 'spawnCooldown' seconds
         spawnedObj = (GameObject)Instantiate(grabbablePreFab, spawnLocation.position + (2f * grabbablePreFab.transform.localScale), spawnLocation.rotation, parent.transform); // Creates object 2x radii of the object away
         spawnedObj.name = "Grabbable Celestial " + Time.time;
+
+        List<string> namesToAdd = new List<string> { spawnedObj.name };
+        VRCelSelDropDown.AddOptions(namesToAdd);
+
         gameObject.GetComponent<SimulationScript>().celestials = GameObject.FindGameObjectsWithTag("Celestial");
         Debug.Log("Spawned in grabbable PreFab");
     }
