@@ -49,7 +49,7 @@ public class VRKeypadScript : MonoBehaviour
                 keypad.SetActive(true);
             }
 
-            if (keypad.active && activeInputField != null)
+            if (keypad.activeInHierarchy && activeInputField != null)
             {
                 activeInputField.ActivateInputField();
             }

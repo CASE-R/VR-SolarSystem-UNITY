@@ -37,6 +37,7 @@ public class SimulationScript : MonoBehaviour
     //public float G = 0.08892541f;
 
     public GameObject[] celestials; // [Sun, Merc, Ven, Earth, Moon, Mars, Jup, Sat, Uran, Nep, Plut] are the main celestials
+    
     public GameObject[] particleSystems;
 
     // Start is called before the first frame update
@@ -78,8 +79,6 @@ public class SimulationScript : MonoBehaviour
             //initialFixedTimeStep = 0.02f;
             //Time.fixedDeltaTime = initialFixedTimeStep;
         }
-        
-
 
         timeStart += Time.deltaTime; // Used for an in-editor runtime counter
 
