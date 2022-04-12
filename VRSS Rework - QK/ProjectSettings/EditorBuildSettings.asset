@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/MainScene LARGE VR.unity
+    guid: 99893210022a3f540828b57ac0d2269a
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 14ceb5165baae3c429f83469f06ca998, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 93dcb53e0f1a2414694103a14a7bd0f9, type: 2}
