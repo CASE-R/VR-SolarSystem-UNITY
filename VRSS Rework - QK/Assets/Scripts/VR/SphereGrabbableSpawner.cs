@@ -77,7 +77,7 @@ public class SphereGrabbableSpawner : MonoBehaviour
     }
     private bool CooledDown()
     {
-        return Time.time >= cooldownResetTime; // True whenever the cooldown has happened
+        return Time.time > cooldownResetTime; // True whenever the cooldown has happened
     }
 
     public void SpawnButtonPressed() // Tied to a button which runs this on activation
