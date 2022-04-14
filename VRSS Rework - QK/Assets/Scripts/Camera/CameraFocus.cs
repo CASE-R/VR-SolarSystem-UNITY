@@ -32,6 +32,9 @@ public class CameraFocus : MonoBehaviour
     SimulationScript simulation;
     PlanetProperties planetProperties;
 
+    public Text massUnit;
+    public Text radiusUnit;
+
     Vector3 previousPosition;
     float distanceToTarget;
 
@@ -43,6 +46,8 @@ public class CameraFocus : MonoBehaviour
         simulation = gameObject.GetComponent<SimulationScript>();
         planetProperties = gameObject.GetComponent<PlanetProperties>();
 
+        celNumber = 0;
+        UpdatePlanetPropertyUnits();
     }
 
     // Update is called once per frame
@@ -180,6 +185,12 @@ public class CameraFocus : MonoBehaviour
         }
 
         
+    }
+
+    public void UpdatePlanetPropertyUnits()
+    {
+        massUnit.text = simulation.celestials[celNumber].name + "\nmasses";
+        radiusUnit.text = simulation.celestials[celNumber].name + "\nradii";
     }
 
 }
