@@ -21,6 +21,9 @@ public class VRCelestialSelector : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Method called to set the celestial number to the value in the dropdown menu which are indexed accordingly, just like the non-VR version with the exception of a seperate FreeCam as the User is perpetually in a FreeCam mode.
+    /// </summary>
     public void UpdateCelNumber()
     {
         VRCamSwitch.celNumber = dropdown.GetComponent<Dropdown>().value;

@@ -46,7 +46,7 @@ public class DistanceDisplay : MonoBehaviour
                                                     + xdistance.ToString("n4") + " AU\nY: "
                                                     + ydistance.ToString("n4") + " AU\nZ: "
                                                     + zdistance.ToString("n4") + "AU\n"
-                                                    + "\nCurrent velocity: " + (velocity * 149.598073 / 100).ToString("n3") + "million km/in game second");
+                                                    + "\nCurrent velocity: " + (velocity * 149.598073 / 100).ToString("n3") + "million km/realtime sec");
             //All the distances are formatted as strings to 4 decimal places, velocity converted from 100v AU/s to millions of km/s
             lastFramePos = freeCam.transform.position;
             //After all the calculations are done, lastFramePos can be updated as it's now the end of the frame

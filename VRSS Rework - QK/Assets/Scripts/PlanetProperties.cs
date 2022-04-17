@@ -24,7 +24,7 @@ public class PlanetProperties : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //whevener not in freeCam (in other words: when focused on a celestial):
+        //whenever not in freeCam (in other words: when focused on a celestial):
         //we want to show the properties menu
         if (cameraFocus.celNumber > -1)
         {

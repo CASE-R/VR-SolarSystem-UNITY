@@ -5,7 +5,8 @@ using UnityEngine.XR;
 using Unity.XR.CoreUtils;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class VRContinuousMovement : MonoBehaviour //https://www.youtube.com/watch?v=5NRTT8Tbmoc&list=PLrk7hDwk64-a_gf7mBBduQb3PEBYnG4fU&index=5
+public class VRContinuousMovement : MonoBehaviour 
+    // Based off Valem's VR Tutorial Playlist, Video 4: https://www.youtube.com/watch?v=5NRTT8Tbmoc&list=PLrk7hDwk64-a_gf7mBBduQb3PEBYnG4fU&index=5 and this thread: https://answers.unity.com/questions/1700053/how-to-walk-in-the-direction-the-player-is-looking.html
 {
     public XRNode inputSourceLeft;
     public XRNode inputSourceRight;
@@ -38,6 +39,7 @@ public class VRContinuousMovement : MonoBehaviour //https://www.youtube.com/watc
     // Update is called once per frame
     void Update()
     {
+        
         InputDevice deviceLeft = InputDevices.GetDeviceAtXRNode(inputSourceLeft);
         InputDevice deviceRight = InputDevices.GetDeviceAtXRNode(inputSourceRight);
 
@@ -54,7 +56,7 @@ public class VRContinuousMovement : MonoBehaviour //https://www.youtube.com/watc
         character.Move(direction * ((speed * rightTriggerValue) + (speed * (1 - leftTriggerValue)))); // Applies motion, this is however affected by timeScale
 
 
-        // Vertical movement independent of look direction
+        // Vertical movement independent of look direction. leftStick gives downwards movement with speed in opposite (negative) direction to rightStick which gives upwards movement
         if (leftStickPressed)
         {
             character.Move(Vector3.up * -speed * Time.unscaledDeltaTime);

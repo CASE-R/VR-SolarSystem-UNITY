@@ -3,22 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SphereGrabbableSpawner : MonoBehaviour
+public class SphereGrabbableSpawner : MonoBehaviour // Modelled off this video: https://www.youtube.com/watch?v=9KOHclqSmR4 and customised for personal use
 {
+    [Tooltip("PreFab that is used for instantiating a grabbable object.")]
     public GameObject grabbablePreFab;
+    [Tooltip("GameObject used to use as the instantiated object.")]
     public GameObject parent;
+    [Tooltip("Transform used to spawn relative to. Typically set to whatever object to spawn in front of the player.")]
     public Transform spawnLocation;
-    
+
+    [Tooltip("How long a delay there is in seconds before being able to instantiate a new object.")]
     public float spawnCooldown = 2f;
 
-    private float cooldownResetTime = 0f;
+    private float cooldownResetTime = 0f; // Used as part of the Cooldown system
 
-    private bool isButtonPressed = false;
+    private bool isButtonPressed = false; // Triggered by a UI Button press
 
     VRCelestialSelector VRCelSel;
     SimulationScript simulationScript;
+    [Tooltip("Dropdown menu used to list and select celestials. This is so it can be updated upon creating a new celestial.")]
     public Dropdown VRCelSelDropDown;
     GameObject spawnedObj;
+    [Tooltip("Used as a comparison to the original Celestial list in SimulationScript.cs")]
     public GameObject[] celestialArrayCheck; // Used for checking if celestials array updates
     private int celNewLength;
 
@@ -27,7 +33,7 @@ public class SphereGrabbableSpawner : MonoBehaviour
     {
         VRCelSel = GetComponent<VRCelestialSelector>();
         simulationScript = GetComponent<SimulationScript>();
-        parent = gameObject;
+        parent = gameObject; // This script is to be attached to the "System" GameObject used for a lot of the simulation settings
         celNewLength = simulationScript.celestials.Length;
         Debug.Log("CelNewLength is " + celNewLength);
     }
@@ -47,6 +53,9 @@ public class SphereGrabbableSpawner : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method used to update the Dropdown menu listing all active celestials by creating a new list from an array and refreshing the entire dropdown menu.
+    /// </summary>
     private void PopulateDropdown(Dropdown dropdownMenu, GameObject[] optionsArray)
     {
         List<string> options = new List<string>();
@@ -60,6 +69,9 @@ public class SphereGrabbableSpawner : MonoBehaviour
         Debug.Log("Updated Dropdown Menu");
     }
 
+    /// <summary>
+    /// Method used to create/instantiate a PreFab model that allows the addition of a celestial object that can be grabbed via VR input. Conditions and timers are reset here also.
+    /// </summary>
     private void Spawn()
     {
         spawnedObj = (GameObject)Instantiate(grabbablePreFab, spawnLocation.position + (2f * grabbablePreFab.transform.localScale), spawnLocation.rotation, parent.transform); // Creates object 2x radii of the object away
@@ -75,11 +87,17 @@ public class SphereGrabbableSpawner : MonoBehaviour
         Debug.Log("CelNewLength is " + celNewLength);
 
     }
+    /// <summary>
+    /// Method that checkes if enough time has passed to consider the instantiate button to have 'cooled down'.
+    /// </summary>
     private bool CooledDown()
     {
         return Time.time > cooldownResetTime; // True whenever the cooldown has happened
     }
 
+    /// <summary>
+    /// Method run upon UI Button press used as an indirect UI interaction event.
+    /// </summary>
     public void SpawnButtonPressed() // Tied to a button which runs this on activation
     {
         isButtonPressed = true;

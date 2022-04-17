@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
-public class HandPresence : MonoBehaviour
+public class HandPresence : MonoBehaviour // Taken from Valem's VR Tutorial Playlist, Video 2: https://www.youtube.com/watch?v=VdT0zMcggTQ NOT USED IN FINAL PROJECT
 {
 	public bool showController = false;
 	public InputDeviceCharacteristics controllerCharacteristics;
