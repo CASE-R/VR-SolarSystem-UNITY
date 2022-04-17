@@ -12,7 +12,7 @@ public class SimulationScript : MonoBehaviour
     [Range(0f, 100f)]
     [SerializeField] public float initialTimeScale = 1f;
     [Range(0.00000001f, 1f)]
-    [SerializeField] public float initialFixedTimeStep = 0.02f;
+    [SerializeField] public float initialFixedTimeStep = 0.02f; // Set's physics clock to update ~50 times a second
 
     public float timeUnitMultiplier = 1; // Depending on which time unit is chosen, the time will be adjusted. This sets default to Earth Days/second
 
@@ -33,17 +33,15 @@ public class SimulationScript : MonoBehaviour
     public float timeUnit = 1f;
     public float massUnit = 1f;
     public float lengthUnit = 100f;
-    
-    //public float G = 0.08892541f;
 
     public GameObject[] celestials; // [Sun, Merc, Ven, Earth, Moon, Mars, Jup, Sat, Uran, Nep, Plut] are the main celestials
     
-    public GameObject[] particleSystems;
+    public GameObject[] particleSystems; // Used to easily disable particles for faster timescales
 
     // Start is called before the first frame update
     public void Start()
     {
-        InitialVelocity(); // Executes Velocity method to give Celestials initial velocities to induce orbits
+        InitialVelocity(); // Executes Velocity method to give Celestials initial velocities to start orbits from initial conditions
        
         // Caps/Syncs Simulation FPS
         QualitySettings.vSyncCount = 0;
@@ -55,12 +53,12 @@ public class SimulationScript : MonoBehaviour
     }
     public void OnValidate()
     {
-        gravitationalConstant = 4f * Mathf.Pow(Mathf.PI / (365.26f), 2f) * Mathf.Pow(lengthUnit, 3f) * Mathf.Pow(massUnit * celestials[0].GetComponent<Rigidbody>().mass, -1f) * Mathf.Pow(timeUnit, -2f);
+        gravitationalConstant = 4f * Mathf.Pow(Mathf.PI / (365.26f), 2f) * Mathf.Pow(lengthUnit, 3f) * Mathf.Pow(massUnit * celestials[0].GetComponent<Rigidbody>().mass, -1f) * Mathf.Pow(timeUnit, -2f); // Calculates the G constant based off K3L using the custom Unity scale/units
 
         celestials = GameObject.FindGameObjectsWithTag("Celestial"); // Collates all GameObjects w/ "Celestial" tag into an array
-        particleSystems = GameObject.FindGameObjectsWithTag("ParticleSystem");
+        particleSystems = GameObject.FindGameObjectsWithTag("ParticleSystem"); // Collates any GameObjects w/ "ParticleSystem" tag like above. This is used specifically for particle systems or anything that should be treated as one
         
-        currentScene = SceneManager.GetActiveScene();
+        currentScene = SceneManager.GetActiveScene(); // As this script is used for multiple scenes during development, this is used later to reload the current active scene
 
     }
 
@@ -69,28 +67,18 @@ public class SimulationScript : MonoBehaviour
     {
         Time.timeScale = initialTimeScale * timeUnitMultiplier; // Scales time to run faster/slower at seconds/second, days/second or weeks/second
 
-        if (gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value == 0) // Check for seconds/second setting
-        {
-            //initialFixedTimeStep = timeUnitMultiplier; // increases physics update rate to match new timescale
-            //Time.fixedDeltaTime = timeUnitMultiplier; // Sets physUpdates to equal to realtimeSecond multiplier to simulate 1 Earth second/realtime second
-        }
-        if (gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value != 0) // This statement will reset updates to the default setting
-        {
-            //initialFixedTimeStep = 0.02f;
-            //Time.fixedDeltaTime = initialFixedTimeStep;
-        }
-
         timeStart += Time.deltaTime; // Used for an in-editor runtime counter
 
         updateInGameTimer();
     }
 
+    // FixedUpdate is called once per physics update
     void FixedUpdate()
     {
-        Gravity();
-        physTimeStart += Time.fixedDeltaTime; // USed for an in-editor runtime counter for physics clock
+        Gravity(); // Calls method to calculate gravitational forces between celestials
+        physTimeStart += Time.fixedDeltaTime; // Used for an in-editor runtime counter for physics clock
 
-        if ((initialTimeScale >= 2 && gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value == 1) || gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value == 2) // SetActive=false for asteroid belt in faster timescales
+        if ((initialTimeScale >= 2 && gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value == 1) || gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value == 2) // SetActive=false for asteroid belt (and other particle systems) in faster timescales
         {
             foreach (GameObject partSys in particleSystems)
             {
@@ -107,7 +95,11 @@ public class SimulationScript : MonoBehaviour
         }
     }
 
-    // Original Velocity Script for Elliptical orbits edited for parent-child systems. THIS SYSTEM ALLOWS FOR A GOOD MOON ORBIT
+    /// <summary>
+    /// Calculates velocity from initially set conditions in Editor and Vis Viva equation to be applied to celestial via RigidBody component.
+    /// </summary>
+    /// Modelled off the example in this video: https://www.youtube.com/watch?v=kUXskc76ud8
+    /// Heavily conditioned to be specific to the hierarchy put in place for elliptical orbits
     private void InitialVelocity()
     {
         foreach (GameObject parentObj in celestials) // Begin with the Sun, which we know is a 'parent'/'host'
@@ -127,23 +119,19 @@ public class SimulationScript : MonoBehaviour
                     Debug.Log("Child of " + parentObj + " is " + child);
 
                     // Below is the velocity script
-                    float mass1 = parentObj.GetComponent<Rigidbody>().mass;
-                    float mass2 = child.GetComponent<Rigidbody>().mass;
-                    //float scaleMultiplier = parentObj.transform.lossyScale.x; // Using lossyScale gives 'global scale of the object chosen'. This replaces need to manually find product of scales of ancestors.
+                    float mass1 = parentObj.GetComponent<Rigidbody>().mass; // Mass of the host body
+                    float mass2 = child.GetComponent<Rigidbody>().mass; // Mass of the satellite
 
-                    float semiMajor = child.GetComponent<BodyProperties>().semiMajor; // * (scaleMultiplier); // Transforms semiMajor input value from BodyProperties.cs to the correct Global value
+                    float semiMajor = child.GetComponent<BodyProperties>().semiMajor; // Transforms semiMajor input value from BodyProperties.cs to the correct Global value
 
                     float distance = Vector3.Distance(parentObj.transform.position, child.transform.position); //Radial Distance between 2-body. Doesn't need rescaling due to function of Vector3.Distance
-                    //Vector3 radialDistance = parentObj.transform.position - child.transform.position;
 
                     // Using original visViva
                     Vector3 parentObjVelocity = parentObj.GetComponent<Rigidbody>().velocity;
 
-                    Vector3 velocityDirection = child.GetComponent<BodyProperties>().initDirection; // Defines temporary vector direction for velocity at periapsis
+                    Vector3 velocityDirection = child.GetComponent<BodyProperties>().initDirection; // Defines temporary vector direction for velocity at periapsis from BodyProperties.cs
 
-                    //Debug.Log("Vel Direction: " + velocityDirection + " || " + "Rad Direction: " + radialDistance +" || " + "dotProd(radDist,angMoment): " + dotProduct + " || " + "angMoment: " + child.GetComponent<BodyProperties>().angularMomentum);
-
-                    child.GetComponent<Rigidbody>().velocity += parentObjVelocity + velocityDirection * Mathf.Sqrt((gravitationalConstant * (mass1 + mass2)) * ((2 / distance) - (1 / semiMajor))); // Adds required orbit velocity to host's velocity so it moves w/ correct relative velocity.
+                    child.GetComponent<Rigidbody>().velocity += parentObjVelocity + velocityDirection * Mathf.Sqrt((gravitationalConstant * (mass1 + mass2)) * ((2 / distance) - (1 / semiMajor))); // Gives celestial calculated velocity plus current velocity of host celestial so satellite moves correctly relative to host
 
                     Debug.Log("Distance is " + distance + " || " + "SemiMajor is " + semiMajor + " || " + "Velocity of " + child + " is " + child.GetComponent<Rigidbody>().velocity.magnitude + " || " + "Mass of Parent = " + mass1 + " Mass of Child = " + mass2);
                 }
@@ -153,27 +141,34 @@ public class SimulationScript : MonoBehaviour
         }
     }
 
-    // Calculates Gravitational Force of Attraction between 2 bodies
+    /// <summary>
+    /// Calculates Gravitational Force between 1 celestial and all other celestials in the array "celestials".
+    /// </summary>
+    /// Based off gravity method in this video: https://www.youtube.com/watch?v=kUXskc76ud8
     void Gravity()
     {
-        foreach (GameObject celestial1 in celestials)
+        foreach (GameObject celestial1 in celestials) // Chooses a celestial from celestial array
         {
-            foreach (GameObject celestial2 in celestials)
+            foreach (GameObject celestial2 in celestials) // Chooses another celestial to treat as a 'satellite' of celestial1 i.e. Sun-Planet, Planet-Moon etc.
             {
-                if (!celestial1.Equals(celestial2))
+                if (!celestial1.Equals(celestial2)) // Prevents calc error when calculating for force applied to itself (r=0 --> F = undefined)
                 {
-                    float mass1 = celestial1.GetComponent<Rigidbody>().mass;
-                    float mass2 = celestial2.GetComponent<Rigidbody>().mass;
+                    float mass1 = celestial1.GetComponent<Rigidbody>().mass; // Mass of BodyA
+                    float mass2 = celestial2.GetComponent<Rigidbody>().mass; // Mass of BodyB
 
-                    float distance = Vector3.Distance(celestial1.transform.position, celestial2.transform.position);
+                    float distance = Vector3.Distance(celestial1.transform.position, celestial2.transform.position); // Finds 'r' value, this is distance
 
-                    celestial1.GetComponent<Rigidbody>().AddForce((celestial2.transform.position - celestial1.transform.position).normalized * (gravitationalConstant * mass1 * mass2 / (distance * distance)));
+                    celestial1.GetComponent<Rigidbody>().AddForce((celestial2.transform.position - celestial1.transform.position).normalized * (gravitationalConstant * mass1 * mass2 / (distance * distance))); // Applies gravitational force to BodyA from BodyB. This sums up in the loop to create a resultant gravitational force from different celestials
                 }
 
             }
         }
     }
 
+
+    /// <summary>
+    /// Method that updates ingame date/clock based on timeframe and timescale.
+    /// </summary>
     public void updateInGameTimer()
     {
         timeToAdd = TimeSpan.FromSeconds(Time.deltaTime*24*60*60);
@@ -181,9 +176,11 @@ public class SimulationScript : MonoBehaviour
         timer.text = currentTime.ToString();
     }
 
+    /// <summary>
+    /// Restarts loaded scene to initial conditions when "Restart" button is played.
+    /// </summary>
     public void restartSimulation()
     {
-        //SceneManager.LoadScene(0);
         SceneManager.LoadScene(currentScene.name);
     }
 

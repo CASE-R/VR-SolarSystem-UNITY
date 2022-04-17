@@ -6,48 +6,55 @@ public class BodyProperties : MonoBehaviour
 {
     SimulationScript simScript;
     
-    [Tooltip("The Empty GameObject which the Solar System simulation runs from")]
+    [Tooltip("The Empty GameObject which the Solar System simulation runs from.")]
     public GameObject systemObj; // This is searched for later on by name
 
-    [Tooltip("The GameObject that this object is attached to")]
+    [Tooltip("The GameObject that this object is attached to.")]
     public GameObject parentObj;
 
     [Header("Rigid Body Parameters")]
 
-    [Tooltip("('Scaled') Radius of Sphere = Half of Scale Component")]
-    public float volumetricMeanRadius; // Celestial Size/Radius
+    [Tooltip("('Scaled') Radius of Sphere = Half of Scale Component.")]
+    public float volumetricMeanRadius; // Celestial Size/Radius independent of parent's global scale, found by parentObj.transform.lossyScale
 
     [Tooltip("Mass of Body in Earth Masses.")]
     public float mass; // Mass of Celestial
 
-    [Tooltip("Length of Solar Day in realtime seconds.")]
-    public float dayPeriod; // Length of SOLAR Day in realtime seconds (remember 1t = 0.1 Earth Days)
+    [Tooltip("Length of Solar Day relative to Earth Solar Day per realtime second. Negative values imply opposite/anti-clockwise rotation (i.e. 175 means 175 seconds to do one revolution).")]
+    public float dayPeriod; // Length of SOLAR Day in realtime seconds (remember 1t = 1 Earth Days)
 
     [Tooltip("The angle between the body's equator and the body's orbital plane, with north defined by the right - hand rule. (J2000).")]
     public float obliquityToOrbit;
 
-    [Header("Orbital Parameters (Input)")]
+    [Header("Shape (Input)")]
     [Tooltip("Closest distance between body and host.")]
     public float periapsis; // Closest orbital distance to host
     [Tooltip("Furthest distance between body and host.")]
     public float apoapsis; // Furthest orbital distance to host
-    [Tooltip("Calculated time taken in realtime seconds to orbit around the host")]
-    public float orbitalPeriod; // Time taken in realtime seconds to orbit around the host
+
+    [Header("Orientation (Input)")]
+    [Tooltip("Angle of current orbital plane to ecliptic plane, in degrees.")]
+    public float inclination;
+    [Tooltip("Angle in the ecliptic plane where the satellite crosses the plane in an ascending direction.")]
+    public float rightAscension;
+    [Tooltip("Angle in the orbital plane between the Right Ascension and the periapsis measured in the direction of motion.")]
+    public float argumentOfPeriapsis;
 
     [Header("Shape (Read Only)")]
-    public float periapsisLocal;
-    public float apoapsisLocal;
+    [Tooltip("Value in Global Space (independent of Parent's scale).")]
+    public float periapsisGlobal;
+    [Tooltip("Value in Global Space (independent of Parent's scale).")]
+    public float apoapsisGlobal;
+    [Tooltip("Semimajor axis of orbital path.")]
     public float semiMajor;
     public float eccentricity;
+    [Tooltip("Calculated time taken in realtime seconds to orbit around the host.")]
+    public float orbitalPeriod; // Time taken in realtime seconds to orbit around the host
 
     [Tooltip("Vector components of the Specific Angular Momentum, a perpendicular vector to the orbital plane.")]
     public Vector3 angularMomentum; // Calculated upon InitialVelocity calculation in SimulationScript.cs
 
-    [Header("Orientation (Input)")]
-    [Tooltip("The inclination of the orbit to the ecliptic, in degrees.")]
-    public float inclination;
-    public float rightAscension;
-    public float argumentOfPeriapsis;
+    
 
     [Header("Value Checks (Read Only)")]
     public float dotProductOfVelAndRadial;
@@ -57,13 +64,15 @@ public class BodyProperties : MonoBehaviour
 
     private void Start()
     {
-        //gameObject.GetComponent<Transform>().position = new Vector3(periapsis, 0f, 0f); // Placing this here prevents reseting position when periapsis is changed in editor. Changing Orbital Parameters mid-sim should not change the trajectory in realtime
-        
 
     }
 
+    /// <summary>
+    /// Updates all properties in the Editor that are dependent on each other when OnValidate() executes. This keeps all positions, directions and times updated when necessary.
+    /// </summary>
     void PropertyUpdate()
     {
+        // Check for a parent object, which usually will be a "Celestial" object
         if (gameObject.transform.parent != null)
         {
             parentObj = gameObject.transform.parent.gameObject;
@@ -73,21 +82,21 @@ public class BodyProperties : MonoBehaviour
             parentObj = null;
         }
 
-        systemObj = GameObject.Find("System");
+        systemObj = GameObject.Find("System"); // Finds GameObject with this name, this is the object in hierarchy w/ all simulation settings
         simScript = systemObj.GetComponent<SimulationScript>();
 
 
         // Below contains the main properties to be updated
-        if (parentObj.CompareTag("Celestial") || gameObject.name == "Sun" || gameObject.name.Contains("Grabbable Celestial"))
+        if (parentObj.CompareTag("Celestial") || gameObject.name == "Sun" || gameObject.name.Contains("Grabbable Celestial")) // True if body this is attached to requires these properties to be updated. Doing such a condition prevents null errors without lots of conditionals. Only want updated properties for these conditions
         {
             gameObject.GetComponent<Rigidbody>().mass = mass;
             gameObject.GetComponent<Transform>().localScale = new Vector3(volumetricMeanRadius, volumetricMeanRadius, volumetricMeanRadius) * 2f; // Radius of Sphere is 0.5 Scale/Diameter, and we are treating these as perfect spheres
 
-            periapsisLocal = periapsis * parentObj.transform.lossyScale.x;
-            apoapsisLocal = apoapsis * parentObj.transform.lossyScale.x;
+            periapsisGlobal = periapsis * parentObj.transform.lossyScale.x;
+            apoapsisGlobal = apoapsis * parentObj.transform.lossyScale.x;
 
 
-            semiMajor = 0.5f * (periapsisLocal + apoapsisLocal); // Same as saying 2a = r_P + r_A as explained in report/notes etc.
+            semiMajor = 0.5f * (periapsisGlobal + apoapsisGlobal); // Same as saying 2a = r_P + r_A as explained in report/notes etc.
 
             eccentricity = (apoapsis - periapsis) / (periapsis + apoapsis); // Changed 09/04/22 to match derivations
 
@@ -98,7 +107,7 @@ public class BodyProperties : MonoBehaviour
 
             if (parentObj.CompareTag("Celestial"))
             {
-                orbitalPeriod = Mathf.Sqrt(4 * Mathf.Pow(Mathf.PI, 2) * Mathf.Pow((semiMajor), 3f) / (simScript.gravitationalConstant * (mass + parentObj.GetComponent<Rigidbody>().mass)));
+                orbitalPeriod = Mathf.Sqrt(4 * Mathf.Pow(Mathf.PI, 2) * Mathf.Pow((semiMajor), 3f) / (simScript.gravitationalConstant * (mass + parentObj.GetComponent<Rigidbody>().mass))); // Using K3L
             }
             else 
             { 
@@ -111,10 +120,10 @@ public class BodyProperties : MonoBehaviour
             gameObject.transform.localPosition = posVectorResult;
 
             dotProductOfAngMomAndVel = Vector3.Dot(angularMomentum, initDirection);
-            dotProductOfVelAndRadial = Vector3.Dot(initDirection, radDist);
+            dotProductOfVelAndRadial = Vector3.Dot(initDirection, radDist); // Should be 0 as h = v x r, all three are orthogonal
 
-            Vector3 angularVelocity = (2 * Mathf.PI / dayPeriod) * Vector3.up;
-            gameObject.GetComponent<Rigidbody>().angularVelocity = Quaternion.AngleAxis(obliquityToOrbit, Vector3.right) * angularVelocity;
+            Vector3 angularVelocity = (2 * Mathf.PI / dayPeriod) * Vector3.up; // Causes planet to rotate about its 'up' axis.
+            gameObject.GetComponent<Rigidbody>().angularVelocity = Quaternion.AngleAxis(obliquityToOrbit, Vector3.right) * angularVelocity; // Rotates north pole axis
         }
 
     }

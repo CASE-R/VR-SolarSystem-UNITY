@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class PlanetRingMeshGenerator : MonoBehaviour
+public class PlanetRingMeshGenerator : MonoBehaviour // Taken from video tutorial series by "Boards To Bits Games". Video 1: https://www.youtube.com/watch?v=Rze4GEFrYYs Video 2: https://www.youtube.com/watch?v=WmWMC6iq7Y0&t=46s
 {
 
 	//manual settings

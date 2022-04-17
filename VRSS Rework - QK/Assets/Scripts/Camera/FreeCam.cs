@@ -5,7 +5,8 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary> From: https://gist.github.com/ashleydavis/f025c03a9221bc840a2b
+/// <summary> 
+/// From: https://gist.github.com/ashleydavis/f025c03a9221bc840a2b Edited for use on the VRSS project
 /// A simple free camera to be added to a Unity game object.
 /// 
 /// Keys:
@@ -70,7 +71,7 @@ public class FreeCam : MonoBehaviour
         var fastMode = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
         var movementSpeed = fastMode ? this.fastMovementSpeed : this.movementSpeed;
 
-
+        // Left/Right Movement
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             transform.position = transform.position + (-transform.right * movementSpeed );
@@ -83,6 +84,7 @@ public class FreeCam : MonoBehaviour
             celestialDropdown.value = 18;
         }
 
+        // Forward/Reverse Movement
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             transform.position = transform.position + (transform.forward * movementSpeed );
@@ -95,6 +97,7 @@ public class FreeCam : MonoBehaviour
             celestialDropdown.value = 18;
         }
 
+        // Vertical Movement based on Transform rotation
         if (Input.GetKey(KeyCode.Q))
         {
             transform.position = transform.position + (transform.up * movementSpeed );
@@ -107,6 +110,7 @@ public class FreeCam : MonoBehaviour
             celestialDropdown.value = 18;
         }
 
+        // Vertical Movement based on Global Y axis
         if (Input.GetKey(KeyCode.R) || Input.GetKey(KeyCode.PageUp))
         {
             transform.position = transform.position + (Vector3.up * movementSpeed );
@@ -119,6 +123,7 @@ public class FreeCam : MonoBehaviour
             celestialDropdown.value = 18;
         }
 
+        // Tracks motion of mouse and rotates the freeCam when in free look mode
         if (looking)
         {
             float newRotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * freeLookSensitivity;
@@ -126,12 +131,13 @@ public class FreeCam : MonoBehaviour
             transform.localEulerAngles = new Vector3(newRotationY, newRotationX, 0f);
         }
 
-        //float axis = Input.GetAxis("Mouse ScrollWheel");
-        //if (axis != 0)
-        //{
-        //    var zoomSensitivity = fastMode ? this.fastZoomSensitivity : this.zoomSensitivity;
-        //    transform.position = transform.position + transform.forward * axis * zoomSensitivity;
-        //}
+        // Skips forward/backward with adjusted speed when mouse scrollwheel is moved
+        float axis = Input.GetAxis("Mouse ScrollWheel");
+        if (axis != 0)
+        {
+            var zoomSensitivity = fastMode ? this.fastZoomSensitivity : this.zoomSensitivity;
+            transform.position = transform.position + transform.forward * axis * zoomSensitivity;
+        }
 
         if (Input.GetAxisRaw("Mouse ScrollWheel") > 0f)
         {
@@ -142,6 +148,7 @@ public class FreeCam : MonoBehaviour
             movementSpeed -= acceleration;
         }
 
+        // Checks for free look mode
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             StartLooking();

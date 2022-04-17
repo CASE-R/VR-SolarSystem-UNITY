@@ -6,28 +6,27 @@ using UnityEngine.XR;
 
 public class CameraFocus : MonoBehaviour
 {
+    [Tooltip("Camera used to have a focused view of a celestial.")]
     public GameObject focusCamera;
+    [Tooltip("Camera used to roam freely in 3D space.")]
     public GameObject freeCamera;
-    //public GameObject HMDCamera;
 
+    [Tooltip("Currently active camera.")]
     public GameObject currentCamera;
+
+    [Tooltip("Index of celestials array that is being focused on. For example celNumber = 0 would imply the Sun is being focused on.")]
     public int celNumber;
 
-    /// <summary>
-    /// Focused GameObject's position as Vector3
-    /// </summary>
+    [Tooltip("Focused GameObject's position as Vector3.")]
     public Vector3 objectPosition;
 
-    /// <summary>
-    /// Focused GameObject's GLOBAL scale as Vector3
-    /// </summary>
+    [Tooltip("Focused GameObject's GLOBAL scale as Vector3.")]
     public Vector3 objectScale;
 
-    /// <summary>
-    /// Offset as Vector3 that the focusCamera is placed away from the focused object
-    /// </summary>
+    [Tooltip("Offset for the Focus Camera so it is placed away from the focused object.")]
     public Vector3 offset;
 
+    [Tooltip("Dropdown Menu used to list and selected celestials via UI.")]
     public Dropdown celestialMenu;
     SimulationScript simulation;
     PlanetProperties planetProperties;
@@ -52,10 +51,8 @@ public class CameraFocus : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {        
-        ///
+    {
         /// Activates FreeCam on WASD input
-        /// 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
         {
             celNumber = -1;
@@ -66,9 +63,7 @@ public class CameraFocus : MonoBehaviour
             focusCamera.SetActive(false);
         }
 
-        ///
-        /// FocusCam switch on 'Ctrl' + '<' or '>' input
-        /// 
+        /// FocusCam switches on 'Ctrl' + '<' or '>' input
         if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftCommand) || Input.GetKey(KeyCode.RightCommand))
         {
             if (Input.GetKeyDown(KeyCode.Comma) && celNumber > -1) // uses '<' to switch backwards in celestials[]
@@ -83,17 +78,13 @@ public class CameraFocus : MonoBehaviour
             }
         }
 
-        ///
         /// Increase rate of UpdateFocusCamera() in smaller timeframes (seconds/realtime second)
-        ///
         if (gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value == 0 && celNumber > -1) // Focus onto celestial[celNumber] for smaller timeframes at faster rate as timeScale affects effective rate of FixedUpdate(). The value we set is in terms of scaledTime
         {
             UpdateFocusCamera();
         }
 
-        ///
         /// Rotate FocusCam around planet
-        /// 
         if (celNumber > -1)
         { // Taken from: https://emmaprats.com/p/how-to-rotate-the-camera-around-an-object-in-unity3d/ and edited to match needs
             if (Input.GetMouseButtonDown(1))
@@ -125,19 +116,14 @@ public class CameraFocus : MonoBehaviour
 
     void FixedUpdate()
     {
-
-        ///
         /// Update Position and Rotation of FreeCam in focus mode
-        /// 
         if (currentCamera != freeCamera) // i.e currentCamera = focusCamera
         {
             freeCamera.transform.position = currentCamera.transform.position;
             freeCamera.transform.rotation = currentCamera.transform.rotation;
         }
 
-        ///
         /// Update Position and Rotation of FocusCam in focus mode at rate = Time.fixedDeltaTime
-        /// 
         if (gameObject.GetComponent<UpdateTimeScale>().timeUnitMenu.value != 0 && !Input.GetKey(KeyCode.Mouse1)) // Focus onto celestial[celNumber] in faster timeframes
         {
             UpdateFocusCamera();
@@ -182,14 +168,19 @@ public class CameraFocus : MonoBehaviour
             {
                 planetProperties.radiusInput.text = (simulation.celestials[celNumber].transform.GetChild(0).GetComponent<Transform>().localScale.x).ToString();
             }
+
+            UpdatePlanetPropertyUnits();
         }
 
         
     }
 
+    /// <summary>
+    /// Method to update mass and radius units for PlanetProperties UI element. This gives the user a better sense of what properties they are changing relative to.
+    /// </summary>
     public void UpdatePlanetPropertyUnits()
     {
-        massUnit.text = simulation.celestials[celNumber].name + "\nmasses";
+        massUnit.text = "Earth masses";
         radiusUnit.text = simulation.celestials[celNumber].name + "\nradii";
     }
 
