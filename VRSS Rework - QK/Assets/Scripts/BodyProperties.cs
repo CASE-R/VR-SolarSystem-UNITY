@@ -64,13 +64,13 @@ public class BodyProperties : MonoBehaviour
 
     private void Start()
     {
-
+        PropertyUpdate()
     }
 
     /// <summary>
     /// Updates all properties in the Editor that are dependent on each other when OnValidate() executes. This keeps all positions, directions and times updated when necessary.
     /// </summary>
-    void PropertyUpdate()
+    public void PropertyUpdate()
     {
         // Check for a parent object, which usually will be a "Celestial" object
         if (gameObject.transform.parent != null)
@@ -129,9 +129,9 @@ public class BodyProperties : MonoBehaviour
     }
 
     // Assign the above parameters to the gameObject
-    void OnValidate()
-    {
-        PropertyUpdate();
-    }
+    //public void OnValidate()
+    //{
+    //    PropertyUpdate();
+    //}
 
 }
