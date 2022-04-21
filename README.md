@@ -44,7 +44,6 @@ YouTube Playlist: [VRSS Project Update Playlist](https://youtube.com/playlist?li
 
 Excel Workbook: [Planetary Datasheet (Read Only)](https://1drv.ms/x/s!AmE2NJQPF5Ygis8KAuAMAZCVfMHBrQ?e=OdOh1F)
 
-#### Relevant Tutorials
 Wherever possible, we try to cite tutorials/sources used when creating or taking from (open source) scripts. Below are links/references used in creating the project.
 
 #### General Tutorials
