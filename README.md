@@ -45,13 +45,16 @@ YouTube Playlist: [VRSS Project Update Playlist](https://youtube.com/playlist?li
 Excel Workbook: [Planetary Datasheet (Read Only)](https://1drv.ms/x/s!AmE2NJQPF5Ygis8KAuAMAZCVfMHBrQ?e=OdOh1F)
 
 Wherever possible, we try to cite tutorials/sources used when creating or taking from (open source) scripts. Below are links/references used in creating the project.
-
+***
 #### General Tutorials
 Coderious's Solar System Example: [Unity Tutorial - Solar System with Unity Physics](https://www.youtube.com/watch?v=kUXskc76ud8)
 > This was used to template custom gravity and velocity calculations in `SimulationScript.cs`. Due to incompleteness in the video, a unique solution was implemented to initialise starting velocities, and hence dependency on `BodyProperties.cs`.
 
 Board To Bits Games Planet Ring Mesh Tutorial: || [Part 1](https://www.youtube.com/watch?v=Rze4GEFrYYs) || [Part 2](https://www.youtube.com/watch?v=WmWMC6iq7Y0&t=46s) ||
 > Used to create planetary rings in the simulation for visual effects, see `PlanetRingMeshGenerator.cs`.
+
+mrwasd's Particle Sun Tutorial: [Unity3D Particle Sun Tutorial](https://www.youtube.com/watch?v=qJEBAPRt8AA)
+> Used to recreate a basic corona effect around the Sun using Unity's Particle Systems.
 
 Emma Prats' Camera Rotation Tutorial: || [Video Tutorial](https://www.youtube.com/watch?v=rDJOilo4Xrg) || [Blog Tutorial](https://emmaprats.com/p/how-to-rotate-the-camera-around-an-object-in-unity3d/) ||
 > Used to allow camera rotation around a celestial body in 'Focus Mode' for the non-VR scene.
@@ -61,17 +64,23 @@ Jason Wiemann's Spawning Tutorial: [Unity3D 101: Spawning Objects from prefabs..
 
 Brackey's Minimap Tutorial: [How to make a Minimap in Unity](https://www.youtube.com/watch?v=28JTTXqMvOU&t=8s)
 > This was used during scene migration to VR, allowing one camera to render to the UI allowing the user to focus on a celestial body whilst flying through the simulation.
->
+***
 #### VR Tutorials
 Valem's Unity XR Toolkit Tutorial Playlist: [Introduction to VR in Unity - UNITY XR TOOLKIT](https://youtube.com/playlist?list=PLrk7hDwk64-a_gf7mBBduQb3PEBYnG4fU)
 > This was most used during VR implementation, specifically parts 1 to 6.
 
 Valem's Oculus Integration Tutorial Playlist: [How to make a VR game - OCULUS INTEGRATION](https://youtube.com/playlist?list=PLrk7hDwk64-Y7ELKfkw8ox8TaT9y3gNpS)
 > This was used to help with using Oculus Integration Assets provided by Oculus themselves.
-
+***
 #### UI Tutorials
 Jayanam's UI Dropdown Tutorial: [Unity UI Tutorial Dropdown C# Scripting](https://www.youtube.com/watch?v=URS9A4V_yLc)
 > This tutorial was used to aid the creation of the Celestial Selector menu seen in the top left of the UI.
 
 Coco Code's UI Scaling Tutorial: [How to scale Unity UI objects for every screen - Unity UI tutorial](https://www.youtube.com/watch?v=QnT-2KxVvyk)
 > This was used to allow basic support for different screen sizes, so that UI would correctly display on-screen regardless of window size.
+***
+#### Textures and Assets
+SolarSystemScope Textures: [Free High Res Solar System Textures](https://www.solarsystemscope.com/textures/)
+> These textures are open for public use, and applied to our Celestial GameObjects. Saturn's Ring Texture can also be found here, which was reused for other planetary rings.
+
+Smoke Effect Texture: [Smoke Texture + Basic Tutorial](http://thebloodyshadows.blogspot.com/2013/08/tutorial-smoke-effect-particles.html)
