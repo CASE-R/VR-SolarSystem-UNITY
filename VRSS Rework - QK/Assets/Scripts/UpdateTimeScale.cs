@@ -44,16 +44,19 @@ public class UpdateTimeScale : MonoBehaviour
         //the if statements are simple unit conversions from 1 earth day per second
         if (timeUnitMenu.value == 0)
         {
+            Time.fixedDeltaTime = simulation.initialFixedTimeStep / 7;
             simulation.timeUnitMultiplier = 1f / (24 * 60 * 60);
         }
 
         else if (timeUnitMenu.value == 1)
         {
+            Time.fixedDeltaTime = simulation.initialFixedTimeStep;
             simulation.timeUnitMultiplier = 1;
         }
 
         else if (timeUnitMenu.value == 2)
         {
+            Time.fixedDeltaTime = simulation.initialFixedTimeStep * 7;
             simulation.timeUnitMultiplier = 1 * 7;
         }
     }

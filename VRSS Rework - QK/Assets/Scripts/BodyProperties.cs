@@ -64,7 +64,7 @@ public class BodyProperties : MonoBehaviour
 
     private void Start()
     {
-        PropertyUpdate()
+        PropertyUpdate();
     }
 
     /// <summary>
