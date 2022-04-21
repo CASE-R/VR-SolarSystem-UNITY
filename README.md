@@ -87,3 +87,10 @@ SolarSystemScope Textures: [Free High Res Solar System Textures](https://www.sol
 > These textures are open for public use, and applied to our Celestial GameObjects. Saturn's Ring Texture can also be found here, which was reused for other planetary rings.
 
 Smoke Effect Texture: [Smoke Texture + Basic Tutorial](http://thebloodyshadows.blogspot.com/2013/08/tutorial-smoke-effect-particles.html)
+> Used in Sun's corona effect using mrwasd's Particle Sun tutorial.
+
+Keypad Texture Asset Package: [Unity Asset Store: Keypad](https://assetstore.unity.com/packages/2d/gui/keypad-62942)
+> Free Asset from Unity Asset Store by Robotparts for a Virtual UI Keypad
+
+Oculus Integration Package: [Unity Asset Store: Oculus Integration](https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022)
+> Free Asset from Unity Asset Store by Oculus for easy Oculus integration in development.
