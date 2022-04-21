@@ -56,6 +56,9 @@ Board To Bits Games Planet Ring Mesh Tutorial: || [Part 1](https://www.youtube.c
 mrwasd's Particle Sun Tutorial: [Unity3D Particle Sun Tutorial](https://www.youtube.com/watch?v=qJEBAPRt8AA)
 > Used to recreate a basic corona effect around the Sun using Unity's Particle Systems.
 
+Ashley Davis' Free Camera Script: [GitHub Repository](https://gist.github.com/ashleydavis/f025c03a9221bc840a2b)
+> Used as a template for the Free Cam script in the non-VR scene.
+
 Emma Prats' Camera Rotation Tutorial: || [Video Tutorial](https://www.youtube.com/watch?v=rDJOilo4Xrg) || [Blog Tutorial](https://emmaprats.com/p/how-to-rotate-the-camera-around-an-object-in-unity3d/) ||
 > Used to allow camera rotation around a celestial body in 'Focus Mode' for the non-VR scene.
 
