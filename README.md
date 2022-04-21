@@ -41,6 +41,7 @@
 Linked below will be a YouTube playlist showcasing development and previews of the project and any particular sources of information used in the project
 
 YouTube Playlist: [VRSS Project Update Playlist](https://youtube.com/playlist?list=PLJfkNK5Lym90kyMIWkTr8NJP-mRjM5rE3)
+
 Excel Workbook: [Planetary Datasheet (Read Only)](https://1drv.ms/x/s!AmE2NJQPF5Ygis8KAuAMAZCVfMHBrQ?e=OdOh1F)
 
 #### Relevant Tutorials
