@@ -1,7 +1,7 @@
 # Virtual Reality Solar System using Unity
  This repository holds the 3rd Year Physics Project of [Bruhmao](https://github.com/Bruhmao "My partner's GitHub Profile") and myself, containing development history and the final submitted code.
 
- By the time of presentation, the Unity `Assets` folder should contain all that is required to load up the project using the Unity Editor. On top of this, there should also be a `Builds` folder containing the executable files that allow the simulation to be run independently of Unity. There is a build for non-VR use, with less of the intended features as this was used for development, and another to be loaded using a connected VR device.
+ By the time of presentation, the Unity `Assets` folder should contain all that is required to load up the project using the Unity Editor. On top of this, there should also be a `Builds` folder containing the executable files that allow the simulation to be run independently of Unity. There is a build for non-VR use, with less of the intended features as this was used for development, and another to be loaded using a connected VR device for full features. An additional _optimised_ build has been uploaded for demonstrations purposes of a more stable performance by changing `Time.deltaFixedTime` upon input, which was originally avoided due to potential unstableness in physics.
  ***
  ## Project Overview
  Using Newtonian Gravity and scaling methods, a model Solar System was built inside the Unity Engine so that the orbits of celestial bodies could be simulated. Starting from initially set conditions, the orbits evolve naturally with time and can easily be disrupted by changing properties of the celestial or by placing another massive body beside it (see below).
