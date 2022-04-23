@@ -50,6 +50,8 @@ public class SimulationScript : MonoBehaviour
         startTime = System.DateTime.Now;
         currentTime = startTime;
         timer.GetComponent<Text>().text = startTime.ToString();
+
+        currentScene = SceneManager.GetActiveScene(); // As this script is used for multiple scenes during development, this is used later to reload the current active scene
     }
     public void OnValidate()
     {
