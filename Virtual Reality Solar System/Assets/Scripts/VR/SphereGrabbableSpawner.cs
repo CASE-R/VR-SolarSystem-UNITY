@@ -8,12 +8,12 @@ public class SphereGrabbableSpawner : MonoBehaviour // Modelled off this video: 
     [Tooltip("PreFab that is used for instantiating a grabbable object.")]
     public GameObject grabbablePreFab;
     [Tooltip("GameObject used to use as the instantiated object.")]
-    public GameObject parent;
+    public Transform parentTransform;
     [Tooltip("Transform used to spawn relative to. Typically set to whatever object to spawn in front of the player.")]
     public Transform spawnLocation;
 
     [Tooltip("How long a delay there is in seconds before being able to instantiate a new object.")]
-    public float spawnCooldown = 2f;
+    public float spawnCooldown = 3f;
 
     private float cooldownResetTime = 0f; // Used as part of the Cooldown system
 
@@ -33,7 +33,7 @@ public class SphereGrabbableSpawner : MonoBehaviour // Modelled off this video: 
     {
         VRCelSel = GetComponent<VRCelestialSelector>();
         simulationScript = GetComponent<SimulationScript>();
-        parent = gameObject; // This script is to be attached to the "System" GameObject used for a lot of the simulation settings
+       // parent = gameObject; // This script is to be attached to the "System" GameObject used for a lot of the simulation settings
         celNewLength = simulationScript.celestials.Length;
         Debug.Log("CelNewLength is " + celNewLength);
     }
@@ -74,19 +74,37 @@ public class SphereGrabbableSpawner : MonoBehaviour // Modelled off this video: 
     /// </summary>
     private void Spawn()
     {
-        spawnedObj = (GameObject)Instantiate(grabbablePreFab, spawnLocation.position + (2f * grabbablePreFab.transform.localScale), spawnLocation.rotation, parent.transform); // Creates object 2x radii of the object away
-        spawnedObj.name = "Grabbable Celestial " + Time.time;
+        
+        if (CooledDown() && isButtonPressed)
+        {
+            spawnedObj = (GameObject)Instantiate(grabbablePreFab, parentTransform); // Creates object at origin
+            spawnedObj.name = "Grabbable Celestial " + Time.time;
 
-        gameObject.GetComponent<SimulationScript>().celestials = GameObject.FindGameObjectsWithTag("Celestial");
-        Debug.Log("Spawned in grabbable PreFab whilst " + isButtonPressed);
 
-        cooldownResetTime = Time.time + spawnCooldown; // Updates time to compare cooldown to, which is set higher than Time.time for 'spawnCooldown' seconds
-        isButtonPressed = false; // Resets isButtonPressed
+            gameObject.GetComponent<SimulationScript>().celestials = GameObject.FindGameObjectsWithTag("Celestial");
+            Debug.Log("Spawned in grabbable PreFab whilst " + isButtonPressed);
+            isButtonPressed = false; // Resets isButtonPressed
+
+            cooldownResetTime = Time.time + spawnCooldown; // Updates time to compare cooldown to, which is set higher than Time.time for 'spawnCooldown' seconds
+            CooledDown(); // Helps to reset conditions, so only one object is instantiated
+        }
+        
+        Invoke("Reposition",Time.fixedDeltaTime); // Repositions spawnedObj in next fixedUpdate to player
+
+        
         Debug.Log("Button pressed is " + isButtonPressed);
         celNewLength += 1;
         Debug.Log("CelNewLength is " + celNewLength);
 
     }
+
+    private void Reposition()
+    {
+        Vector3 instantiatePos = spawnLocation.position + (2f * grabbablePreFab.transform.localScale);
+        spawnedObj.transform.position = instantiatePos; // 2x radii of the object away from player
+    }
+
+
     /// <summary>
     /// Method that checkes if enough time has passed to consider the instantiate button to have 'cooled down'.
     /// </summary>

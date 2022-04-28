@@ -194,21 +194,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   systemObj: {fileID: 0}
   parentObj: {fileID: 0}
-  volumetricMeanRadius: 1
+  volumetricMeanRadius: 0.075
   mass: 1
   dayPeriod: 0
   obliquityToOrbit: 0
   periapsis: 0
   apoapsis: 0
-  orbitalPeriod: 0
-  periapsisLocal: 0
-  apoapsisLocal: 0
-  semiMajor: 0
-  eccentricity: 0
-  angularMomentum: {x: 0, y: 0, z: 0}
   inclination: 0
   rightAscension: 0
   argumentOfPeriapsis: 0
+  periapsisGlobal: 0
+  apoapsisGlobal: 0
+  semiMajor: 0
+  eccentricity: 0
+  orbitalPeriod: 0
+  angularMomentum: {x: 0, y: 0, z: 0}
   dotProductOfVelAndRadial: 0
   dotProductOfAngMomAndVel: 0
   initDirection: {x: 0, y: 0, z: 0}

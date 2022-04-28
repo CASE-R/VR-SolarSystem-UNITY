@@ -56,6 +56,14 @@ public class VRPlanetProperties : MonoBehaviour
         VRCamSwitch.celNumber = 0;
     }
 
+    public void RemoveAllCelestials()
+    {
+        for (int i = 0; i < simulation.celestials.Length; i++)
+        {
+            Destroy(simulation.celestials[i]);
+        }
+    }
+
     // The ChangeProperty functions are called whenever their respective input fields are "submitted", this could be by pressing enter or clicking away
 
     /// <summary>
