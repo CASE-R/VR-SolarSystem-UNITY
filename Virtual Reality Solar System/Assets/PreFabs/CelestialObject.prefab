@@ -91,7 +91,7 @@ SphereCollider:
   m_GameObject: {fileID: 3222273634912119275}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -205,8 +205,8 @@ TrailRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 65535
-      atime2: 0
+      atime1: 28142
+      atime2: 65535
       atime3: 0
       atime4: 0
       atime5: 0
@@ -214,14 +214,14 @@ TrailRenderer:
       atime7: 0
       m_Mode: 0
       m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
+      m_NumAlphaKeys: 3
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_MinVertexDistance: 0.1
+  m_MinVertexDistance: 0.01
   m_Autodestruct: 0
   m_Emitting: 1
 --- !u!1 &4805106565392877989
@@ -294,15 +294,15 @@ MonoBehaviour:
   obliquityToOrbit: 0
   periapsis: 0
   apoapsis: 0
-  orbitalPeriod: 6.2831855
-  periapsisLocal: 0
-  apoapsisLocal: 0
-  semiMajor: 1
-  eccentricity: -0
-  angularMomentum: {x: 0, y: 0, z: 0}
   inclination: 0
   rightAscension: 0
   argumentOfPeriapsis: 0
+  periapsisGlobal: 0
+  apoapsisGlobal: 0
+  semiMajor: 1
+  eccentricity: -0
+  orbitalPeriod: 6.2831855
+  angularMomentum: {x: 0, y: 0, z: 0}
   dotProductOfVelAndRadial: 0
   dotProductOfAngMomAndVel: 0
   initDirection: {x: 0, y: 0, z: 0}

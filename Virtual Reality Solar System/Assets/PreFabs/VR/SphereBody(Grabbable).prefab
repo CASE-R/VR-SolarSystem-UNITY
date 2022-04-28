@@ -194,7 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   systemObj: {fileID: 0}
   parentObj: {fileID: 0}
-  volumetricMeanRadius: 0.075
+  volumetricMeanRadius: 0.025
   mass: 1
   dayPeriod: 0
   obliquityToOrbit: 0
@@ -338,7 +338,7 @@ TrailRenderer:
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_MinVertexDistance: 0.1
+  m_MinVertexDistance: 0.001
   m_Autodestruct: 0
   m_Emitting: 1
 --- !u!1 &6163617422477919512

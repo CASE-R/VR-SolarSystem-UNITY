@@ -8,7 +8,7 @@ public class SphereGrabbableSpawner : MonoBehaviour // Modelled off this video: 
     [Tooltip("PreFab that is used for instantiating a grabbable object.")]
     public GameObject grabbablePreFab;
     [Tooltip("GameObject used to use as the instantiated object.")]
-    public Transform parentTransform;
+    public GameObject systemObj;
     [Tooltip("Transform used to spawn relative to. Typically set to whatever object to spawn in front of the player.")]
     public Transform spawnLocation;
 
@@ -31,8 +31,8 @@ public class SphereGrabbableSpawner : MonoBehaviour // Modelled off this video: 
     // Start is called before the first frame update
     void Start()
     {
-        VRCelSel = GetComponent<VRCelestialSelector>();
-        simulationScript = GetComponent<SimulationScript>();
+        VRCelSel = systemObj.GetComponent<VRCelestialSelector>();
+        simulationScript = systemObj.GetComponent<SimulationScript>();
        // parent = gameObject; // This script is to be attached to the "System" GameObject used for a lot of the simulation settings
         celNewLength = simulationScript.celestials.Length;
         Debug.Log("CelNewLength is " + celNewLength);
@@ -41,10 +41,10 @@ public class SphereGrabbableSpawner : MonoBehaviour // Modelled off this video: 
     // Update is called once per frame
     void Update()
     {
-        if (CooledDown() && isButtonPressed)
-        {
-            Spawn();
-        }
+        //if (CooledDown() && isButtonPressed)
+        //{
+        //    Spawn();
+        //}
         
         if (celestialArrayCheck.Length != simulationScript.celestials.Length)
         {
@@ -72,53 +72,70 @@ public class SphereGrabbableSpawner : MonoBehaviour // Modelled off this video: 
     /// <summary>
     /// Method used to create/instantiate a PreFab model that allows the addition of a celestial object that can be grabbed via VR input. Conditions and timers are reset here also.
     /// </summary>
-    private void Spawn()
+    //private void Spawn()
+    //{
+        
+    //    if (CooledDown() && isButtonPressed)
+    //    {
+    //        spawnedObj = (GameObject)Instantiate(grabbablePreFab, new Vector3(0,1,0), Quaternion.identity, systemObj); // Creates object at origin
+    //        spawnedObj.name = "Grabbable Celestial " + Time.time;
+
+
+    //        gameObject.GetComponent<SimulationScript>().celestials = GameObject.FindGameObjectsWithTag("Celestial");
+    //        Debug.Log("Spawned in grabbable PreFab whilst " + isButtonPressed);
+    //        isButtonPressed = false; // Resets isButtonPressed
+
+    //        cooldownResetTime = Time.time + spawnCooldown; // Updates time to compare cooldown to, which is set higher than Time.time for 'spawnCooldown' seconds
+    //        CooledDown(); // Helps to reset conditions, so only one object is instantiated
+    //    }
+        
+    //    Invoke("ReInitialise", Time.fixedDeltaTime); // Repositions spawnedObj in next fixedUpdate to player
+
+        
+    //    Debug.Log("Button pressed is " + isButtonPressed);
+    //    celNewLength += 1;
+    //    Debug.Log("CelNewLength is " + celNewLength);
+
+    //}
+
+    private void ReInitialise()
     {
-        
-        if (CooledDown() && isButtonPressed)
-        {
-            spawnedObj = (GameObject)Instantiate(grabbablePreFab, parentTransform); // Creates object at origin
-            spawnedObj.name = "Grabbable Celestial " + Time.time;
+        Vector3 instantiatePos = gameObject.transform.position + (2f * grabbablePreFab.transform.localScale);
+        spawnedObj.transform.position = instantiatePos; // 2x radii of the object away from player
 
 
-            gameObject.GetComponent<SimulationScript>().celestials = GameObject.FindGameObjectsWithTag("Celestial");
-            Debug.Log("Spawned in grabbable PreFab whilst " + isButtonPressed);
-            isButtonPressed = false; // Resets isButtonPressed
-
-            cooldownResetTime = Time.time + spawnCooldown; // Updates time to compare cooldown to, which is set higher than Time.time for 'spawnCooldown' seconds
-            CooledDown(); // Helps to reset conditions, so only one object is instantiated
-        }
-        
-        Invoke("Reposition",Time.fixedDeltaTime); // Repositions spawnedObj in next fixedUpdate to player
-
-        
-        Debug.Log("Button pressed is " + isButtonPressed);
-        celNewLength += 1;
-        Debug.Log("CelNewLength is " + celNewLength);
-
+        RefreshCelestials();
     }
 
-    private void Reposition()
+    public void RefreshCelestials()
     {
-        Vector3 instantiatePos = spawnLocation.position + (2f * grabbablePreFab.transform.localScale);
-        spawnedObj.transform.position = instantiatePos; // 2x radii of the object away from player
+        systemObj.GetComponent<SimulationScript>().celestials = GameObject.FindGameObjectsWithTag("Celestial");
+        PopulateDropdown(VRCelSelDropDown, celestialArrayCheck);
+    }
+
+    public void UISpawnPress()
+    {
+        spawnedObj = (GameObject)Instantiate(grabbablePreFab, gameObject.transform.position, Quaternion.identity, systemObj.transform); // Creates object at origin
+        spawnedObj.name = "Grabbable Celestial " + Time.time;
+
+        Invoke("ReInitialise", Time.fixedDeltaTime); // Repositions spawnedObj in next fixedUpdate to player
     }
 
 
     /// <summary>
     /// Method that checkes if enough time has passed to consider the instantiate button to have 'cooled down'.
     /// </summary>
-    private bool CooledDown()
-    {
-        return Time.time > cooldownResetTime; // True whenever the cooldown has happened
-    }
+    //private bool CooledDown()
+    //{
+    //    return Time.time > cooldownResetTime; // True whenever the cooldown has happened
+    //}
 
-    /// <summary>
-    /// Method run upon UI Button press used as an indirect UI interaction event.
-    /// </summary>
-    public void SpawnButtonPressed() // Tied to a button which runs this on activation
-    {
-        isButtonPressed = true;
-    }
+    ///// <summary>
+    ///// Method run upon UI Button press used as an indirect UI interaction event.
+    ///// </summary>
+    //public void SpawnButtonPressed() // Tied to a button which runs this on activation
+    //{
+    //    isButtonPressed = true;
+    //}
 
 }

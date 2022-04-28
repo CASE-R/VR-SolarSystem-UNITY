@@ -45,16 +45,19 @@ public class UpdateTimeScale : MonoBehaviour
         if (timeUnitMenu.value == 0)
         {
             simulation.timeUnitMultiplier = 1f / (24 * 60 * 60);
+            Time.fixedDeltaTime = simulation.initialFixedTimeStep / 7f;
         }
 
         else if (timeUnitMenu.value == 1)
         {
             simulation.timeUnitMultiplier = 1;
+            Time.fixedDeltaTime = simulation.initialFixedTimeStep;
         }
 
         else if (timeUnitMenu.value == 2)
         {
             simulation.timeUnitMultiplier = 1 * 7;
+            Time.fixedDeltaTime = simulation.initialFixedTimeStep * 7f;
         }
     }
 
@@ -64,7 +67,7 @@ public class UpdateTimeScale : MonoBehaviour
         if (slider.GetComponent<Slider>().value == 0)
         {
             //if the slider is moved all the way to the left, set it to a very low number to avoid dividing by 0
-            simulation.initialTimeScale = 0.00000001f;
+            simulation.initialTimeScale = 0.01f;
         }
 
         else

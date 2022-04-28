@@ -14,6 +14,7 @@ public class VRKeypadScript : MonoBehaviour
     public InputField velocity;
     public InputField mass;
     public InputField radius;
+    public InputField timeScale;
 
     public InputField activeInputField;
 
@@ -46,6 +47,11 @@ public class VRKeypadScript : MonoBehaviour
             else if (radius.isFocused)
             {
                 activeInputField = radius;
+                keypad.SetActive(true);
+            }
+            else if (timeScale.isFocused)
+            {
+                activeInputField=timeScale;
                 keypad.SetActive(true);
             }
 
