@@ -4,6 +4,14 @@
  By the time of presentation, the Unity `Assets` folder should contain all that is required to load up the project using the Unity Editor. On top of this, there should also be a `Builds` folder containing the executable files that allow the simulation to be run independently of Unity. There is a build for non-VR use, with less of the intended features as this was used for development, and another to be loaded using a connected VR device for full features. An additional _optimised_ build has been uploaded for demonstrations purposes of a more stable performance by changing `Time.deltaFixedTime` upon input, which was originally avoided due to potential unstableness in physics.
 >Note: Commits beyond date of 21st April 2022 were done after official project submission, and were for demonstration purposes only to show working features (as some were not working 100% on submission)
 
+***
+## Which Build Should I Run?
+For the best VR experience, follow the path `VR-SolarSystem-UNITY/Builds/Fixed VRSS/` and run the `Solar System Simulator.exe` file from this folder once you have a VR device set up. This is the best working build that was created shortly after the deadline used in live demos and contains the least number of bugs.
+
+For a non-VR experience, follow the path `VR-SolarSystem-UNITY/Builds/Solar System Simulator/` and run the `.exe` file there. This will not contain as many features as in the VR version as this had more of a testing purpose
+
+The other build folders contain incomplete/broken builds that were made during the project time period or shortly before submission deadline however all submitted documentation (i.e. reports) show how the above 2 builds were assembled.
+
  ***
  ## Project Overview
  Using Newtonian Gravity and scaling methods, a model Solar System was built inside the Unity Engine so that the orbits of celestial bodies could be simulated. Starting from initially set conditions, the orbits evolve naturally with time and can easily be disrupted by changing properties of the celestial or by placing another massive body beside it (see below).
